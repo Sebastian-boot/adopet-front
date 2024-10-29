@@ -1,5 +1,4 @@
-
-.container {
+.containerL {
   background-color: rgb(255, 255, 255);
   display: flex;
   align-items: center;
@@ -36,57 +35,57 @@
   height: 3rem;
   margin-left: 6rem;
   padding: 1rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   border: none;
-  background-color: rgb(238, 238, 238)
+  background-color: rgb(238, 238, 238);
 }
 
 .checkbox {
   display: flex;
   align-items: center;
-  justify-content:left;
+  justify-content: left;
   margin-left: 7rem;
   margin-top: 1rem;
   padding: 1rem;
 }
 
-.checkboxpointer{
+.checkboxpointer {
   cursor: pointer;
 }
 
-.text{
-  margin-left: .5rem;
+.text {
+  margin-left: 0.5rem;
 }
 
-.button{
+.button {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.iniciar{
-  background-color: #5B53D1;
+.iniciar {
+  background-color: #5b53d1;
   color: white;
-  border: #5B53D1;
+  border: #5b53d1;
 }
 
-.iniciar:hover{
+.iniciar:hover {
   background-color: #544daf;
 }
 
-.crear{
+.crear {
   background-color: white;
-  color: #5B53D1;
-  border-color:  #5B53D1;
+  color: #5b53d1;
+  border-color: #5b53d1;
 }
 
-.crear:hover{
+.crear:hover {
   background-color: rgb(238, 238, 238);
 }
 
-.Textright{
-  background-color: #5B53D1;
+.Textright {
+  background-color: #5b53d1;
   color: rgb(255, 255, 255);
   width: 100%;
   height: 100%;
@@ -95,13 +94,13 @@
   border-radius: 5%;
 }
 
-.parrafo{
+.parrafo {
   margin-top: 12rem;
   font-size: 1.7rem;
 }
 
-.titletext{
+.titletext {
   font-size: 4rem;
   margin-top: 1rem;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
