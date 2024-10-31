@@ -1,0 +1,266 @@
+<div class="container mx-auto rounded-md">
+  <div class="flex justify-center px-6 my-12">
+    <div class="w-full xl:w-3/4 lg:w-11/12 flex">
+      <div
+        class="w-full h-auto bg-indigo-700 hidden lg:flex lg:flex-col lg:justify-center lg:items-center lg:w-1/2 bg-cover rounded-l-lg"
+      >
+        <h1 class="text-white mb-4 font-bold text-lg uppercase">
+          Uniendo Comunidades y Rescatistas
+        </h1>
+        <img
+          src="/assets/images/Animales.png"
+          alt="animals"
+          class="h-2/4 w-3/5 object-cover object-center mb-4"
+          style="border-radius: 40%"
+        />
+        <button class="loginButton border-indigo-700 border-2">
+          <a routerLink="/auth/login.component"
+            >¿Ya tienes cuenta con nosotros?</a
+          >
+        </button>
+      </div>
+
+      <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
+        <h2 class="pt-4 text-3xl font-bold">
+          Crea tú Cuenta en <strong class="text-indigo-700">Adopet</strong>
+        </h2>
+        <p class="text-sm mb-4">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. At harum
+          neque, suscipit impedit velit voluptatum sit beatae eaque repellat
+          consectetur aperiam laudantium.
+        </p>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <input
+                  formControlName="name"
+                  placeholder="Nombre"
+                  class="form-control rounded-full"
+                />
+                <div
+                  *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
+                  class="text-danger"
+                >
+                  Please input your name!
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <input
+                  formControlName="surname"
+                  placeholder="Apellido"
+                  class="form-control rounded-full"
+                />
+                <div
+                  *ngIf="
+                    form.get('surname')?.invalid && form.get('surname')?.touched
+                  "
+                  class="text-danger"
+                >
+                  Please input your surname!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <input
+                  formControlName="dni"
+                  type="number"
+                  placeholder="N° de Documento"
+                  class="form-control rounded-full"
+                />
+                <div
+                  *ngIf="form.get('dni')?.invalid && form.get('dni')?.touched"
+                  class="text-danger"
+                >
+                  Please input your dni!
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <input
+                  formControlName="birth_date"
+                  type="date"
+                  placeholder="Fecha de Nacimiento"
+                  class="form-control rounded-full"
+                />
+                <div
+                  *ngIf="
+                    form.get('birth_date')?.invalid &&
+                    form.get('birth_date')?.touched
+                  "
+                  class="text-danger"
+                >
+                  Please input birth date!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <div class="input-group" style="width: 10">
+                  <select
+                    formControlName="prefix"
+                    class="form-control rounded-full"
+                  >
+                    <option value="57">+57</option>
+                    <option value="87">+87</option>
+                  </select>
+                  <input
+                    formControlName="phone"
+                    placeholder="N° de Teléfono"
+                    class="form-control rounded-full"
+                  />
+                </div>
+                <div
+                  *ngIf="
+                    form.get('phone')?.invalid && form.get('phone')?.touched
+                  "
+                  class="text-danger"
+                >
+                  Please input your phone number!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="form-group">
+                <input
+                  formControlName="address"
+                  placeholder="Dirección"
+                  class="form-control rounded-full"
+                />
+                <div
+                  *ngIf="
+                    form.get('address')?.invalid && form.get('address')?.touched
+                  "
+                  class="text-danger"
+                >
+                  Please input your address!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <input
+                  formControlName="username"
+                  placeholder="Nombre de Usuario"
+                  class="form-control rounded-full"
+                />
+                <div
+                  *ngIf="
+                    form.get('username')?.invalid &&
+                    form.get('username')?.touched
+                  "
+                  class="text-danger"
+                >
+                  Please input your username!
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <input
+                  formControlName="email"
+                  placeholder="Correo"
+                  class="form-control rounded-full"
+                />
+                <div
+                  *ngIf="
+                    form.get('email')?.invalid && form.get('email')?.touched
+                  "
+                  class="text-danger"
+                >
+                  The input is not valid E-mail!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <input
+                  formControlName="password"
+                  type="password"
+                  placeholder="Contraseña"
+                  class="form-control rounded-full"
+                />
+                <div
+                  *ngIf="
+                    form.get('password')?.invalid &&
+                    form.get('password')?.touched
+                  "
+                  class="text-danger"
+                >
+                  Please input your password!
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <input
+                  formControlName="confirm"
+                  type="password"
+                  placeholder="Confirmar Contraseña"
+                  class="form-control rounded-full"
+                />
+                <div
+                  *ngIf="
+                    form.get('confirm')?.invalid && form.get('confirm')?.touched
+                  "
+                  class="text-danger"
+                >
+                  The new password that you entered do not match!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <input
+                formControlName="terms_conditions"
+                type="checkbox"
+                class="form-check-input"
+              />
+              <label
+                class="form-check-label underline italic text-indigo-500 hover:text-indigo-700"
+                >Acepto términos y condiciones</label
+              >
+              <div
+                *ngIf="
+                  form.get('terms_conditions')?.invalid &&
+                  form.get('terms_conditions')?.touched
+                "
+                class="text-danger"
+              >
+                Should accept terms and conditions!
+              </div>
+            </div>
+          </div>
+          <div class="form-group float-left button">
+            <Button class="iniciar" type="submit" shape="round">
+              Registrarme como fundación
+            </Button>
+            <Button
+              class="crear border-indigo-700 border-2"
+              type="submit"
+              shape="round"
+            >
+              Registrarme
+            </Button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

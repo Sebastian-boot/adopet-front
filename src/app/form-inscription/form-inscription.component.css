@@ -1,0 +1,60 @@
+.ant-checkbox-inner {
+  border-color: #5b53d1 !important;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #5b53d1 !important;
+  border-color: #5b53d1 !important;
+}
+
+.ant-checkbox-checked::after {
+  border-color: #5b53d1 !important;
+}
+.containerL {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 112rem;
+  height: 85vh;
+  border-radius: 5%;
+}
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.iniciar {
+  background-color: #5b53d1;
+  color: white;
+  border: #5b53d1;
+  width: 100%;
+}
+
+.iniciar:hover {
+  background-color: #544daf;
+}
+
+.crear {
+  background-color: white;
+  color: #5b53d1;
+  border-color: #5b53d1;
+  width: 100%;
+}
+
+.crear:hover {
+  background-color: rgb(238, 238, 238);
+}
+
+.loginButton {
+  background-color: white;
+  color: #5b53d1;
+  border-color: #5b53d1;
+  width: 70%;
+}
+
+.loginButton:hover {
+  background-color: rgb(238, 238, 238);
+}
