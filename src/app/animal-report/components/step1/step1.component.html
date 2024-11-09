@@ -1,0 +1,138 @@
+<main class="container">
+  <div class="form-container">
+    <!-- Step Indicator in the Corner -->
+    <div class="step-indicator text-white text-3xl">1</div>
+
+    <!-- Form Header -->
+    <div class="form-header">
+      <h1 class="text-black text-2xl font-sans">Datos del Animal</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+
+    <!-- Form Content -->
+    <form>
+      <!-- Name and Age Fields -->
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <label for="name">Nombre y apellido</label>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <input
+              class="form-control rounded-full bg-slate-200"
+              type="text"
+              placeholder="Apellido"
+            />
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <input
+              type="text"
+              placeholder="N° de Documento"
+              class="form-control rounded-full bg-slate-200"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Image Upload Field -->
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group pt-3">
+            <label>Agrega una imagen del animal</label>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="image-upload">
+            <p>Imagen</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description Field -->
+
+      <div class="row pt-3">
+        <div class="col-4">
+          <div class="form-group pt-4">
+            <label for="description">Descripcion del animal</label>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="form-group">
+            <textarea
+              class="form-control rounded-2xl bg-slate-200"
+              id="description"
+              rows="4"
+              placeholder="Descripción"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Species and Breed Fields -->
+
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <label for="species">Especie y Raza</label>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="form-group">
+            <div style="display: flex; gap: 10px">
+              <select
+                class="form-control rounded-full bg-slate-200"
+                id="species"
+              >
+                <option>Especie *</option>
+              </select>
+              <select class="form-control rounded-full bg-slate-200" id="breed">
+                <option>Raza</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other Characteristics Fields -->
+
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <label for="other">Otras Caracteristicas</label>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="form-group">
+            <div style="display: flex; gap: 10px">
+              <select
+                class="form-control rounded-full bg-slate-200"
+                id="gender"
+              >
+                <option>Sexo *</option>
+              </select>
+              <input
+                class="form-control rounded-full bg-slate-200"
+                type="text"
+                id="color"
+                placeholder="Color"
+              />
+              <input
+                class="form-control rounded-full bg-slate-200"
+                type="text"
+                id="weight"
+                placeholder="Peso"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="submit-button w-36">Siguiente</button>
+    </form>
+  </div>
+</main>
