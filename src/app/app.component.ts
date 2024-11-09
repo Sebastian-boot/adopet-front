@@ -6,6 +6,8 @@ import { FoundationInscriptionComponent } from './foundation-inscription/foundat
 import { FoundationInscription2Component } from './foundation-inscription2/foundation-inscription2.component';
 import { FoundationInscription3Component } from './foundation-inscription3/foundation-inscription3.component';
 import { AnimalReportComponent } from './animal-report/animal-report.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +20,8 @@ import { AnimalReportComponent } from './animal-report/animal-report.component';
     FoundationInscription2Component,
     FoundationInscription3Component,
     AnimalReportComponent,
+    GoogleMapsModule,
+    NavbarComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

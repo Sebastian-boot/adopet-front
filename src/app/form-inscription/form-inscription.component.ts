@@ -8,13 +8,14 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-form-inscription',
   templateUrl: './form-inscription.component.html',
   styleUrls: ['./form-inscription.component.css'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule], // Add ReactiveFormsModule here
+  imports: [CommonModule, ReactiveFormsModule, RouterLink], // Add ReactiveFormsModule here
 })
 export class FormInscriptionComponent implements OnInit {
   logoUrl = '/assets/images/Animales.png';

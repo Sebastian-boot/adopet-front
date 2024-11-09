@@ -1,3 +1,13 @@
+body {
+  background-color: rgb(223, 219, 219);
+  margin-top: 4.5rem;
+}
+main {
+  background-color: rgb(223, 219, 219);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .formSpace {
   margin-bottom: 20px;
   width: 95rem;

@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @Component({
   selector: 'app-step2',
   standalone: true,
-  imports: [],
+  imports: [GoogleMapsModule],
   templateUrl: './step2.component.html',
-  styleUrl: './step2.component.css'
+  styleUrl: './step2.component.css',
 })
-export class Step2Component {
-
-}
+export class Step2Component {}

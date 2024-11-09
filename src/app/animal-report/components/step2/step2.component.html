@@ -1,1 +1,144 @@
-<p>step2 works!</p>
+<main class="container">
+  <div class="form-container">
+    <!-- Step Indicator in the Corner -->
+    <div class="step-indicator text-white text-3xl">2</div>
+
+    <!-- Form Header -->
+    <div class="form-header">
+      <h1 class="text-black text-2xl font-sans">Datos del Animal</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+
+    <!-- Form Content -->
+    <form>
+      <!-- Lugar y estado Fields -->
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <label for="name">Información del abandono</label>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <input
+              class="form-control rounded-full bg-slate-200"
+              type="text"
+              placeholder="Lugar del abandono"
+            />
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <select class="form-control rounded-full bg-slate-200" id="breed">
+              <option>Estado del abandono</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fecha y hora Fields -->
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <label for="name">Fecha aproximada del abandono</label>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <input class="form-control rounded-full bg-slate-200" type="date" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Map area Field -->
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group pt-3">
+            <label>Lugar del abandono</label>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="map-area">
+            <google-map width="56rem" height="200px"></google-map>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image Upload Field -->
+      <div class="row mt-3 mb-3">
+        <div class="col-4">
+          <div class="form-group pt-3">
+            <label>Agrega una imagen del animal</label>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="image-upload">
+            <p>Imagen</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Species and Breed Fields -->
+
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <label for="species">Especie y Raza</label>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="form-group">
+            <div style="display: flex; gap: 10px">
+              <select
+                class="form-control rounded-full bg-slate-200"
+                id="species"
+              >
+                <option>Especie *</option>
+              </select>
+              <select class="form-control rounded-full bg-slate-200" id="breed">
+                <option>Raza</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description Field -->
+      <div class="row pt-3">
+        <div class="col-4">
+          <div class="form-group pt-4">
+            <label for="description">Agregar observaciones</label>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="form-group">
+            <textarea
+              class="form-control rounded-2xl bg-slate-200"
+              id="description"
+              rows="4"
+              placeholder="Observaciones"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4"></div>
+        <div class="col-4">
+          <div class="form-group">
+            <div class="form-group button-container">
+              <button class="iniciar text-indigo-700 w-36" type="submit">
+                Volver
+              </button>
+              <button class="crear w-48 text-white border-2" type="submit">
+                Siguiente
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>
