@@ -1,0 +1,164 @@
+<main class="contianer">
+  <div class="formSpace bg-white rounded-3xl">
+    <div
+      class="container p-4 bg-indigo-700 h-24 rounded-t-3xl w-auto text-white text-3xl"
+    >
+      <h1>Crea tu cuenta en <strong>Adopet</strong></h1>
+    </div>
+    <div class="breadcrumb">
+      <div class="breadcrumb-step">
+        <div class="step-circle-on">1</div>
+      </div>
+      <div class="breadcrumb-line"></div>
+      <div class="breadcrumb-step">
+        <div class="step-circle-off">2</div>
+      </div>
+      <div class="breadcrumb-line"></div>
+      <div class="breadcrumb-step">
+        <div class="step-circle-off">3</div>
+      </div>
+    </div>
+    <div class="container">
+      <h2 class="text-black text-2xl font-sans">Datos de la fundación</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste,
+        laudantium sunt, magni voluptatum provident nam neque asperiores, amet
+        nisi sint voluptatem earum. Dicta temporibus fuga nesciunt repellendus,
+        suscipit voluptatum omnis!
+      </p>
+    </div>
+    <div class="p-3">
+      <form>
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <input
+                type="text"
+                placeholder="Nombre de la fundación"
+                class="form-control rounded-full bg-slate-200"
+              />
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <input
+                class="form-control rounded-full bg-slate-200"
+                type="text"
+                placeholder="Nit"
+              />
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <input
+                type="text"
+                placeholder="Email"
+                class="form-control rounded-full bg-slate-200"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <input
+                type="text"
+                placeholder="Teléfono"
+                class="form-control rounded-full bg-slate-200"
+              />
+            </div>
+          </div>
+          <div class="col-8">
+            <div class="form-group">
+              <input
+                type="text"
+                placeholder="Sitio web"
+                class="form-control rounded-full bg-slate-200"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!--Third Part-->
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <textarea
+                class="form-control rounded-lg bg-slate-200"
+                placeholder="Descripción"
+                id=""
+                rows="4"
+              ></textarea>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <textarea
+                class="form-control rounded-lg bg-slate-200"
+                placeholder="Misión"
+                id=""
+                rows="4"
+              ></textarea>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <textarea
+                class="form-control rounded-lg bg-slate-200"
+                placeholder="Visión"
+                id=""
+                rows="4"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <!--Fourth Part-->
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <div
+                class="mb-4 d-flex justify-content-center rounded-full w-auto"
+              >
+                <img
+                  id="selectedImage"
+                  src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg"
+                  alt="example placeholder"
+                  aria-placeholder="logo"
+                  class="h-64"
+                />
+              </div>
+              <div class="d-flex justify-content-center">
+                <div data-mdb-ripple-init class="btn btn-primary btn-rounded">
+                  <label class="form-label text-white m-1" for="customFile1"
+                    >Choose file</label
+                  >
+                  <input
+                    type="file"
+                    class="form-control d-none"
+                    id="customFile1"
+                    onchange="displaySelectedImage(event, 'selectedImage')"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-4"></div>
+          <div class="col-4">
+            <div class="form-group">
+              <div class="form-group button-container">
+                <button class="iniciar text-indigo-700 w-36" type="submit">
+                  Volver
+                </button>
+                <button class="crear w-48 text-white border-2" type="submit">
+                  Siguiente
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--buttons part-->
+        <div class="row"></div>
+      </form>
+    </div>
+  </div>
+</main>
