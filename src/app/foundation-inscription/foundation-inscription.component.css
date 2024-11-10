@@ -7,7 +7,7 @@ main {
 .formSpace {
   margin-bottom: 20px;
   width: 95rem;
-  height: 90vh;
+  height: 87vh;
   border-radius: 5%;
 }
 .inputslogin {
@@ -34,7 +34,7 @@ main {
   display: flex;
   justify-content: flex-end;
   gap: 1rem; /* Adjust the gap between buttons as needed */
-  margin-top: 60%; /* Adjust the margin as needed */
+  margin-top: 40%; /* Adjust the margin as needed */
 }
 
 .crear,
@@ -104,4 +104,17 @@ main {
   flex-grow: 1;
   border-bottom: 2px dashed #725ad4;
   margin: 0 10px;
+}
+
+/* Image upload area styling */
+.image-upload {
+  border: 2px dashed #ddd;
+  padding: 20px;
+  margin-left: 1.5rem;
+  text-align: center;
+  border-radius: 10px;
+  color: #999;
+  font-size: 1.1em;
+  width: 29rem;
+  height: 10rem;
 }
