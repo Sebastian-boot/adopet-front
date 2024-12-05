@@ -29,7 +29,7 @@
           neque, suscipit impedit velit voluptatum sit beatae eaque repellat
           consectetur aperiam laudantium.
         </p>
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
           <div class="row">
             <div class="col-6">
               <div class="form-group">
@@ -42,7 +42,7 @@
                   *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
                   class="text-danger"
                 >
-                  Please input your name!
+                  {{ getErrorMessage("name") }}
                 </div>
               </div>
             </div>
@@ -181,7 +181,7 @@
                   "
                   class="text-danger"
                 >
-                  The input is not valid E-mail!
+                  {{ getErrorMessage("email") }}
                 </div>
               </div>
             </div>
@@ -202,7 +202,7 @@
                   "
                   class="text-danger"
                 >
-                  Please input your password!
+                  {{ getErrorMessage("password") }}
                 </div>
               </div>
             </div>
@@ -243,29 +243,34 @@
                 "
                 class="text-danger"
               >
-                Should accept terms and conditions!
+                Debes aceptar los términos y condiciones
               </div>
             </div>
           </div>
           <div class="form-group float-left button">
-            <Button
+            <button
               class="iniciar"
-              type="submit"
-              routerLink="/form-signup-foundation"
+              type="button"
+              (click)="onSubmit($event)"
               shape="round"
             >
               Registrarme como fundación
-            </Button>
-            <Button
+            </button>
+            <button
               class="crear border-indigo-700 border-2"
-              type="submit"
+              type="button"
+              (click)="onSubmit($event)"
               shape="round"
             >
               Registrarme
-            </Button>
+            </button>
           </div>
         </form>
       </div>
     </div>
   </div>
+  <app-mail-alert-modal
+    [isOpen]="showModal"
+    [email]="form.get('email')?.value"
+  ></app-mail-alert-modal>
 </div>
