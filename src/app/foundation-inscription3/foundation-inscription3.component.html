@@ -35,11 +35,11 @@
         <div class="grid grid-cols-2 gap-4">
           <div>
             <p class="text-gray-600">Nombre de usuario:</p>
-            <p class="font-semibold"></p>
+            <p class="font-semibold">{{ formData.username }}</p>
           </div>
           <div>
             <p class="text-gray-600">Correo electrónico:</p>
-            <p class="font-semibold"></p>
+            <p class="font-semibold">{{ formData.email }}</p>
           </div>
         </div>
       </div>
@@ -52,31 +52,31 @@
         <div class="grid grid-cols-2 gap-4">
           <div>
             <p class="text-gray-600">Nombre de la fundación:</p>
-            <p class="font-semibold"></p>
+            <p class="font-semibold">{{ formFoundationData.nameFoundation }}</p>
           </div>
           <div>
             <p class="text-gray-600">NIT:</p>
-            <p class="font-semibold"></p>
+            <p class="font-semibold">{{ formFoundationData.nit }}</p>
           </div>
           <div>
             <p class="text-gray-600">Dirección:</p>
-            <p class="font-semibold"></p>
+            <p class="font-semibold">{{ formFoundationData.address }}</p>
           </div>
           <div>
             <p class="text-gray-600">Teléfono:</p>
-            <p class="font-semibold"></p>
+            <p class="font-semibold">{{ formFoundationData.phone }}</p>
           </div>
           <div>
             <p class="text-gray-600">Mision:</p>
-            <p class="font-semibold"></p>
+            <p class="font-semibold">{{ formFoundationData.mission }}</p>
           </div>
           <div>
             <p class="text-gray-600">Vision:</p>
-            <p class="font-semibold"></p>
+            <p class="font-semibold">{{ formFoundationData.vision }}</p>
           </div>
           <div>
             <p class="text-gray-600">Descripción:</p>
-            <p class="font-semibold"></p>
+            <p class="font-semibold">{{ formFoundationData.description }}</p>
           </div>
         </div>
       </div>
@@ -89,32 +89,44 @@
         <div class="grid grid-cols-2 gap-4">
           <div>
             <p class="text-gray-600">Nombre completo:</p>
-            <p class="font-semibold"></p>
+            <p class="font-semibold">{{ formLegalData.name }}</p>
           </div>
           <div>
             <p class="text-gray-600">Documento de identidad:</p>
-            <p class="font-semibold"></p>
+            <p class="font-semibold">{{ formLegalData.dni }}</p>
           </div>
           <div>
             <p class="text-gray-600">Teléfono:</p>
-            <p class="font-semibold"></p>
+            <p class="font-semibold">{{ formLegalData.phone }}</p>
           </div>
           <div>
             <p class="text-gray-600">Correo electrónico:</p>
-            <p class="font-semibold"></p>
+            <p class="font-semibold">{{ formLegalData.email }}</p>
           </div>
         </div>
       </div>
     </div>
     <div class="flex gap-4 float-end mr-10 mt-[-1rem]">
       <div class="button-container">
-        <button class="iniciar text-indigo-700 w-36" type="submit">
+        <button
+          class="iniciar text-indigo-700 w-36"
+          type="submit"
+          (click)="onBack()"
+        >
           Volver
         </button>
-        <button class="crear w-48 text-white border-2" type="submit">
-          Siguiente
+        <button
+          class="crear w-48 text-white border-2"
+          type="submit"
+          (click)="onSubmit($event)"
+        >
+          Finalizar Registro
         </button>
       </div>
     </div>
+    <app-mail-alert-modal
+      [isOpen]="showModal"
+      [email]="formData.email"
+    ></app-mail-alert-modal>
   </div>
 </main>

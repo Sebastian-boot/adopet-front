@@ -28,62 +28,92 @@
       </p>
     </div>
     <div class="p-3">
-      <form>
+      <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
         <div class="row">
           <div class="col-4">
             <div class="form-group">
               <input
+                formControlName="name"
                 type="text"
                 placeholder="Nombre"
                 class="form-control rounded-full bg-slate-200"
               />
+              <div
+                *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
+                class="text-danger"
+              >
+                ¡Por ingresa el nombre del representante legal!
+              </div>
             </div>
           </div>
           <div class="col-4">
             <div class="form-group">
               <input
+                formControlName="surname"
                 class="form-control rounded-full bg-slate-200"
                 type="text"
                 placeholder="Apellido"
               />
+              <div
+                *ngIf="
+                  form.get('surname')?.invalid && form.get('surname')?.touched
+                "
+                class="text-danger"
+              >
+                ¡Por ingresa el apellido del representante legal!
+              </div>
             </div>
           </div>
           <div class="col-4">
             <div class="form-group">
               <input
-                type="text"
+                formControlName="dni"
+                type="number"
                 placeholder="N° de Documento"
                 class="form-control rounded-full bg-slate-200"
               />
+              <div
+                *ngIf="form.get('dni')?.invalid && form.get('dni')?.touched"
+                class="text-danger"
+              >
+                ¡Por ingresa tu numero de documento!
+              </div>
             </div>
           </div>
         </div>
         <div class="row">
+          <div class="col-2"></div>
           <div class="col-4">
             <div class="form-group">
               <input
-                type="text"
+                formControlName="phone"
+                type="number"
                 placeholder="Teléfono"
                 class="form-control rounded-full bg-slate-200"
               />
+              <div
+                *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched"
+                class="text-danger"
+              >
+                ¡Por favor proporciona el número de contacto del representante
+                legal!
+              </div>
             </div>
           </div>
           <div class="col-4">
             <div class="form-group">
               <input
+                formControlName="email"
                 type="text"
                 placeholder="Email"
                 class="form-control rounded-full bg-slate-200"
               />
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="form-group">
-              <input
-                type="text"
-                placeholder="Dirección"
-                class="form-control rounded-full bg-slate-200"
-              />
+              <div
+                *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
+                class="text-danger"
+              >
+                ¡Por favor ingresa un correo valido!
+              </div>
             </div>
           </div>
         </div>
@@ -108,10 +138,18 @@
           <div class="col-4">
             <div class="form-group">
               <div class="form-group button-container">
-                <button class="iniciar text-indigo-700 w-36" type="submit">
+                <button
+                  class="iniciar text-indigo-700 w-36"
+                  type="submit"
+                  (click)="onBack()"
+                >
                   Volver
                 </button>
-                <button class="crear w-48 text-white border-2" type="submit">
+                <button
+                  class="crear w-48 text-white border-2"
+                  type="submit"
+                  (click)="onSubmit($event)"
+                >
                   Siguiente
                 </button>
               </div>

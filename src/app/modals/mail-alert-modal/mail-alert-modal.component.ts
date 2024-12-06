@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mail-alert-modal',
@@ -13,7 +14,10 @@ export class MailAlertModalComponent {
   @Input() email: string = '';
   @Input() message: string = '';
 
+  constructor(private router: Router) {}
+
   closeModal() {
     this.isOpen = false;
+    this.router.navigate(['/login']);
   }
 }

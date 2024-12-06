@@ -12,6 +12,8 @@ import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { RegistrationFormData } from '../Interfaces/FormInscriptionData';
 import { MailAlertModalComponent } from '../modals/mail-alert-modal/mail-alert-modal.component';
+import { FormDataService } from '../core/services/form-data.service';
+
 @Component({
   selector: 'app-form-inscription',
   templateUrl: './form-inscription.component.html',
@@ -30,22 +32,45 @@ export class FormInscriptionComponent implements OnInit {
   showModal: boolean = false;
   formData!: RegistrationFormData;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private formDataService: FormDataService
+  ) {}
 
   ngOnInit(): void {
+    this.formData = this.formDataService.getFormData();
     this.form = this.fb.group({
-      name: ['', [Validators.required, Validators.pattern(/\S+/)]],
-      surname: ['', [Validators.required, Validators.pattern(/\S+/)]],
-      dni: ['', [Validators.required]],
-      birth_date: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      address: ['', [Validators.required, Validators.pattern(/\S+/)]],
-      username: ['', [Validators.required, Validators.pattern(/\S+/)]],
-      email: ['', [Validators.required, Validators.email]],
+      name: [
+        this.formData?.name || '',
+        [Validators.required, Validators.pattern(/\S+/)],
+      ],
+      surname: [
+        this.formData?.surname || '',
+        [Validators.required, Validators.pattern(/\S+/)],
+      ],
+      dni: [this.formData?.dni || '', [Validators.required]],
+      birth_date: [this.formData?.birth_date || '', [Validators.required]],
+      phone: [this.formData?.phone || '', [Validators.required]],
+      address: [
+        this.formData?.address || '',
+        [Validators.required, Validators.pattern(/\S+/)],
+      ],
+      username: [
+        this.formData?.username || '',
+        [Validators.required, Validators.pattern(/\S+/)],
+      ],
+      email: [
+        this.formData?.email || '',
+        [Validators.required, Validators.email],
+      ],
       password: ['', [Validators.required]],
       confirm: ['', [Validators.required, this.matchPassword.bind(this)]],
-      terms_conditions: [false, [Validators.requiredTrue]],
-      prefix: ['57', Validators.required],
+      terms_conditions: [
+        this.formData?.terms_conditions || false,
+        [Validators.requiredTrue],
+      ],
+      prefix: [this.formData?.prefix || '57', Validators.required],
     });
   }
 
@@ -60,6 +85,7 @@ export class FormInscriptionComponent implements OnInit {
     event?.preventDefault();
     if (this.form.valid) {
       this.formData = this.form.value as RegistrationFormData;
+      this.formDataService.setFormData(this.formData);
       this.showModal = true;
       console.log('Fomr Submitted', this.form.value);
     } else {
@@ -68,28 +94,21 @@ export class FormInscriptionComponent implements OnInit {
         control?.markAsTouched();
       });
     }
+  }
 
-    /*if (this.form.valid) {
-      const formData: RegistrationFormData = {
-        name: this.form.value.name,
-        surname: this.form.value.surname,
-        dni: this.form.value.dni,
-        birth_date: this.form.value.birth_date,
-        phone: this.form.value.phone,
-        address: this.form.value.address,
-        username: this.form.value.username,
-        email: this.form.value.email,
-        password: this.form.value.password,
-        prefix: this.form.value.prefix,
-      };
-      console.log('Success:', this.form.value);
+  onSubmitFoundation(event: Event): void {
+    event?.preventDefault();
+    if (this.form.valid) {
+      this.formData = this.form.value as RegistrationFormData;
+      this.formDataService.setFormData(this.formData);
+      this.router.navigate(['/form-signup-foundation1']);
+      console.log('Fomr Submitted', this.form.value);
     } else {
       Object.keys(this.form.controls).forEach((key) => {
         const control = this.form.get(key);
         control?.markAsTouched();
       });
-      console.log('Form not valid');
-    }*/
+    }
   }
 
   getErrorMessage(controlName: string): string {

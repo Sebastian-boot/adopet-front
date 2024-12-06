@@ -28,33 +28,57 @@
       </p>
     </div>
     <div class="p-3">
-      <form>
+      <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
         <div class="row">
           <div class="col-4">
             <div class="form-group">
               <input
                 type="text"
+                formControlName="nameFoundation"
                 placeholder="Nombre de la fundación"
                 class="form-control rounded-full bg-slate-200"
               />
+              <div
+                *ngIf="
+                  form.get('nameFoundation')?.invalid &&
+                  form.get('nameFoundation')?.touched
+                "
+                class="text-danger"
+              >
+                ¡Por favor ingresa el nombre de tu fundación!
+              </div>
             </div>
           </div>
           <div class="col-4">
             <div class="form-group">
               <input
+                formControlName="nit"
                 class="form-control rounded-full bg-slate-200"
-                type="text"
+                type="number"
                 placeholder="Nit"
               />
+              <div
+                *ngIf="form.get('nit')?.invalid && form.get('nit')?.touched"
+                class="text-danger"
+              >
+                ¡Por favor rellena este campo!
+              </div>
             </div>
           </div>
           <div class="col-4">
             <div class="form-group">
               <input
+                formControlName="email"
                 type="text"
-                placeholder="Email"
+                placeholder="Correo"
                 class="form-control rounded-full bg-slate-200"
               />
+              <div
+                *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
+                class="text-danger"
+              >
+                ¡Por favor ingresa un correo valido!
+              </div>
             </div>
           </div>
         </div>
@@ -62,19 +86,53 @@
           <div class="col-4">
             <div class="form-group">
               <input
-                type="text"
+                formControlName="phone"
+                type="number"
                 placeholder="Teléfono"
                 class="form-control rounded-full bg-slate-200"
               />
+              <div
+                *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched"
+                class="text-danger"
+              >
+                ¡Por favor ingresa un numero de contacto!
+              </div>
             </div>
           </div>
-          <div class="col-8">
+          <div class="col-4">
             <div class="form-group">
               <input
+                formControlName="website"
                 type="text"
                 placeholder="Sitio web"
                 class="form-control rounded-full bg-slate-200"
               />
+              <div
+                *ngIf="
+                  form.get('website')?.invalid && form.get('website')?.touched
+                "
+                class="text-danger"
+              >
+                ¡Por favor ingresa tu pagina web!
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <input
+                formControlName="address"
+                type="text"
+                placeholder="Dirección"
+                class="form-control rounded-full bg-slate-200"
+              />
+              <div
+                *ngIf="
+                  form.get('address')?.invalid && form.get('address')?.touched
+                "
+                class="text-danger"
+              >
+                ¡Por favor ingresa la dirección de tu fundación!
+              </div>
             </div>
           </div>
         </div>
@@ -84,31 +142,58 @@
           <div class="col-4">
             <div class="form-group">
               <textarea
+                formControlName="description"
                 class="form-control rounded-lg bg-slate-200"
                 placeholder="Descripción"
-                id=""
                 rows="4"
               ></textarea>
+              <div
+                *ngIf="
+                  form.get('description')?.invalid &&
+                  form.get('description')?.touched
+                "
+                class="text-danger"
+              >
+                ¡Por favor proporciona una descripcion de tu fundación!
+              </div>
             </div>
           </div>
           <div class="col-4">
             <div class="form-group">
               <textarea
+                formControlName="mission"
                 class="form-control rounded-lg bg-slate-200"
                 placeholder="Misión"
                 id=""
                 rows="4"
               ></textarea>
+              <div
+                *ngIf="
+                  form.get('mission')?.invalid && form.get('mission')?.touched
+                "
+                class="text-danger"
+              >
+                ¡Por favor proporciona la misión de tu fundación!
+              </div>
             </div>
           </div>
           <div class="col-4">
             <div class="form-group">
               <textarea
+                formControlName="vision"
                 class="form-control rounded-lg bg-slate-200"
                 placeholder="Visión"
                 id=""
                 rows="4"
               ></textarea>
+              <div
+                *ngIf="
+                  form.get('vision')?.invalid && form.get('vision')?.touched
+                "
+                class="text-danger"
+              >
+                ¡Por favor proporciona la vision de tu fundación!
+              </div>
             </div>
           </div>
         </div>
@@ -156,10 +241,18 @@
           <div class="col-4">
             <div class="form-group">
               <div class="form-group button-container">
-                <button class="iniciar text-indigo-700 w-36" type="submit">
+                <button
+                  class="iniciar text-indigo-700 w-36"
+                  type="submit"
+                  routerLink="/form-signup"
+                >
                   Volver
                 </button>
-                <button class="crear w-48 text-white border-2" type="submit">
+                <button
+                  class="crear w-48 text-white border-2"
+                  type="submit"
+                  (click)="onSubmit($event)"
+                >
                   Siguiente
                 </button>
               </div>
