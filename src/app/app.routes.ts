@@ -22,6 +22,6 @@ export const routes: Routes = [
     path: 'form-signup-foundation3',
     component: FoundationInscription3Component,
   },
-  { path: '', redirectTo: '/form-signup-foundation1', pathMatch: 'full' },
-  { path: '**', redirectTo: '/form-signup-foundation1', pathMatch: 'full' },
+  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
