@@ -1,0 +1,64 @@
+<main>
+  <div class="formSpace bg-white rounded-3xl px-4">
+    <div class="foundationsList">
+      <div class="title">
+        <h1>¡Fundaciones en Adopet!</h1>
+      </div>
+
+      <div class="carousel">
+        <div class="container">
+          <div *ngFor="let foundation of foundations" class="card">
+            <div class="image-container">
+              <img
+                [src]="foundation.image"
+                alt="{{ foundation.name }}"
+                class="foundation-image"
+              />
+            </div>
+            <div class="text-preview py-2.5">
+              <h2>{{ foundation.name }}</h2>
+            </div>
+            <div class="button-container">
+              <button
+                class="ver-mas"
+                type="button"
+                (click)="selectFoundation(foundation)"
+              >
+                Conocer más...
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="foundation-detail p-20" *ngIf="selectedFoundation">
+      <div class="textContainer">
+        <div class="mainText">
+          <h2>{{ selectedFoundation.name }}</h2>
+          <p>{{ selectedFoundation.description }}</p>
+          <img
+            [src]="selectedFoundation.image"
+            alt="{{ selectedFoundation.name }}"
+            class="foundation-image"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="foundation-detail p-20" *ngIf="!selectedFoundation">
+      <div class="textContainer">
+        <div class="mainText">
+          ¡Descubre todas las fundaciones dedicadas al bienestar animal en
+          nuestra plataforma! Dale en ver más para explorar y encontrar la
+          fundación que mejor se adapte a tus intereses y valores.
+        </div>
+        <div class="mainText">
+          Selecciona una fundación para conocer más sobre su misión, su equipo y
+          cómo puedes apoyar su causa. Juntos, podemos hacer una diferencia en
+          la vida de los animales necesitados.
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

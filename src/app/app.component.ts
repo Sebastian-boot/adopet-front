@@ -5,6 +5,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AnimalReportComponent } from './animal-report/animal-report.component';
 import { AnimalsReportsComponent } from './FoundationDashboard/animals-reports/animals-reports.component';
+import { FoundationsAdopetComponent } from './users/dashboard/foundations-adopet/foundations-adopet.component';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ import { AnimalsReportsComponent } from './FoundationDashboard/animals-reports/a
     NavbarComponent,
     AnimalReportComponent,
     AnimalsReportsComponent,
+    FoundationsAdopetComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

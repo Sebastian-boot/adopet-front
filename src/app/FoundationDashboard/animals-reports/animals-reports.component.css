@@ -128,7 +128,6 @@ svg {
   height: 100%;
   object-fit: cover;
 }
-
 .buttoncontainer {
   display: flex;
   flex-direction: column;

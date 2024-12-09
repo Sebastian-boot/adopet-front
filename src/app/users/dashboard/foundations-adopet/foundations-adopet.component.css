@@ -1,0 +1,117 @@
+main {
+  background-color: rgb(223, 219, 219);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.formSpace {
+  margin-bottom: 20px;
+  width: 95rem;
+  height: 87vh;
+  border-radius: 5%;
+  align-items: center;
+}
+.title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.carosel {
+  top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  position: relative;
+  height: auto;
+  width: auto;
+  top: 40px;
+  display: flex;
+}
+.image-container {
+  display: flex;
+  height: auto;
+  width: 50%;
+  height: 50%;
+  align-items: center;
+  background-color: #f8f7fa;
+  position: relative;
+  left: 25%;
+}
+img {
+  border-radius: 100%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+.card {
+  padding-top: 30px;
+  padding-left: 10px;
+  display: flex;
+  height: auto;
+  width: 50%;
+  background-color: #f8f7fa;
+  border-radius: 10px;
+  box-shadow: -1rem 0 3rem #cac9c9;
+  transition: 0.4s ease-out;
+  position: relative;
+  left: 0px;
+}
+.buttoncontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+.ver-mas {
+  margin-bottom: 20px;
+  position: relative;
+  background-color: white;
+  color: #5b53d1;
+  border-color: #5b53d1;
+  width: 50%;
+  left: 25%;
+}
+
+.ver-mas:hover {
+  background-color: rgb(238, 238, 238);
+}
+.text-preview {
+  color: black;
+  font-size: 24px;
+  font-weight: 400;
+  position: relative;
+  top: 4%;
+  text-align: center;
+}
+
+.foundation-detail {
+  position: relative;
+  top: 5%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 15px;
+  border-color: #5b53d1;
+  height: 47%;
+  align-items: center;
+}
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.mainText {
+  width: 75%;
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-left: 20px;
+  text-align: center;
+}
