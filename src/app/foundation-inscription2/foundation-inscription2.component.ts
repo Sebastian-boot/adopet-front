@@ -12,7 +12,7 @@ import { FormDataService } from '../core/services/form-data.service';
 @Component({
   selector: 'app-foundation-inscription2',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './foundation-inscription2.component.html',
   styleUrl: './foundation-inscription2.component.css',
 })
@@ -64,7 +64,7 @@ export class FoundationInscription2Component implements OnInit {
   }
 
   onBack(): void {
-    this.router.navigate(['/form-signup-foundation']);
+    this.router.navigate(['/form-signup-foundation1']);
   }
 
   getErrorMessage(controlName: string): string {
