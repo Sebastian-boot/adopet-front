@@ -1,0 +1,13 @@
+main {
+  background-color: rgb(223, 219, 219);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tableSpace {
+  margin-bottom: 20px;
+  width: 95rem;
+  min-height: 87vh;
+  border-radius: 5%;
+  align-items: center;
+}

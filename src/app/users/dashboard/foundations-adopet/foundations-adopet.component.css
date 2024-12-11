@@ -7,7 +7,7 @@ main {
 .formSpace {
   margin-bottom: 20px;
   width: 95rem;
-  height: 87vh;
+  min-height: 87vh;
   border-radius: 5%;
   align-items: center;
 }

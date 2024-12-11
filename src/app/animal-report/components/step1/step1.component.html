@@ -10,12 +10,13 @@
     </div>
 
     <!-- Form Content -->
-    <form>
+    <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
       <!-- Name and Age Fields -->
       <div class="row">
         <div class="col-4">
           <div class="form-group">
             <label for="name">Nombre y edad</label>
+            <div *ngIf="form.get('reporter.name')?.invalid"></div>
           </div>
         </div>
         <div class="col-4">
@@ -24,7 +25,14 @@
               class="form-control rounded-full bg-slate-200"
               type="text"
               placeholder="Nombre"
+              formControlName="name"
             />
+            <div
+              *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
+              class="text-danger"
+            >
+              ¡Por favor ingresa un nombre con el cual referirnos al animal!
+            </div>
           </div>
         </div>
         <div class="col-4">
@@ -33,7 +41,14 @@
               type="number"
               placeholder="Edad"
               class="form-control rounded-full bg-slate-200"
+              formControlName="age"
             />
+            <div
+              *ngIf="form.get('age')?.invalid && form.get('age')?.touched"
+              class="text-danger"
+            >
+              ¡Por favor ingresa un aproximado de la edad del animal!
+            </div>
           </div>
         </div>
       </div>
@@ -67,7 +82,17 @@
               id="description"
               rows="4"
               placeholder="Descripción"
+              formControlName="description"
             ></textarea>
+            <div
+              *ngIf="
+                form.get('description')?.invalid &&
+                form.get('description')?.touched
+              "
+              class="text-danger"
+            >
+              ¡Por favor proporcionanos una descripción del animal!
+            </div>
           </div>
         </div>
       </div>
@@ -80,18 +105,34 @@
             <label for="species">Especie y Raza</label>
           </div>
         </div>
-        <div class="col-8">
+        <div class="col-4">
+          <div class="form-group">
+            <select
+              class="form-control rounded-full bg-slate-200"
+              id="breed"
+              aria-placeholder="Especie"
+              formControlName="specie"
+            >
+              <option>Gato</option>
+              <option>Perro</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-4">
           <div class="form-group">
             <div style="display: flex; gap: 10px">
-              <select
+              <input
+                placeholder="Raza"
+                type="text"
                 class="form-control rounded-full bg-slate-200"
-                id="species"
+                formControlName="race"
+              />
+              <div
+                *ngIf="form.get('race')?.invalid && form.get('race')?.touched"
+                class="text-danger"
               >
-                <option>Especie *</option>
-              </select>
-              <select class="form-control rounded-full bg-slate-200" id="breed">
-                <option>Raza</option>
-              </select>
+                ¡Por favor ingresa la raza del animal!
+              </div>
             </div>
           </div>
         </div>
@@ -111,28 +152,55 @@
               <select
                 class="form-control rounded-full bg-slate-200"
                 id="gender"
+                formControlName="gender"
               >
-                <option>Sexo *</option>
+                <option>Macho</option>
+                <option>Hembra</option>
               </select>
               <input
                 class="form-control rounded-full bg-slate-200"
                 type="text"
                 id="color"
-                placeholder="Color"
+                placeholder="Color de pelaje"
+                formControlName="coatColor"
               />
+              <div
+                *ngIf="
+                  form.get('coatColor')?.invalid &&
+                  form.get('coatColor')?.touched
+                "
+                class="text-danger"
+              >
+                ¡Por favor ingresa el color del animal!
+              </div>
               <input
                 class="form-control rounded-full bg-slate-200"
                 type="text"
                 id="weight"
                 placeholder="Peso"
+                formControlName="weight"
               />
+              <div
+                *ngIf="
+                  form.get('weight')?.invalid && form.get('weight')?.touched
+                "
+                class="text-danger"
+              >
+                ¡Por favor ingresa un peso aproximado del animal!
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Submit Button -->
-      <button type="submit" class="submit-button w-36">Siguiente</button>
+      <button
+        type="submit"
+        class="submit-button w-36"
+        (click)="onSubmit($event)"
+      >
+        Siguiente
+      </button>
     </form>
   </div>
 </main>

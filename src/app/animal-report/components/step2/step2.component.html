@@ -10,33 +10,8 @@
     </div>
 
     <!-- Form Content -->
-    <form>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <!-- Lugar y estado Fields -->
-      <div class="row">
-        <div class="col-4">
-          <div class="form-group">
-            <label for="name">Información del abandono</label>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="form-group">
-            <input
-              class="form-control rounded-full bg-slate-200"
-              type="text"
-              placeholder="Lugar del abandono"
-            />
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="form-group">
-            <select class="form-control rounded-full bg-slate-200" id="breed">
-              <option>Estado del abandono</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <!-- Fecha y hora Fields -->
       <div class="row">
         <div class="col-4">
           <div class="form-group">
@@ -45,7 +20,127 @@
         </div>
         <div class="col-4">
           <div class="form-group">
-            <input class="form-control rounded-full bg-slate-200" type="date" />
+            <input
+              class="form-control rounded-full bg-slate-200"
+              type="date"
+              formControlName="abandonmentDateTime"
+              id="abandonmentDateTime"
+            />
+            <div
+              *ngIf="
+                form.get('abandonmentDateTime')?.invalid &&
+                form.get('abandonmentDateTime')?.touched
+              "
+              class="text-danger"
+            >
+              ¡Por favor ingresa la fecha aproximada del abandono!
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <select
+              class="form-control rounded-full bg-slate-200"
+              formControlName="abandonmentStatus"
+              id="abandonmentStatus"
+            >
+              <option value="">Estado del abandono</option>
+              <option value="Leve">Leve</option>
+              <option value="Medio">Medio</option>
+              <option value="Critico">Critico</option>
+            </select>
+            <div
+              *ngIf="
+                form.get('abandonmentStatus')?.invalid &&
+                form.get('abandonmentStatus')?.touched
+              "
+              class="text-danger"
+            >
+              ¡Por favor selecciona el estado del abandono!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fecha y hora Fields -->
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <label for="name">Lugar donde se encuentra el animal</label>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group" for="city">
+            <label for="city"></label>
+            <input
+              id="city"
+              class="form-control rounded-full bg-slate-200"
+              type="text"
+              placeholder="Ciudad"
+              formControlName="city"
+            />
+            <div
+              *ngIf="
+                form.get('location.city')?.invalid &&
+                form.get('location.city')?.touched
+              "
+              class="text-danger"
+            >
+              ¡Por favor ingresa la ciudad!
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <label for="postalCode"></label>
+            <input
+              id="postalCode"
+              class="form-control rounded-full bg-slate-200"
+              type="text"
+              placeholder="Código postal"
+              formControlName="postalCode"
+            />
+            <div
+              *ngIf="
+                form.get('location.postalCode')?.invalid &&
+                form.get('location.postalCode')?.touched
+              "
+              class="text-danger"
+            >
+              ¡Por favor ingresa el código postal!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Addres space-->
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <label for="name"
+              >Dirrección en la que se encuentra el animal</label
+            >
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-group">
+            <label for="address"></label>
+            <input
+              id="address"
+              class="form-control rounded-full bg-slate-200"
+              type="text"
+              placeholder="Dirección"
+              formControlName="address"
+            />
+            <div
+              *ngIf="
+                form.get('location.address')?.invalid &&
+                form.get('location.address')?.touched
+              "
+              class="text-danger"
+            >
+              ¡Por favor ingresa una dirección!
+            </div>
           </div>
         </div>
       </div>
@@ -59,46 +154,7 @@
         </div>
         <div class="col-8">
           <div class="map-area">
-            <google-map width="56rem" height="200px"></google-map>
-          </div>
-        </div>
-      </div>
-
-      <!-- Image Upload Field -->
-      <div class="row mt-3 mb-3">
-        <div class="col-4">
-          <div class="form-group pt-3">
-            <label>Agrega una imagen del animal</label>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="image-upload">
-            <p>Imagen</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Species and Breed Fields -->
-
-      <div class="row">
-        <div class="col-4">
-          <div class="form-group">
-            <label for="species">Especie y Raza</label>
-          </div>
-        </div>
-        <div class="col-8">
-          <div class="form-group">
-            <div style="display: flex; gap: 10px">
-              <select
-                class="form-control rounded-full bg-slate-200"
-                id="species"
-              >
-                <option>Especie *</option>
-              </select>
-              <select class="form-control rounded-full bg-slate-200" id="breed">
-                <option>Raza</option>
-              </select>
-            </div>
+            <google-map width="56rem" height="300px"></google-map>
           </div>
         </div>
       </div>
@@ -107,17 +163,27 @@
       <div class="row pt-3">
         <div class="col-4">
           <div class="form-group pt-4">
-            <label for="description">Agregar observaciones</label>
+            <label for="observations">Agregar observaciones</label>
           </div>
         </div>
         <div class="col-8">
           <div class="form-group">
             <textarea
               class="form-control rounded-2xl bg-slate-200"
-              id="description"
+              id="observations"
+              formControlName="observations"
               rows="4"
               placeholder="Observaciones"
             ></textarea>
+            <div
+              *ngIf="
+                form.get('observations')?.invalid &&
+                form.get('observations')?.touched
+              "
+              class="text-danger"
+            >
+              ¡Por favor ingresa observaciones!
+            </div>
           </div>
         </div>
       </div>
@@ -129,7 +195,11 @@
         <div class="col-4">
           <div class="form-group">
             <div class="form-group button-container">
-              <button class="iniciar text-indigo-700 w-36" type="submit">
+              <button
+                class="iniciar text-indigo-700 w-36"
+                type="button"
+                (click)="(onBack)"
+              >
                 Volver
               </button>
               <button class="crear w-48 text-white border-2" type="submit">
