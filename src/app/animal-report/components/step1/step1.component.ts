@@ -29,7 +29,7 @@ export class Step1Component implements OnInit {
 
   ngOnInit(): void {
     const reportData = this.animalReportDataService.getReportData();
-    this.form = this.fb.group({
+    /*this.form = this.fb.group({
       name: [reportData.animals.name, Validators.required],
       image: [reportData.animals.image],
       description: [reportData.animals.description, Validators.required],
@@ -39,7 +39,7 @@ export class Step1Component implements OnInit {
       race: [reportData.animals.race, Validators.required],
       weight: [reportData.animals.weight, Validators.required],
       gender: [reportData.animals.gender, Validators.required],
-    });
+    });*/
   }
 
   getErrorMessage(controlName: string): string {

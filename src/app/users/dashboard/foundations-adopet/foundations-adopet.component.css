@@ -90,7 +90,6 @@ img {
 
 .foundation-detail {
   position: relative;
-  top: 5%;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
@@ -114,4 +113,8 @@ img {
   margin-top: 20px;
   margin-left: 20px;
   text-align: center;
+}
+
+.foundationsList {
+  margin-bottom: 8%;
 }

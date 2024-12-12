@@ -4,7 +4,7 @@
   >
     <div class="Login">
       <div class="title">
-        <h3>Iniciar Sesion</h3>
+        <h3>Iniciar Sesión</h3>
       </div>
       <form
         [formGroup]="loginForm"
@@ -13,30 +13,51 @@
         class="login-form"
       >
         <div
+          *ngIf="loginError"
           id="error-message"
-          class="error-message"
-          style="display: none"
-        ></div>
+          class="error-message text-danger text-center"
+          style="font-size: 2rem"
+        >
+          {{ loginError }}
+        </div>
         <div class="inputs pr-8">
           <input
             class="inputslogin"
             type="text"
-            formControlName="email"
+            formControlName="username"
             placeholder="Nombre de Usuario o Email"
           />
+          <div
+            *ngIf="
+              loginForm.get('username')?.invalid &&
+              loginForm.get('username')?.touched
+            "
+            class="text-danger text-center"
+          >
+            ¡Por favor ingresa tu nombre de usuario o email!
+          </div>
           <input
             class="inputslogin"
             type="password"
             formControlName="password"
             placeholder="Contraseña"
           />
+          <div
+            *ngIf="
+              loginForm.get('password')?.invalid &&
+              loginForm.get('password')?.touched
+            "
+            class="text-danger text-center"
+          >
+            ¡Por favor ingresa tu contraseña!
+          </div>
           <div class="checkbox">
             <input class="p-10" type="checkbox" formControlName="rememberMe" />
-            <h5>Recordar Inicio de sesion</h5>
+            <h5>Recordar Inicio de sesión</h5>
           </div>
         </div>
         <div class="button">
-          <button class="iniciar" type="submit">Iniciar Sesion</button>
+          <button class="iniciar" type="submit">Iniciar Sesión</button>
           <button
             class="crear border-indigo-700 border-2"
             type="button"
@@ -48,7 +69,7 @@
       </form>
     </div>
     <div class="Textright">
-      <h4 class="parrafo">Que gusto verte de nuevo</h4>
+      <h4 class="parrafo">Qué gusto verte de nuevo</h4>
       <h2 class="titletext">Bienvenido de nuevo</h2>
 
       <div class="container mx-52 pb-11 pt-2">

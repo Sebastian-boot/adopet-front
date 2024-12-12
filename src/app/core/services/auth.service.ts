@@ -7,8 +7,9 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private LOGIN_URL = 'http://localhost:3000/login';
-  private tokenkey = 'authToken';
+  private LOGIN_URL = 'http://localhost:8080/api/auth/login';
+  private tokenKey = 'authToken';
+
   constructor(private httpClient: HttpClient, private router: Router) {}
 
   login(username: string, password: string): Observable<any> {
@@ -17,6 +18,7 @@ export class AuthService {
       .pipe(
         tap((response) => {
           if (response.token) {
+            this.setToken(response.token);
             console.log('Token: ', response.token);
           }
         })
@@ -24,11 +26,11 @@ export class AuthService {
   }
 
   private setToken(token: string): void {
-    localStorage.setItem(this.tokenkey, token);
+    localStorage.setItem(this.tokenKey, token);
   }
 
   private getToken(): string | null {
-    return localStorage.getItem(this.tokenkey);
+    return localStorage.getItem(this.tokenKey);
   }
 
   isAuthenticated(): boolean {
@@ -37,12 +39,13 @@ export class AuthService {
       return false;
     }
     const payload = JSON.parse(atob(token.split('.')[1]));
-    const exp = payload.exp * 1000;
-    return Date.now() < exp;
+    const expiry = payload.exp;
+    const now = Math.floor(Date.now() / 1000);
+    return now < expiry;
   }
 
   logout(): void {
-    localStorage.removeItem(this.tokenkey);
+    localStorage.removeItem(this.tokenKey);
     this.router.navigate(['/login']);
   }
 }

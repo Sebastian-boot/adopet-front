@@ -28,7 +28,7 @@ export class Step2Component implements OnInit {
 
   ngOnInit(): void {
     const reportData = this.animalReportDataService.getReportData();
-    this.form = this.fb.group({
+    /*this.form = this.fb.group({
       location: this.fb.group({
         latitude: [reportData.location.latitude, Validators.required],
         longitude: [reportData.location.longitude, Validators.required],
@@ -42,7 +42,7 @@ export class Step2Component implements OnInit {
         Validators.required,
       ],
       abandonmentStatus: [reportData.abandonmentStatus, Validators.required],
-    });
+    });*/
   }
 
   onSubmit(): void {
