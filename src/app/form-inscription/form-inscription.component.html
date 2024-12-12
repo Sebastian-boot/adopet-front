@@ -30,6 +30,9 @@
           consectetur aperiam laudantium.
         </p>
         <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+          <div *ngIf="registrationError" class="text-danger text-center">
+            {{ registrationError }}
+          </div>
           <div class="row">
             <div class="col-6">
               <div class="form-group">
@@ -49,17 +52,18 @@
             <div class="col-6">
               <div class="form-group">
                 <input
-                  formControlName="surname"
+                  formControlName="lastName"
                   placeholder="Apellido"
                   class="form-control rounded-full"
                 />
                 <div
                   *ngIf="
-                    form.get('surname')?.invalid && form.get('surname')?.touched
+                    form.get('lastName')?.invalid &&
+                    form.get('lastName')?.touched
                   "
                   class="text-danger"
                 >
-                  Please input your surname!
+                  {{ getErrorMessage("lastName") }}
                 </div>
               </div>
             </div>
@@ -68,35 +72,38 @@
             <div class="col-6">
               <div class="form-group">
                 <input
-                  formControlName="dni"
+                  formControlName="personalId"
                   type="number"
                   placeholder="N° de Documento"
                   class="form-control rounded-full"
                 />
                 <div
-                  *ngIf="form.get('dni')?.invalid && form.get('dni')?.touched"
+                  *ngIf="
+                    form.get('personalId')?.invalid &&
+                    form.get('personalId')?.touched
+                  "
                   class="text-danger"
                 >
-                  Please input your dni!
+                  {{ getErrorMessage("personalId") }}
                 </div>
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
                 <input
-                  formControlName="birth_date"
+                  formControlName="birthDate"
                   type="date"
                   placeholder="Fecha de Nacimiento"
                   class="form-control rounded-full"
                 />
                 <div
                   *ngIf="
-                    form.get('birth_date')?.invalid &&
-                    form.get('birth_date')?.touched
+                    form.get('birthDate')?.invalid &&
+                    form.get('birthDate')?.touched
                   "
                   class="text-danger"
                 >
-                  Please input birth date!
+                  {{ getErrorMessage("birthDate") }}
                 </div>
               </div>
             </div>
@@ -113,18 +120,19 @@
                     <option value="87">+87</option>
                   </select>
                   <input
-                    formControlName="phone"
+                    formControlName="phoneNumber"
                     placeholder="N° de Teléfono"
                     class="form-control rounded-full"
                   />
                 </div>
                 <div
                   *ngIf="
-                    form.get('phone')?.invalid && form.get('phone')?.touched
+                    form.get('phoneNumber')?.invalid &&
+                    form.get('phoneNumber')?.touched
                   "
                   class="text-danger"
                 >
-                  Please input your phone number!
+                  {{ getErrorMessage("phoneNumber") }}
                 </div>
               </div>
             </div>
@@ -143,7 +151,7 @@
                   "
                   class="text-danger"
                 >
-                  Please input your address!
+                  {{ getErrorMessage("address") }}
                 </div>
               </div>
             </div>
@@ -164,7 +172,7 @@
                   "
                   class="text-danger"
                 >
-                  Please input your username!
+                  {{ getErrorMessage("username") }}
                 </div>
               </div>
             </div>
@@ -220,7 +228,7 @@
                   "
                   class="text-danger"
                 >
-                  The new password that you entered do not match!
+                  {{ getErrorMessage("confirm") }}
                 </div>
               </div>
             </div>
@@ -243,7 +251,7 @@
                 "
                 class="text-danger"
               >
-                Debes aceptar los términos y condiciones
+                {{ getErrorMessage("terms_conditions") }}
               </div>
             </div>
           </div>
@@ -258,8 +266,7 @@
             </button>
             <button
               class="crear border-indigo-700 border-2"
-              type="button"
-              (click)="onSubmit($event)"
+              type="submit"
               shape="round"
             >
               Registrarme

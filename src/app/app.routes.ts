@@ -53,6 +53,6 @@ export const routes: Routes = [
     path: 'foundations-main',
     component: AnimalsReportsComponent,
   },
-  { path: '', redirectTo: '', pathMatch: 'full' },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login', pathMatch: 'full' },
 ];

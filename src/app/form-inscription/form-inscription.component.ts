@@ -5,6 +5,7 @@ import {
   Validators,
   FormControl,
   ValidationErrors,
+  AbstractControl,
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
 import { RegistrationFormData } from '../Interfaces/FormInscriptionData';
 import { MailAlertModalComponent } from '../modals/mail-alert-modal/mail-alert-modal.component';
 import { FormDataService } from '../core/services/form-data.service';
+import { AuthService } from '../core/services/auth.service';
 
 @Component({
   selector: 'app-form-inscription',
@@ -24,18 +26,21 @@ import { FormDataService } from '../core/services/form-data.service';
     ReactiveFormsModule,
     RouterLink,
     MailAlertModalComponent,
-  ], // Add ReactiveFormsModule here
+  ],
 })
 export class FormInscriptionComponent implements OnInit {
   logoUrl = '/assets/images/Animales.png';
   form!: FormGroup;
   showModal: boolean = false;
   formData!: RegistrationFormData;
+  registrationError: string | null = null;
+  validationErrors: { [key: string]: string[] } = {};
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private formDataService: FormDataService
+    private formDataService: FormDataService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -45,13 +50,16 @@ export class FormInscriptionComponent implements OnInit {
         this.formData?.name || '',
         [Validators.required, Validators.pattern(/\S+/)],
       ],
-      surname: [
-        this.formData?.surname || '',
+      lastName: [
+        this.formData?.lastName || '',
         [Validators.required, Validators.pattern(/\S+/)],
       ],
-      dni: [this.formData?.dni || '', [Validators.required]],
-      birth_date: [this.formData?.birth_date || '', [Validators.required]],
-      phone: [this.formData?.phone || '', [Validators.required]],
+      personalId: [this.formData?.personalId || '', [Validators.required]],
+      birthDate: [
+        this.formData?.birthDate || '',
+        [Validators.required, this.ageValidator(18)],
+      ],
+      phoneNumber: [this.formData?.phoneNumber || '', [Validators.required]],
       address: [
         this.formData?.address || '',
         [Validators.required, Validators.pattern(/\S+/)],
@@ -64,7 +72,15 @@ export class FormInscriptionComponent implements OnInit {
         this.formData?.email || '',
         [Validators.required, Validators.email],
       ],
-      password: ['', [Validators.required]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+          ),
+        ],
+      ],
       confirm: ['', [Validators.required, this.matchPassword.bind(this)]],
       terms_conditions: [
         this.formData?.terms_conditions || false,
@@ -81,13 +97,58 @@ export class FormInscriptionComponent implements OnInit {
     return null;
   }
 
+  ageValidator(minAge: number) {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const birthDate = new Date(control.value);
+      const today = new Date();
+      const age = today.getFullYear() - birthDate.getFullYear();
+      const monthDiff = today.getMonth() - birthDate.getMonth();
+      const dayDiff = today.getDate() - birthDate.getDate();
+
+      if (
+        age > minAge ||
+        (age === minAge && monthDiff > 0) ||
+        (age === minAge && monthDiff === 0 && dayDiff >= 0)
+      ) {
+        return null;
+      } else {
+        return { ageInvalid: true };
+      }
+    };
+  }
+
   onSubmit(event: Event): void {
     event?.preventDefault();
     if (this.form.valid) {
       this.formData = this.form.value as RegistrationFormData;
       this.formDataService.setFormData(this.formData);
-      this.showModal = true;
-      console.log('Fomr Submitted', this.form.value);
+
+      // Create a new object with only the required fields
+      const registrationData = {
+        name: this.formData.name,
+        lastName: this.formData.lastName,
+        personalId: String(this.formData.personalId), // Ensure personalId is a string
+        birthDate: this.formData.birthDate,
+        address: this.formData.address,
+        phoneNumber: this.formData.phoneNumber,
+        email: this.formData.email,
+        username: this.formData.username,
+        password: this.formData.password,
+      };
+
+      console.log('Form Submitted', registrationData);
+      this.authService.register(registrationData).subscribe(
+        (response) => {
+          console.log('Registration successful', response);
+          this.showModal = true;
+        },
+        (error) => {
+          console.error('Registration failed', error);
+          this.registrationError =
+            error.error.title || 'Registration failed. Please try again.';
+          this.validationErrors = error.error.errors || {};
+        }
+      );
     } else {
       Object.keys(this.form.controls).forEach((key) => {
         const control = this.form.get(key);
@@ -102,7 +163,7 @@ export class FormInscriptionComponent implements OnInit {
       this.formData = this.form.value as RegistrationFormData;
       this.formDataService.setFormData(this.formData);
       this.router.navigate(['/form-signup-foundation1']);
-      console.log('Fomr Submitted', this.form.value);
+      console.log('Form Submitted', this.form.value);
     } else {
       Object.keys(this.form.controls).forEach((key) => {
         const control = this.form.get(key);
@@ -119,10 +180,15 @@ export class FormInscriptionComponent implements OnInit {
       } else if (control.errors['email']) {
         return 'Invalid email';
       } else if (control.errors['pattern']) {
-        return 'Invalid format';
+        return 'La contraseña debe ser de minimo 8 caracteres, una mayuscula, una minuscula, un numero y un caracter especial';
       } else if (control.errors['passwordMismatch']) {
         return 'Passwords do not match';
+      } else if (control.errors['ageInvalid']) {
+        return 'You must be at least 18 years old';
       }
+    }
+    if (this.validationErrors[controlName]) {
+      return this.validationErrors[controlName].join(' ');
     }
     return '';
   }

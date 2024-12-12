@@ -1,9 +1,9 @@
 export interface RegistrationFormData {
   name: string;
-  surname: string;
-  dni: string;
-  birth_date: string;
-  phone: string;
+  lastName: string;
+  personalId: string;
+  birthDate: string;
+  phoneNumber: string;
   address: string;
   username: string;
   email: string;

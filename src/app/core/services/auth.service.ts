@@ -1,13 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { RegistrationFormData } from '../../Interfaces/FormInscriptionData';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private LOGIN_URL = 'http://localhost:8080/api/auth/login';
+  private REGISTER_URL = 'http://localhost:8080/api/auth/register';
   private tokenKey = 'authToken';
 
   constructor(private httpClient: HttpClient, private router: Router) {}
@@ -21,8 +24,37 @@ export class AuthService {
             this.setToken(response.token);
             console.log('Token: ', response.token);
           }
-        })
+        }),
+        catchError(this.handleError)
       );
+  }
+
+  register(data: Partial<RegistrationFormData>): Observable<any> {
+    const {
+      name,
+      lastName,
+      personalId,
+      birthDate,
+      address,
+      phoneNumber,
+      email,
+      username,
+      password,
+    } = data;
+    console.log('Data: ', data);
+    return this.httpClient
+      .post<any>(this.REGISTER_URL, {
+        name,
+        lastName: lastName,
+        personalId,
+        birthDate,
+        address,
+        phoneNumber,
+        email,
+        username,
+        password,
+      })
+      .pipe(catchError(this.handleError));
   }
 
   private setToken(token: string): void {
@@ -47,5 +79,10 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem(this.tokenKey);
     this.router.navigate(['/login']);
+  }
+
+  private handleError(error: any): Observable<never> {
+    console.error('An error occurred:', error);
+    return throwError(error);
   }
 }
