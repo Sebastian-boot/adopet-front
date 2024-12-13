@@ -9,8 +9,8 @@ import { RegistrationFormData } from '../../Interfaces/FormInscriptionData';
   providedIn: 'root',
 })
 export class AuthService {
-  private LOGIN_URL = 'http://localhost:8080/api/auth/login';
-  private REGISTER_URL = 'http://localhost:8080/api/auth/register';
+  private LOGIN_URL = 'http://localhost:5116/api/auth/login';
+  private REGISTER_URL = 'http://localhost:5116/api/auth/register';
   private tokenKey = 'authToken';
 
   constructor(private httpClient: HttpClient, private router: Router) {}

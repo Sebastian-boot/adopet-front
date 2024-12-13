@@ -1,283 +1,171 @@
-<div class="container mx-auto rounded-md">
-  <div class="flex justify-center px-6 my-12">
-    <div class="w-full xl:w-3/4 lg:w-11/12 flex">
-      <div
-        class="w-full h-auto bg-indigo-700 hidden lg:flex lg:flex-col lg:justify-center lg:items-center lg:w-1/2 bg-cover rounded-l-lg"
-      >
-        <h1 class="text-white mb-4 font-bold text-lg uppercase">
-          Uniendo Comunidades y Rescatistas
-        </h1>
-        <img
-          src="/assets/images/Animales.png"
-          alt="animals"
-          class="h-2/4 w-3/5 object-cover object-center mb-4"
-          style="border-radius: 40%"
-        />
-        <button class="loginButton border-indigo-700 border-2">
-          <a routerLink="/auth/login.component"
-            >¿Ya tienes cuenta con nosotros?</a
-          >
-        </button>
-      </div>
+<div class="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+  <div class="w-full max-w-6xl bg-white rounded-2xl shadow-lg flex flex-col md:flex-row overflow-hidden">
+    <!-- Lado izquierdo - Fondo e imagen -->
+    <div class="w-full md:w-1/2 bg-primary p-8 text-white flex-col justify-center items-center md:flex hidden">
+      <h1 class="text-2xl font-bold uppercase mb-8">
+        Uniendo Comunidades y Rescatistas
+      </h1>
 
-      <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
-        <h2 class="pt-4 text-3xl font-bold">
-          Crea tú Cuenta en <strong class="text-indigo-700">Adopet</strong>
+      <img src="/assets/images/register-illustration.svg"
+           alt="animals"
+           class="w-3/4 h-auto max-w-md rounded-[40%] mb-8" />
+    </div>
+
+    <div class="w-full md:w-1/2 p-8">
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold">
+          Crea tu cuenta en <strong class="text-primary">Adopet</strong>
         </h2>
-        <p class="text-sm mb-4">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. At harum
-          neque, suscipit impedit velit voluptatum sit beatae eaque repellat
-          consectetur aperiam laudantium.
+        <p class="text-gray-600 text-sm">
+          Únete a nuestra comunidad y contribuye al rescate y cuidado de animales abandonados. ¡Empieza hoy mismo!
         </p>
-        <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
-          <div *ngIf="registrationError" class="text-danger text-center">
-            {{ registrationError }}
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <div class="form-group">
-                <input
-                  formControlName="name"
-                  placeholder="Nombre"
-                  class="form-control rounded-full"
-                />
-                <div
-                  *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
-                  class="text-danger"
-                >
-                  {{ getErrorMessage("name") }}
-                </div>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <input
-                  formControlName="lastName"
-                  placeholder="Apellido"
-                  class="form-control rounded-full"
-                />
-                <div
-                  *ngIf="
-                    form.get('lastName')?.invalid &&
-                    form.get('lastName')?.touched
-                  "
-                  class="text-danger"
-                >
-                  {{ getErrorMessage("lastName") }}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <div class="form-group">
-                <input
-                  formControlName="personalId"
-                  type="number"
-                  placeholder="N° de Documento"
-                  class="form-control rounded-full"
-                />
-                <div
-                  *ngIf="
-                    form.get('personalId')?.invalid &&
-                    form.get('personalId')?.touched
-                  "
-                  class="text-danger"
-                >
-                  {{ getErrorMessage("personalId") }}
-                </div>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <input
-                  formControlName="birthDate"
-                  type="date"
-                  placeholder="Fecha de Nacimiento"
-                  class="form-control rounded-full"
-                />
-                <div
-                  *ngIf="
-                    form.get('birthDate')?.invalid &&
-                    form.get('birthDate')?.touched
-                  "
-                  class="text-danger"
-                >
-                  {{ getErrorMessage("birthDate") }}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="form-group">
-                <div class="input-group" style="width: 10">
-                  <select
-                    formControlName="prefix"
-                    class="form-control rounded-full"
-                  >
-                    <option value="57">+57</option>
-                    <option value="87">+87</option>
-                  </select>
-                  <input
-                    formControlName="phoneNumber"
-                    placeholder="N° de Teléfono"
-                    class="form-control rounded-full"
-                  />
-                </div>
-                <div
-                  *ngIf="
-                    form.get('phoneNumber')?.invalid &&
-                    form.get('phoneNumber')?.touched
-                  "
-                  class="text-danger"
-                >
-                  {{ getErrorMessage("phoneNumber") }}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12">
-              <div class="form-group">
-                <input
-                  formControlName="address"
-                  placeholder="Dirección"
-                  class="form-control rounded-full"
-                />
-                <div
-                  *ngIf="
-                    form.get('address')?.invalid && form.get('address')?.touched
-                  "
-                  class="text-danger"
-                >
-                  {{ getErrorMessage("address") }}
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="row">
-            <div class="col-6">
-              <div class="form-group">
-                <input
-                  formControlName="username"
-                  placeholder="Nombre de Usuario"
-                  class="form-control rounded-full"
-                />
-                <div
-                  *ngIf="
-                    form.get('username')?.invalid &&
-                    form.get('username')?.touched
-                  "
-                  class="text-danger"
-                >
-                  {{ getErrorMessage("username") }}
-                </div>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <input
-                  formControlName="email"
-                  placeholder="Correo"
-                  class="form-control rounded-full"
-                />
-                <div
-                  *ngIf="
-                    form.get('email')?.invalid && form.get('email')?.touched
-                  "
-                  class="text-danger"
-                >
-                  {{ getErrorMessage("email") }}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <div class="form-group">
-                <input
-                  formControlName="password"
-                  type="password"
-                  placeholder="Contraseña"
-                  class="form-control rounded-full"
-                />
-                <div
-                  *ngIf="
-                    form.get('password')?.invalid &&
-                    form.get('password')?.touched
-                  "
-                  class="text-danger"
-                >
-                  {{ getErrorMessage("password") }}
-                </div>
-              </div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                <input
-                  formControlName="confirm"
-                  type="password"
-                  placeholder="Confirmar Contraseña"
-                  class="form-control rounded-full"
-                />
-                <div
-                  *ngIf="
-                    form.get('confirm')?.invalid && form.get('confirm')?.touched
-                  "
-                  class="text-danger"
-                >
-                  {{ getErrorMessage("confirm") }}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="form-check">
-              <input
-                formControlName="terms_conditions"
-                type="checkbox"
-                class="form-check-input"
-              />
-              <label
-                class="form-check-label underline italic text-indigo-500 hover:text-indigo-700"
-                >Acepto términos y condiciones</label
-              >
-              <div
-                *ngIf="
-                  form.get('terms_conditions')?.invalid &&
-                  form.get('terms_conditions')?.touched
-                "
-                class="text-danger"
-              >
-                {{ getErrorMessage("terms_conditions") }}
-              </div>
-            </div>
-          </div>
-          <div class="form-group float-left button">
-            <button
-              class="iniciar"
-              type="button"
-              (click)="onSubmitFoundation($event)"
-              shape="round"
-            >
-              Registrarme como fundación
-            </button>
-            <button
-              class="crear border-indigo-700 border-2"
-              type="submit"
-              shape="round"
-            >
-              Registrarme
-            </button>
-          </div>
-        </form>
       </div>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit($event)" class="space-y-4">
+        <!-- Mensaje de error -->
+        <div *ngIf="registrationError"
+             class="text-red-600 text-center text-sm bg-red-50 p-2 rounded">
+          {{ registrationError }}
+        </div>
+
+        <!-- Nombre y Apellido -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <input formControlName="name"
+                   placeholder="Nombre"
+                   class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+            <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
+                 class="text-red-500 text-sm mt-1">
+              {{ getErrorMessage("name") }}
+            </div>
+          </div>
+          <div>
+            <input formControlName="lastName"
+                   placeholder="Apellido"
+                   class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+            <div *ngIf="form.get('lastName')?.invalid && form.get('lastName')?.touched"
+                 class="text-red-500 text-sm mt-1">
+              {{ getErrorMessage("lastName") }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Documento y Fecha -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <input formControlName="personalId"
+                   type="number"
+                   placeholder="N° de Documento"
+                   class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+            <div *ngIf="form.get('personalId')?.invalid && form.get('personalId')?.touched"
+                 class="text-red-500 text-sm mt-1">
+              {{ getErrorMessage("personalId") }}
+            </div>
+          </div>
+          <div>
+            <input formControlName="birthDate"
+                   type="date"
+                   class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+            <div *ngIf="form.get('birthDate')?.invalid && form.get('birthDate')?.touched"
+                 class="text-red-500 text-sm mt-1">
+              {{ getErrorMessage("birthDate") }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Teléfono -->
+        <div class="flex gap-2">
+          <select formControlName="prefix"
+                  class="w-24 px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition">
+            <option value="57">+57</option>
+            <option value="87">+87</option>
+          </select>
+          <input formControlName="phoneNumber"
+                 placeholder="N° de Teléfono"
+                 class="flex-1 px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+        </div>
+
+        <!-- Dirección -->
+        <input formControlName="address"
+               placeholder="Dirección"
+               class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+
+        <!-- Usuario y Email -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <input formControlName="username"
+                   placeholder="Nombre de Usuario"
+                   class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+            <div *ngIf="form.get('username')?.invalid && form.get('username')?.touched"
+                 class="text-red-500 text-sm mt-1">
+              {{ getErrorMessage("username") }}
+            </div>
+          </div>
+          <div>
+            <input formControlName="email"
+                   placeholder="Correo"
+                   class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+            <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
+                 class="text-red-500 text-sm mt-1">
+              {{ getErrorMessage("email") }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Contraseñas -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <input formControlName="password"
+                   type="password"
+                   placeholder="Contraseña"
+                   class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+            <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched"
+                 class="text-red-500 text-sm mt-1">
+              {{ getErrorMessage("password") }}
+            </div>
+          </div>
+          <div>
+            <input formControlName="confirm"
+                   type="password"
+                   placeholder="Confirmar Contraseña"
+                   class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+            <div *ngIf="form.get('confirm')?.invalid && form.get('confirm')?.touched"
+                 class="text-red-500 text-sm mt-1">
+              {{ getErrorMessage("confirm") }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Términos y condiciones -->
+        <div class="flex items-center space-x-2 justify-between">
+          <div>
+            <input formControlName="terms_conditions"
+                   type="checkbox"
+                   class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary" />
+            <label class="text-sm text-gray-600">
+              Acepto <span class="underline italic text-primary hover:text-primary/80 cursor-pointer">términos y condiciones</span>
+            </label>
+          </div>
+          <a routerLink="/login" class="text-sm text-primary hover:text-primary/80 underline">
+            ¿Ya tienes cuenta con nosotros?
+          </a>
+        </div>
+
+        <!-- Botones -->
+        <div class="space-y-4 pt-4 ">
+          <button type="button"
+                  (click)="onSubmitFoundation($event)"
+                  class="w-full py-3 px-4 bg-primary hover:bg-primary/90 text-white rounded-lg transition">
+            Registrarme como fundación
+          </button>
+          <button type="submit"
+                  class="w-full py-3 px-4 border-2 border-primary text-primary hover:bg-gray-50 rounded-lg transition">
+            Registrarme
+          </button>
+        </div>
+      </form>
     </div>
   </div>
-  <app-mail-alert-modal
-    [isOpen]="showModal"
-    [email]="form.get('email')?.value"
-  ></app-mail-alert-modal>
+  <app-mail-alert-modal [isOpen]="showModal" [email]="form.get('email')?.value"></app-mail-alert-modal>
 </div>

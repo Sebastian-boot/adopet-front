@@ -13,9 +13,9 @@ import { FoundationsAdopetComponent } from './users/dashboard/foundations-adopet
 
 
 export const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent, title: 'Adopet - Iniciar sesión' },
   { path: 'animal-report', component: AnimalReportComponent },
-  { path: 'form-signup', component: FormInscriptionComponent },
+  { path: 'form-signup', component: FormInscriptionComponent, title: 'Adopet - Crear cuenta' },
   {
     path: 'form-signup-foundation1',
     component: FoundationInscriptionComponent,
