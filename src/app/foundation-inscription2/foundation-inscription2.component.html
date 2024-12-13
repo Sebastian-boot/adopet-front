@@ -27,216 +27,204 @@
         suscipit voluptatum omnis!
       </p>
     </div>
-    <div class="p-3">
+    <section
+      class="max-w-8xl pt-0 p-6 mx-auto bg-white rounded-md dark:bg-gray-800 mt-20"
+    >
       <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
-        <div class="row">
-          <div class="col-4">
-            <div class="form-group">
-              <input
-                formControlName="name"
-                type="text"
-                placeholder="Nombre"
-                class="form-control rounded-full bg-slate-200"
-              />
-              <div
-                *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
-                class="text-danger"
-              >
-                ¡Por ingresa el nombre del representante legal!
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="form-group">
-              <input
-                formControlName="lastName"
-                class="form-control rounded-full bg-slate-200"
-                type="text"
-                placeholder="Apellido"
-              />
-              <div
-                *ngIf="
-                  form.get('lastName')?.invalid && form.get('lastName')?.touched
-                "
-                class="text-danger"
-              >
-                ¡Por ingresa el apellido del representante legal!
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="form-group">
-              <input
-                formControlName="personalId"
-                type="number"
-                placeholder="N° de Documento"
-                class="form-control rounded-full bg-slate-200"
-              />
-              <div
-                *ngIf="
-                  form.get('personalId')?.invalid &&
-                  form.get('personalId')?.touched
-                "
-                class="text-danger"
-              >
-                ¡Por ingresa tu numero de documento!
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-2"></div>
-          <div class="col-4">
-            <div class="form-group">
-              <input
-                formControlName="phoneNumber"
-                type="number"
-                placeholder="Teléfono"
-                class="form-control rounded-full bg-slate-200"
-              />
-              <div
-                *ngIf="
-                  form.get('phoneNumber')?.invalid &&
-                  form.get('phoneNumber')?.touched
-                "
-                class="text-danger"
-              >
-                ¡Por favor proporciona el número de contacto del representante
-                legal!
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="form-group">
-              <input
-                formControlName="email"
-                type="text"
-                placeholder="Email"
-                class="form-control rounded-full bg-slate-200"
-              />
-              <div
-                *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
-                class="text-danger"
-              >
-                ¡Por favor ingresa un correo valido!
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4"></div>
-
-          <div class="col-4">
-            <div class="form-group"></div>
-          </div>
-          <div class="col-4"></div>
-        </div>
-        <div classs="row">
-          <div class="container pb-2">
-            <h2 class="text-black text-2xl font-sans">
-              Ubicación de la Fundación
-            </h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4">
-            <div class="form-group">
-              <input
-                formControlName="city"
-                type="text"
-                placeholder="Ciudad donde se encuentra"
-                class="form-control rounded-full bg-slate-200"
-              />
-              <div
-                *ngIf="form.get('citiy')?.invalid && form.get('city')?.touched"
-                class="text-danger"
-              >
-                ¡Por ingresa la ciudad donde se ubica!
-              </div>
+        <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-3">
+          <div>
+            <label class="text-indigo-600 dark:text-gray-200" for="username"
+              >Nombre</label
+            >
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            />
+            <div
+              *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
+              class="text-danger"
+            >
+              ¡Por ingresa el nombre del representante legal!
             </div>
           </div>
 
-          <div class="col-4">
-            <div class="form-group">
-              <input
-                formControlName="address"
-                type="text"
-                placeholder="Dirección de la fundación"
-                class="form-control rounded-full bg-slate-200"
-              />
-              <div
-                *ngIf="
-                  form.get('address')?.invalid && form.get('address')?.touched
-                "
-                class="text-danger"
-              >
-                ¡Por regalanos la dirección donde te ubicas!
-              </div>
+          <div>
+            <label class="text-indigo-600 dark:text-gray-200" for="emailAddress"
+              >Apellido</label
+            >
+            <input
+              placeholder="Fundación sin animo de lucro...."
+              id="lastName"
+              type="text"
+              formControlName="lastName"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            />
+            <div
+              *ngIf="
+                form.get('lastName')?.invalid && form.get('lastName')?.touched
+              "
+              class="text-danger"
+            >
+              ¡Por ingresa el apellido del representante legal!
             </div>
           </div>
 
-          <div class="col-4">
-            <div class="form-group">
-              <input
-                formControlName="postalCode"
-                type="text"
-                placeholder="Código Postal"
-                class="form-control rounded-full bg-slate-200"
-              />
+          <div>
+            <label class="text-indigo-600 dark:text-gray-200" for="password"
+              >Numero de documento</label
+            >
+            <input
+              id="personalId"
+              type="number"
+              formControlName="personalId"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            />
+            <div
+              *ngIf="
+                form.get('personalId')?.invalid &&
+                form.get('personalId')?.touched
+              "
+              class="text-danger"
+            >
+              ¡Por favor ingresa tu numero de documento!
             </div>
+          </div>
+
+          <div>
+            <label
+              class="text-indigo-600 dark:text-gray-200"
+              for="passwordConfirmation"
+              >Telefono</label
+            >
+            <input
+              id="phoneNumber"
+              type="number"
+              formControlName="phoneNumber"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            />
+            <div
+              *ngIf="
+                form.get('phoneNumber')?.invalid &&
+                form.get('phoneNumber')?.touched
+              "
+              class="text-danger"
+            >
+              ¡Por favor proporciona el número de contacto del representante
+              legal!
+            </div>
+          </div>
+          <div>
+            <label
+              class="text-indigo-600 dark:text-gray-200"
+              for="passwordConfirmation"
+              >Correo Electrónico</label
+            >
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            />
+            <div
+              *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
+              class="text-danger"
+            >
+              ¡Por favor ingresa un correo valido!
+            </div>
+          </div>
+          <!--Dejado vacio a proposito-->
+          <div></div>
+
+          <div>
+            <label class="text-indigo-600 dark:text-gray-200" for="emailAddress"
+              >Ciudad donde se ubica la fundación</label
+            >
+            <input
+              id="city"
+              type="text"
+              formControlName="city"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            />
+            <div
+              *ngIf="form.get('city')?.invalid && form.get('city')?.touched"
+              class="text-danger"
+            >
+              ¡Por ingresa la cidudad donde se encuentra la fundación!
+            </div>
+          </div>
+
+          <div>
+            <label class="text-indigo-600 dark:text-gray-200" for="emailAddress"
+              >Dirección</label
+            >
+            <input
+              id="address"
+              type="text"
+              formControlName="address"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            />
+            <div
+              *ngIf="
+                form.get('address')?.invalid && form.get('address')?.touched
+              "
+              class="text-danger"
+            >
+              ¡Por regalanos la dirección donde te ubicas!
+            </div>
+          </div>
+
+          <div>
+            <label class="text-indigo-600 dark:text-gray-200" for="emailAddress"
+              >Ciudad donde se ubica la fundación</label
+            >
+            <input
+              id="postalCode"
+              type="text"
+              formControlName="postalCode"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            />
           </div>
         </div>
 
         <!--Map part-->
-        <div class="row">
-          <div class="col-2"></div>
-          <div class="col-8">
-            <div class="form-group">
-              <google-map
-                height="400px"
-                width="100%"
-                [center]="center"
-                [zoom]="zoom"
-                (mapClick)="onMapClick($event)"
-              >
-              </google-map>
-              <div *ngIf="selectedLocation">
-                Latitud: {{ selectedLocation.lat }} Longitud:
-                {{ selectedLocation.lng }}
-              </div>
+        <div>
+          <label class="block text-sm font-medium text-indigo-600">
+            Mapa
+          </label>
+          <div
+            class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"
+          >
+            <google-map
+              height="300px"
+              width="600px"
+              [center]="center"
+              [zoom]="zoom"
+              (mapClick)="onMapClick($event)"
+            >
+            </google-map>
+            <div *ngIf="selectedLocation">
+              Latitud: {{ selectedLocation.lat }} Longitud:
+              {{ selectedLocation.lng }}
             </div>
           </div>
-          <div class="col-2"></div>
         </div>
 
-        <!--Fourth Part-->
-        <div class="row">
-          <div class="col-4"></div>
-          <div class="col-4"></div>
-          <div class="col-4">
-            <div class="form-group">
-              <div class="form-group button-container">
-                <button
-                  class="iniciar text-indigo-700 w-36"
-                  type="submit"
-                  (click)="onBack()"
-                >
-                  Volver
-                </button>
-                <button
-                  class="crear w-48 text-white border-2"
-                  type="submit"
-                  (click)="onSubmit($event)"
-                >
-                  Siguiente
-                </button>
-              </div>
-            </div>
-          </div>
+        <div class="flex justify-end mt-6 gap-3">
+          <button
+            class="px-6 py-2 leading-5 text-indigo-600 transition-colors duration-200 transform bg-white rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600"
+          >
+            Volver
+          </button>
+          <button
+            class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600"
+            type="submit"
+          >
+            Siguiente
+          </button>
         </div>
-        <!--buttons part-->
-        <div class="row"></div>
       </form>
-    </div>
+    </section>
   </div>
 </main>
