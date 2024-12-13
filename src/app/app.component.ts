@@ -3,7 +3,7 @@ import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { SidebarComponent } from './components/Layout/sidebar/sidebar.component';
 import { NavbarComponent } from './components/Layout/navbar/navbar.component';
-import { DarkModeService } from './services/dark-mode/dark-mode.service';
+import { DarkModeService } from './core/services/dark-mode/dark-mode.service';
 import { NgClass, NgIf } from '@angular/common';
 import { filter } from 'rxjs/operators';
 

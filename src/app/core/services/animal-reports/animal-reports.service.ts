@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AnimalReport } from '../../types/animal-report';
+import { AnimalReport } from '../../models/anima-report/animal-report';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class AnimalReportsService {
   private apiUrl = 'http://localhost:5116/api';
   //private token = sessionStorage.getItem('token');
-  private token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJEb21haW4uVXNlcnMuVXNlcklkIiwiZ2l2ZW5fbmFtZSI6IlNlYmFzIiwiZmFtaWx5X25hbWUiOiJUcml2aW5vIiwianRpIjoiOTI3NTg5NDgtNjA5My00MzAzLWEwZmUtZmEyZDczOTIwYjUxIiwiZXhwIjoxNzM0MDU3MzE3LCJpc3MiOiJBZG9wZXQiLCJhdWQiOiJBZG9wZXQifQ.7WUO_O3mp32XSbOBism5qbdKwy2Q7NHMp0jP0ULjS5Q';
+  private token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJEb21haW4uVXNlcnMuVXNlcklkIiwiZ2l2ZW5fbmFtZSI6IlNlYmFzIiwiZmFtaWx5X25hbWUiOiJUcml2aW5vIiwianRpIjoiYzM5NGY0MzMtOWQzMi00OWI4LTg1NzEtM2NlMjBiMjg4MmM5IiwiZXhwIjoxNzM0MDY0OTgyLCJpc3MiOiJBZG9wZXQiLCJhdWQiOiJBZG9wZXQifQ.Al3Xedo7OcOKDVJMVKT-W85fyBRfOxtIToBqR0Y175c';
 
   constructor(private http: HttpClient) {}
 

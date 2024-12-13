@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 import { RegistrationFormData } from '../Interfaces/FormInscriptionData';
 import { MailAlertModalComponent } from '../modals/mail-alert-modal/mail-alert-modal.component';
 import { FormDataService } from '../core/services/form-data.service';
-import { AuthService } from '../core/services/auth.service';
+import { AuthService } from '../core/services/auth/auth.service';
 
 @Component({
   selector: 'app-form-inscription',
@@ -137,7 +137,7 @@ export class FormInscriptionComponent implements OnInit {
       };
 
       console.log('Form Submitted', registrationData);
-      this.authService.register(registrationData).subscribe(
+      /*this.authService.register(registrationData).subscribe(
         (response) => {
           console.log('Registration successful', response);
           this.showModal = true;
@@ -148,7 +148,7 @@ export class FormInscriptionComponent implements OnInit {
             error.error.title || 'Registration failed. Please try again.';
           this.validationErrors = error.error.errors || {};
         }
-      );
+      );*/
     } else {
       Object.keys(this.form.controls).forEach((key) => {
         const control = this.form.get(key);

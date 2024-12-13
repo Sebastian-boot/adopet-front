@@ -6,7 +6,7 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { AuthService } from '../../core/services/auth.service';
+import { AuthService } from '../../core/services/auth/auth.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -35,18 +35,15 @@ export class LoginComponent {
   onSubmit(): void {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
-      this.authService.login(username, password).subscribe(
-        (response) => {
-          console.log('Login successful', response);
-          this.router.navigate(['/users-main']); // Redirige al dashboard u otra ruta
+      this.authService.login(username, password).subscribe({
+        next: () => {
+          this.router.navigate(['/dashboard']);
         },
-        (error) => {
+        error: (error) => {
           console.error('Login failed', error);
           this.loginError = '¡Usuario o contraseña incorrectos!';
         }
-      );
-    } else {
-      console.log('Formulario no válido');
+      });
     }
   }
 }

@@ -1,16 +1,23 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { DarkModeService } from '../../../services/dark-mode/dark-mode.service';
+import { DarkModeService } from '../../../core/services/dark-mode/dark-mode.service';
+import { AuthService } from '../../../core/services/auth/auth.service';
+import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink],
+  imports: [CommonModule, RouterLink],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-constructor(private darkModeService: DarkModeService) {}
+  currentUser$: Observable<any>;
+
+  constructor(private darkModeService: DarkModeService, private authService: AuthService) {
+    this.currentUser$ = this.authService.currentUser$;
+  }
 
   toggleSidebar(): void {
     const sidebar = document.getElementById('sidebar');
@@ -21,6 +28,9 @@ constructor(private darkModeService: DarkModeService) {}
 
   toggleDarkMode(): void {
     this.darkModeService.toggleDarkMode();
+  }
+  onLogout(): void {
+    this.authService.logout();
   }
 }
 
