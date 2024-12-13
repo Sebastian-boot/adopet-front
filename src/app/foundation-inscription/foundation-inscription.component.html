@@ -1,7 +1,7 @@
 <main class="container">
   <div class="formSpace bg-white rounded-3xl">
     <div
-      class="container p-4 bg-indigo-700 h-24 rounded-t-3xl w-auto text-white text-3xl"
+      class="container p-4 bg-indigo-700 h-24 rounded-t-3xl w-auto text-indigo-600 text-3xl"
     >
       <h1>Crea tu cuenta en <strong>Adopet</strong></h1>
     </div>
@@ -27,217 +27,239 @@
         suscipit voluptatum omnis!
       </p>
     </div>
-    <div class="p-3">
+    <section
+      class="max-w-6xl p-6 mx-auto bg-white rounded-md dark:bg-gray-800 mt-20"
+    >
       <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
-        <div class="row">
-          <div class="col-4">
-            <div class="form-group">
-              <input
-                type="text"
-                formControlName="name"
-                placeholder="Nombre de la fundación"
-                class="form-control rounded-full bg-slate-200"
-              />
-              <div
-                *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
-                class="text-danger"
-              >
-                ¡Por favor ingresa el nombre de tu fundación!
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="form-group">
-              <input
-                formControlName="nit"
-                class="form-control rounded-full bg-slate-200"
-                type="number"
-                placeholder="Nit"
-              />
-              <div
-                *ngIf="form.get('nit')?.invalid && form.get('nit')?.touched"
-                class="text-danger"
-              >
-                ¡Por favor rellena este campo!
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="form-group">
-              <input
-                formControlName="email"
-                type="text"
-                placeholder="Correo"
-                class="form-control rounded-full bg-slate-200"
-              />
-              <div
-                *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
-                class="text-danger"
-              >
-                ¡Por favor ingresa un correo valido!
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4">
-            <div class="form-group">
-              <input
-                formControlName="phone"
-                type="number"
-                placeholder="Teléfono"
-                class="form-control rounded-full bg-slate-200"
-              />
-              <div
-                *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched"
-                class="text-danger"
-              >
-                ¡Por favor ingresa un numero de contacto!
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="form-group">
-              <input
-                formControlName="website"
-                type="text"
-                placeholder="Sitio web"
-                class="form-control rounded-full bg-slate-200"
-              />
-              <div
-                *ngIf="
-                  form.get('website')?.invalid && form.get('website')?.touched
-                "
-                class="text-danger"
-              >
-                ¡Por favor ingresa tu pagina web!
-              </div>
-            </div>
-          </div>
-          <div class="col-4"></div>
-        </div>
-
-        <!--Third Part-->
-        <div class="row">
-          <div class="col-4">
-            <div class="form-group">
-              <textarea
-                formControlName="description"
-                class="form-control rounded-lg bg-slate-200"
-                placeholder="Descripción"
-                rows="4"
-              ></textarea>
-              <div
-                *ngIf="
-                  form.get('description')?.invalid &&
-                  form.get('description')?.touched
-                "
-                class="text-danger"
-              >
-                ¡Por favor proporciona una descripcion de tu fundación!
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="form-group">
-              <textarea
-                formControlName="mission"
-                class="form-control rounded-lg bg-slate-200"
-                placeholder="Misión"
-                id=""
-                rows="4"
-              ></textarea>
-              <div
-                *ngIf="
-                  form.get('mission')?.invalid && form.get('mission')?.touched
-                "
-                class="text-danger"
-              >
-                ¡Por favor proporciona la misión de tu fundación!
-              </div>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="form-group">
-              <textarea
-                formControlName="vision"
-                class="form-control rounded-lg bg-slate-200"
-                placeholder="Visión"
-                id=""
-                rows="4"
-              ></textarea>
-              <div
-                *ngIf="
-                  form.get('vision')?.invalid && form.get('vision')?.touched
-                "
-                class="text-danger"
-              >
-                ¡Por favor proporciona la vision de tu fundación!
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--Fourth Part-->
-        <div class="row">
-          <!--Image Upload
-          <div class="col-4">
-            <div class="form-group">
-              <div
-                class="mb-4 d-flex justify-content-center rounded-full w-auto"
-              >
-                <img
-                  id="selectedImage"
-                  src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg"
-                  alt="example placeholder"
-                  aria-placeholder="logo"
-                  class="h-64"
-                />
-              </div>
-              <div class="d-flex justify-content-center">
-                <div data-mdb-ripple-init class="btn btn-primary btn-rounded">
-                  <label class="form-label text-white m-1" for="customFile1"
-                    >Choose file</label
-                  >
-                  <input
-                    type="file"
-                    class="form-control d-none"
-                    id="customFile1"
-                    onchange="displaySelectedImage(event, 'selectedImage')"
-                  />
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <div class="row">
-            <div class="form-group"></div>
-            <div class="col-4">
-              <div class="image-upload">
-                <p>Imagen</p>
-              </div>
+        <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+          <div>
+            <label class="text-indigo-600 dark:text-gray-200" for="username"
+              >Nombre de la fundación</label
+            >
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            />
+            <div
+              *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
+              class="text-danger"
+            >
+              ¡Por favor ingresa el nombre de tu fundación!
             </div>
           </div>
 
-          <div class="col-4"></div>
-          <div class="col-4">
-            <div class="form-group">
-              <div class="form-group button-container">
-                <button
-                  class="iniciar text-indigo-700 w-36"
-                  type="submit"
-                  routerLink="/form-signup"
+          <div>
+            <label class="text-indigo-600 dark:text-gray-200" for="emailAddress"
+              >Nombre Legal</label
+            >
+            <input
+              placeholder="Fundación sin animo de lucro...."
+              id="emailAddress"
+              type="text"
+              formControlName="legalName"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            />
+            <div
+              *ngIf="
+                form.get('legalName')?.invalid && form.get('legalName')?.touched
+              "
+              class="text-danger"
+            >
+              ¡Por favor ingresa el nombre legal de tu fundación!
+            </div>
+          </div>
+
+          <div>
+            <label class="text-indigo-600 dark:text-gray-200" for="password"
+              >Nit</label
+            >
+            <input
+              id="nit"
+              type="number"
+              formControlName="nit"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            />
+            <div
+              *ngIf="form.get('nit')?.invalid && form.get('nit')?.touched"
+              class="text-danger"
+            >
+              ¡Por ingresa tu nit en este campo!
+            </div>
+          </div>
+
+          <div>
+            <label
+              class="text-indigo-600 dark:text-gray-200"
+              for="passwordConfirmation"
+              >Correo</label
+            >
+            <input
+              id="email"
+              type="text"
+              formControlName="email"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            />
+            <div
+              *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
+              class="text-danger"
+            >
+              ¡Por favor ingresa un correo valido!
+            </div>
+          </div>
+          <div>
+            <label
+              class="text-indigo-600 dark:text-gray-200"
+              for="passwordConfirmation"
+              >Télefono</label
+            >
+            <input
+              id="phone"
+              type="number"
+              formControlName="phone"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            />
+            <div
+              *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched"
+              class="text-danger"
+            >
+              ¡Por favor ingresa un numero de contacto!
+            </div>
+          </div>
+          <div>
+            <label
+              class="text-indigo-600 dark:text-gray-200"
+              for="passwordConfirmation"
+              >Sitio web</label
+            >
+            <input
+              id="website"
+              type="text"
+              formControlName="website"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            />
+          </div>
+          <div>
+            <label
+              class="text-indigo-600 dark:text-gray-200"
+              for="passwordConfirmation"
+              >Descripción</label
+            >
+            <textarea
+              id="description"
+              type="textarea"
+              formControlName="description"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            ></textarea>
+            <div
+              *ngIf="
+                form.get('description')?.invalid &&
+                form.get('description')?.touched
+              "
+              class="text-danger"
+            >
+              ¡Por favor proporciona una descripcion de tu fundación!
+            </div>
+          </div>
+          <div>
+            <label
+              class="text-indigo-600 dark:text-gray-200"
+              for="passwordConfirmation"
+              >Mision</label
+            >
+            <textarea
+              id="misión"
+              type="textarea"
+              formControlName="mission"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            ></textarea>
+            <div
+              *ngIf="
+                form.get('mission')?.invalid && form.get('mission')?.touched
+              "
+              class="text-danger"
+            >
+              ¡Por favor proporciona la misión de tu fundación!
+            </div>
+          </div>
+          <div>
+            <label
+              class="text-indigo-600 dark:text-gray-200"
+              for="passwordConfirmation"
+              >Vision</label
+            >
+            <textarea
+              id="vision"
+              type="textarea"
+              formControlName="vision"
+              class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+            ></textarea>
+            <div
+              *ngIf="form.get('vision')?.invalid && form.get('vision')?.touched"
+              class="text-danger"
+            >
+              ¡Por favor proporciona la vision de tu fundación!
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-indigo-600">
+              Imagen/Logo
+            </label>
+            <div
+              class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md"
+            >
+              <div class="space-y-1 text-center">
+                <svg
+                  class="mx-auto h-12 w-12 text-indigo-600"
+                  stroke="currentColor"
+                  fill="none"
+                  viewBox="0 0 48 48"
+                  aria-hidden="true"
                 >
-                  Volver
-                </button>
-                <button class="crear w-48 text-white border-2" type="submit">
-                  Siguiente
-                </button>
+                  <path
+                    d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <div class="flex text-sm text-gray-600">
+                  <label
+                    for="file-upload"
+                    class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                  >
+                    <span class="">Upload a file</span>
+                    <input
+                      id="file-upload"
+                      name="file-upload"
+                      type="file"
+                      class="sr-only"
+                      (change)="onFileChange($event)"
+                    />
+                  </label>
+                  <p class="pl-1 text-indigo-600">or drag and drop</p>
+                </div>
+                <p class="text-xs text-indigo-600">PNG, JPG, GIF up to 10MB</p>
               </div>
             </div>
           </div>
         </div>
-        <!--buttons part-->
-        <div class="row"></div>
+
+        <div class="flex justify-end mt-6 gap-3">
+          <button
+            class="px-6 py-2 leading-5 text-indigo-600 transition-colors duration-200 transform bg-white rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600"
+          >
+            Volver
+          </button>
+          <button
+            class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600"
+            type="submit"
+          >
+            Siguiente
+          </button>
+        </div>
       </form>
-    </div>
+    </section>
   </div>
 </main>

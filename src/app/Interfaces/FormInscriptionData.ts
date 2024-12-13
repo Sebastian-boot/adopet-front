@@ -30,11 +30,11 @@ export interface FoundationFormData {
   description: string;
   mission: string;
   vision: string;
-  image: string;
-  location: location;
+  logo: string;
+  location: Location;
   legalRepresentatives: LegalRepresentative;
 }
-export interface location {
+export interface Location {
   latitude: number;
   longitude: number;
   address: string;

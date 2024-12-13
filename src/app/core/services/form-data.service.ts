@@ -3,6 +3,7 @@ import {
   FoundationFormData,
   LegalRepresentative,
   RegistrationFormData,
+  Location,
 } from '../../Interfaces/FormInscriptionData';
 
 @Injectable({
@@ -12,6 +13,7 @@ export class FormDataService {
   private formData: RegistrationFormData = {} as RegistrationFormData;
   private foundationFormData: FoundationFormData | null = null;
   private legalRepresentative: LegalRepresentative = {} as LegalRepresentative;
+  private locationData: Location = {} as Location;
 
   setFormData(data: RegistrationFormData) {
     this.formData = data;
@@ -39,5 +41,13 @@ export class FormDataService {
 
   getLegalFormData(): LegalRepresentative {
     return this.legalRepresentative;
+  }
+
+  getLocationData(): Location {
+    return this.locationData;
+  }
+
+  setLocationData(data: Location): void {
+    this.locationData = data;
   }
 }
