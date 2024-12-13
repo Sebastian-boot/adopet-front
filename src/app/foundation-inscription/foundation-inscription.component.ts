@@ -11,7 +11,7 @@ import {
 } from '../Interfaces/FormInscriptionData';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormDataService } from '../core/services/form-data.service';
+import { FormDataService } from '../core/services/foundations-register/form-data.service';
 
 @Component({
   selector: 'app-foundation-inscription',
@@ -45,8 +45,8 @@ export class FoundationInscriptionComponent implements OnInit {
       vision: '',
       logo: '',
       location: {
-        latitude: 0,
-        longitude: 0,
+        latitude: '0',
+        longitude: '0',
         address: '',
         city: '',
         postalCode: '',
@@ -135,6 +135,10 @@ export class FoundationInscriptionComponent implements OnInit {
       }
     }
     return '';
+  }
+
+  onBack(): void {
+    this.router.navigate(['/form-signup']);
   }
 
   onSubmitFailed(errorInfo: any): void {

@@ -44,7 +44,7 @@
             />
             <div
               *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
-              class="text-danger"
+              class="text-red-500 text-sm mt-1"
             >
               ¡Por favor ingresa el nombre de tu fundación!
             </div>
@@ -65,7 +65,7 @@
               *ngIf="
                 form.get('legalName')?.invalid && form.get('legalName')?.touched
               "
-              class="text-danger"
+              class="text-red-500 text-sm mt-1"
             >
               ¡Por favor ingresa el nombre legal de tu fundación!
             </div>
@@ -83,7 +83,7 @@
             />
             <div
               *ngIf="form.get('nit')?.invalid && form.get('nit')?.touched"
-              class="text-danger"
+              class="text-red-500 text-sm mt-1"
             >
               ¡Por ingresa tu nit en este campo!
             </div>
@@ -103,7 +103,7 @@
             />
             <div
               *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
-              class="text-danger"
+              class="text-red-500 text-sm mt-1"
             >
               ¡Por favor ingresa un correo valido!
             </div>
@@ -122,7 +122,7 @@
             />
             <div
               *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched"
-              class="text-danger"
+              class="text-red-500 text-sm mt-1"
             >
               ¡Por favor ingresa un numero de contacto!
             </div>
@@ -157,7 +157,7 @@
                 form.get('description')?.invalid &&
                 form.get('description')?.touched
               "
-              class="text-danger"
+              class="text-red-500 text-sm mt-1"
             >
               ¡Por favor proporciona una descripcion de tu fundación!
             </div>
@@ -178,7 +178,7 @@
               *ngIf="
                 form.get('mission')?.invalid && form.get('mission')?.touched
               "
-              class="text-danger"
+              class="text-red-500 text-sm mt-1"
             >
               ¡Por favor proporciona la misión de tu fundación!
             </div>
@@ -197,7 +197,7 @@
             ></textarea>
             <div
               *ngIf="form.get('vision')?.invalid && form.get('vision')?.touched"
-              class="text-danger"
+              class="text-red-500 text-sm mt-1"
             >
               ¡Por favor proporciona la vision de tu fundación!
             </div>
@@ -249,6 +249,7 @@
         <div class="flex justify-end mt-6 gap-3">
           <button
             class="px-6 py-2 leading-5 text-indigo-600 transition-colors duration-200 transform bg-white rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600"
+            (click)="onBack()"
           >
             Volver
           </button>

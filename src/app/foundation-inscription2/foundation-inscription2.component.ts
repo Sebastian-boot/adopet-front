@@ -11,7 +11,7 @@ import {
   LegalRepresentative,
   Location,
 } from '../Interfaces/FormInscriptionData';
-import { FormDataService } from '../core/services/form-data.service';
+import { FormDataService } from '../core/services/foundations-register/form-data.service';
 import { GoogleMapsModule } from '@angular/google-maps';
 
 @Component({
@@ -62,10 +62,14 @@ export class FoundationInscription2Component implements OnInit {
   onSubmit(event: Event): void {
     event?.preventDefault();
     if (this.form.valid) {
-      this.formData = this.form.value as LegalRepresentative;
+      this.formData = {
+        ...this.form.value,
+        personalId: String(this.form.get('personalId')?.value),
+        phoneNumber: String(this.form.get('phoneNumber')?.value),
+      } as LegalRepresentative;
       this.formLocationData = {
-        latitude: this.selectedLocation?.lat || 0,
-        longitude: this.selectedLocation?.lng || 0,
+        latitude: String(this.selectedLocation?.lat || 0),
+        longitude: String(this.selectedLocation?.lng || 0),
         address: this.form.get('address')?.value || '',
         city: this.form.get('city')?.value || '',
         postalCode: this.form.get('postalCode')?.value || '',
@@ -105,5 +109,6 @@ export class FoundationInscription2Component implements OnInit {
 
   onMapClick(event: google.maps.MapMouseEvent) {
     this.selectedLocation = event.latLng?.toJSON() || null;
+    console.log('Selected Location', this.selectedLocation);
   }
 }
