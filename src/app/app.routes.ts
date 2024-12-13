@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AnimalReportComponent } from './animal-report/animal-report.component';
+import { AnimalReportsComponent } from './animal-reports/animal-reports.component';
 import { FormInscriptionComponent } from './form-inscription/form-inscription.component';
 import { FoundationInscriptionComponent } from './foundation-inscription/foundation-inscription.component';
 import { FoundationInscription2Component } from './foundation-inscription2/foundation-inscription2.component';
@@ -9,7 +10,7 @@ import { Step1Component } from './animal-report/components/step1/step1.component
 import { Step2Component } from './animal-report/components/step2/step2.component';
 import { Step3Component } from './animal-report/components/step3/step3.component';
 import { FoundationsAdopetComponent } from './users/dashboard/foundations-adopet/foundations-adopet.component';
-import { AnimalsReportsComponent } from './FoundationDashboard/animals-reports/animals-reports.component';
+
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -50,8 +51,9 @@ export const routes: Routes = [
     component: FoundationsAdopetComponent,
   },
   {
-    path: 'foundations-main',
-    component: AnimalsReportsComponent,
+    path: 'animals-reports',
+    component: AnimalReportsComponent,
+    title: 'Admin Adopet - Reportes de animales',
   },
   { path: '', redirectTo: '', pathMatch: 'full' },
   { path: '**', redirectTo: '', pathMatch: 'full' },

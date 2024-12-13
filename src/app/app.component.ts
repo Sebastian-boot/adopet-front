@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { GoogleMapsModule } from '@angular/google-maps';
-import { NavbarComponent } from './navbar/navbar.component';
-import { UserAnimalReportsComponent } from './users/dashboard/user-animal-reports/user-animal-reports.component';
+import { SidebarComponent } from './components/Layout/sidebar/sidebar.component';
+import { NavbarComponent } from './components/Layout/navbar/navbar.component';
+import { DarkModeService } from './services/dark-mode/dark-mode.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +13,23 @@ import { UserAnimalReportsComponent } from './users/dashboard/user-animal-report
     RouterOutlet,
     GoogleMapsModule,
     NavbarComponent,
-    UserAnimalReportsComponent,
+    SidebarComponent,
+    NgClass
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'adopet-front';
+  isSidebarOpen = false;
+
+  constructor(private darkModeService: DarkModeService) {
+    window.addEventListener('sidebarToggle', () => {
+      this.isSidebarOpen = !this.isSidebarOpen;
+    });
+  }
+
+  ngOnInit(): void {
+    this.darkModeService.initializeTheme();
+  }
+  title = 'Admin Adopet';
 }
