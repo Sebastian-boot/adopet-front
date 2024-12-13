@@ -9,16 +9,21 @@ import {
 import { RouterLink, Router } from '@angular/router';
 import { LegalRepresentative } from '../Interfaces/FormInscriptionData';
 import { FormDataService } from '../core/services/form-data.service';
+import { GoogleMapsModule } from '@angular/google-maps';
+
 @Component({
   selector: 'app-foundation-inscription2',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, GoogleMapsModule],
   templateUrl: './foundation-inscription2.component.html',
-  styleUrl: './foundation-inscription2.component.css',
+  styleUrls: ['./foundation-inscription2.component.css'],
 })
 export class FoundationInscription2Component implements OnInit {
   form!: FormGroup;
   formData!: LegalRepresentative;
+  center = { lat: 4.8096863519342135, lng: -74.35400356403468 };
+  zoom = 4;
+  selectedLocation: { lat: number; lng: number } | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -33,12 +38,12 @@ export class FoundationInscription2Component implements OnInit {
         this.formData?.name || '',
         [Validators.required, Validators.pattern(/\S+/)],
       ],
-      surname: [
-        this.formData?.surname || '',
+      lastName: [
+        this.formData?.lastName || '',
         [Validators.required, Validators.pattern(/\S+/)],
       ],
-      dni: [this.formData?.dni || '', [Validators.required]],
-      phone: [this.formData?.phone || '', [Validators.required]],
+      personalId: [this.formData?.personalId || '', [Validators.required]],
+      phoneNumber: [this.formData?.phoneNumber || '', [Validators.required]],
       email: [
         this.formData?.email || '',
         [Validators.required, Validators.email],
@@ -76,10 +81,12 @@ export class FoundationInscription2Component implements OnInit {
         return 'Invalid email';
       } else if (control.errors['pattern']) {
         return 'Invalid format';
-      } else if (control.errors['passwordMismatch']) {
-        return 'Passwords do not match';
       }
     }
     return '';
+  }
+
+  onMapClick(event: google.maps.MapMouseEvent) {
+    this.selectedLocation = event.latLng?.toJSON() || null;
   }
 }

@@ -5,7 +5,10 @@ import {
   Validators,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { FoundationFormData } from '../Interfaces/FormInscriptionData';
+import {
+  FoundationFormData,
+  LegalRepresentative,
+} from '../Interfaces/FormInscriptionData';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormDataService } from '../core/services/form-data.service';
@@ -28,12 +31,41 @@ export class FoundationInscriptionComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.formData = this.formDataService.getFoundationFormData();
+    this.formData = this.formDataService.getFoundationFormData() || {
+      name: '',
+      legalName: '',
+      nit: '',
+      email: '',
+      phone: '',
+      website: '',
+      address: '',
+      description: '',
+      mission: '',
+      vision: '',
+      image: '',
+      location: {
+        latitude: 0,
+        longitude: 0,
+        address: '',
+        city: '',
+        postalCode: '',
+      },
+      legalRepresentatives: {
+        name: '',
+        lastName: '',
+        personalId: '',
+        email: '',
+        phoneNumber: '',
+        address: '',
+      },
+    };
+
     this.form = this.fb.group({
-      nameFoundation: [
-        this.formData?.nameFoundation || '',
+      name: [
+        this.formData?.name || '',
         [Validators.required, Validators.pattern(/\S+/)],
       ],
+      legalName: [],
       nit: [this.formData?.nit || '', [Validators.required]],
       email: [
         this.formData?.email || '',
@@ -80,6 +112,7 @@ export class FoundationInscriptionComponent implements OnInit {
     event?.preventDefault();
     if (this.form.valid) {
       this.formData = this.form.value as FoundationFormData;
+      this.formData.legalName = 'Legal Name Test';
       this.formDataService.setFoundationFormData(this.formData);
       this.router.navigate(['/form-signup-foundation2']);
       console.log('Form Submitted', this.form.value);
@@ -102,8 +135,6 @@ export class FoundationInscriptionComponent implements OnInit {
         return 'Invalid email';
       } else if (control.errors['pattern']) {
         return 'Invalid format';
-      } else if (control.errors['passwordMismatch']) {
-        return 'Passwords do not match';
       }
     }
     return '';

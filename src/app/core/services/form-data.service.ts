@@ -10,7 +10,7 @@ import {
 })
 export class FormDataService {
   private formData: RegistrationFormData = {} as RegistrationFormData;
-  private foundationFormData: FoundationFormData = {} as FoundationFormData;
+  private foundationFormData: FoundationFormData | null = null;
   private legalRepresentative: LegalRepresentative = {} as LegalRepresentative;
 
   setFormData(data: RegistrationFormData) {
@@ -21,12 +21,16 @@ export class FormDataService {
     return this.formData;
   }
 
-  setFoundationFormData(data: FoundationFormData) {
+  setFoundationFormData(data: FoundationFormData): void {
     this.foundationFormData = data;
   }
 
-  getFoundationFormData(): FoundationFormData {
+  getFoundationFormData(): FoundationFormData | null {
     return this.foundationFormData;
+  }
+
+  clearFoundationFormData(): void {
+    this.foundationFormData = null;
   }
 
   setLegalFormData(data: LegalRepresentative) {

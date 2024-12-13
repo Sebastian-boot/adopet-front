@@ -10,19 +10,18 @@ export interface RegistrationFormData {
   password: string;
   prefix: string;
   terms_conditions: boolean;
-  foundation: FoundationFormData;
-  legal_representative: LegalRepresentative;
 }
 export interface LegalRepresentative {
   name: string;
-  surname: string;
-  dni: string;
-  phone: string;
+  lastName: string;
+  personalId: string;
   email: string;
+  phoneNumber: string;
   address: string;
 }
 export interface FoundationFormData {
-  nameFoundation: string;
+  name: string;
+  legalName: string;
   nit: string;
   email: string;
   phone: string;
@@ -32,4 +31,13 @@ export interface FoundationFormData {
   mission: string;
   vision: string;
   image: string;
+  location: location;
+  legalRepresentatives: LegalRepresentative;
+}
+export interface location {
+  latitude: number;
+  longitude: number;
+  address: string;
+  city: string;
+  postalCode: string;
 }

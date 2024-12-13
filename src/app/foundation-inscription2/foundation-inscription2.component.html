@@ -49,14 +49,14 @@
           <div class="col-4">
             <div class="form-group">
               <input
-                formControlName="surname"
+                formControlName="lastName"
                 class="form-control rounded-full bg-slate-200"
                 type="text"
                 placeholder="Apellido"
               />
               <div
                 *ngIf="
-                  form.get('surname')?.invalid && form.get('surname')?.touched
+                  form.get('lastName')?.invalid && form.get('lastName')?.touched
                 "
                 class="text-danger"
               >
@@ -67,13 +67,16 @@
           <div class="col-4">
             <div class="form-group">
               <input
-                formControlName="dni"
+                formControlName="personalId"
                 type="number"
                 placeholder="N° de Documento"
                 class="form-control rounded-full bg-slate-200"
               />
               <div
-                *ngIf="form.get('dni')?.invalid && form.get('dni')?.touched"
+                *ngIf="
+                  form.get('personalId')?.invalid &&
+                  form.get('personalId')?.touched
+                "
                 class="text-danger"
               >
                 ¡Por ingresa tu numero de documento!
@@ -86,13 +89,16 @@
           <div class="col-4">
             <div class="form-group">
               <input
-                formControlName="phone"
+                formControlName="phoneNumber"
                 type="number"
                 placeholder="Teléfono"
                 class="form-control rounded-full bg-slate-200"
               />
               <div
-                *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched"
+                *ngIf="
+                  form.get('phoneNumber')?.invalid &&
+                  form.get('phoneNumber')?.touched
+                "
                 class="text-danger"
               >
                 ¡Por favor proporciona el número de contacto del representante
@@ -121,16 +127,88 @@
           <div class="col-4"></div>
 
           <div class="col-4">
-            <div class="form-group">
-              <button
-                class="form-control w-full py-1.5 px-4 bg-gray-200 text-center text-gray-700 rounded-full hover:bg-gray-300 text-base"
-              >
-                + Agregar otro representante legal
-              </button>
-            </div>
+            <div class="form-group"></div>
           </div>
           <div class="col-4"></div>
         </div>
+        <div classs="row">
+          <div class="container pb-2">
+            <h2 class="text-black text-2xl font-sans">
+              Ubicación de la Fundación
+            </h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <input
+                formControlName="city"
+                type="text"
+                placeholder="Ciudad donde se encuentra"
+                class="form-control rounded-full bg-slate-200"
+              />
+              <div
+                *ngIf="form.get('citiy')?.invalid && form.get('city')?.touched"
+                class="text-danger"
+              >
+                ¡Por ingresa la ciudad donde se ubica!
+              </div>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="form-group">
+              <input
+                formControlName="address"
+                type="text"
+                placeholder="Dirección de la fundación"
+                class="form-control rounded-full bg-slate-200"
+              />
+              <div
+                *ngIf="
+                  form.get('address')?.invalid && form.get('address')?.touched
+                "
+                class="text-danger"
+              >
+                ¡Por regalanos la dirección donde te ubicas!
+              </div>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="form-group">
+              <input
+                formControlName="postalCode"
+                type="text"
+                placeholder="Código Postal"
+                class="form-control rounded-full bg-slate-200"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!--Map part-->
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <div class="form-group">
+              <google-map
+                height="400px"
+                width="100%"
+                [center]="center"
+                [zoom]="zoom"
+                (mapClick)="onMapClick($event)"
+              >
+              </google-map>
+              <div *ngIf="selectedLocation">
+                Latitud: {{ selectedLocation.lat }} Longitud:
+                {{ selectedLocation.lng }}
+              </div>
+            </div>
+          </div>
+          <div class="col-2"></div>
+        </div>
+
         <!--Fourth Part-->
         <div class="row">
           <div class="col-4"></div>

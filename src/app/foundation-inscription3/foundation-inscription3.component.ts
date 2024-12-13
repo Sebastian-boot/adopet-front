@@ -29,7 +29,7 @@ export class FoundationInscription3Component implements OnInit {
 
   ngOnInit(): void {
     this.formData = this.formDataService.getFormData();
-    this.formFoundationData = this.formDataService.getFoundationFormData();
+    //this.formFoundationData = this.formDataService.getFoundationFormData();
     this.formLegalData = this.formDataService.getLegalFormData();
   }
 

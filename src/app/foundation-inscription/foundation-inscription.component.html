@@ -1,4 +1,4 @@
-<main class="contianer">
+<main class="container">
   <div class="formSpace bg-white rounded-3xl">
     <div
       class="container p-4 bg-indigo-700 h-24 rounded-t-3xl w-auto text-white text-3xl"
@@ -34,15 +34,12 @@
             <div class="form-group">
               <input
                 type="text"
-                formControlName="nameFoundation"
+                formControlName="name"
                 placeholder="Nombre de la fundación"
                 class="form-control rounded-full bg-slate-200"
               />
               <div
-                *ngIf="
-                  form.get('nameFoundation')?.invalid &&
-                  form.get('nameFoundation')?.touched
-                "
+                *ngIf="form.get('name')?.invalid && form.get('name')?.touched"
                 class="text-danger"
               >
                 ¡Por favor ingresa el nombre de tu fundación!
@@ -117,24 +114,7 @@
               </div>
             </div>
           </div>
-          <div class="col-4">
-            <div class="form-group">
-              <input
-                formControlName="address"
-                type="text"
-                placeholder="Dirección"
-                class="form-control rounded-full bg-slate-200"
-              />
-              <div
-                *ngIf="
-                  form.get('address')?.invalid && form.get('address')?.touched
-                "
-                class="text-danger"
-              >
-                ¡Por favor ingresa la dirección de tu fundación!
-              </div>
-            </div>
-          </div>
+          <div class="col-4"></div>
         </div>
 
         <!--Third Part-->
@@ -248,11 +228,7 @@
                 >
                   Volver
                 </button>
-                <button
-                  class="crear w-48 text-white border-2"
-                  type="submit"
-                  (click)="onSubmit($event)"
-                >
+                <button class="crear w-48 text-white border-2" type="submit">
                   Siguiente
                 </button>
               </div>

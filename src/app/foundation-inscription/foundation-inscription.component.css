@@ -7,7 +7,7 @@ main {
 .formSpace {
   margin-bottom: 20px;
   width: 95rem;
-  height: 87vh;
+  height: auto;
   border-radius: 5%;
 }
 .inputslogin {
