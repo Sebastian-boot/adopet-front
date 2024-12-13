@@ -4,6 +4,7 @@ export interface AuthResponse {
   lastName: string;
   username: string;
   email: string;
+  phoneNumber: string;
   token: string;
   foundationId: string;
 }
@@ -14,6 +15,7 @@ export interface User {
   lastName: string;
   username: string;
   email: string;
+  phoneNumber: string;
   foundationId: string;
 }
 
