@@ -1,10 +1,16 @@
 <div class="antialiased bg-gray-50 dark:bg-gray-900 min-h-screen flex flex-col">
-  <app-navbar></app-navbar>
-  <app-sidebar></app-sidebar>
-  <main class="p-4 pt-20 transition-all duration-300 lg:ml-64 flex-grow min-h-screen"
-        [ngClass]="{'ml-64': isSidebarOpen, 'ml-0': !isSidebarOpen}">
-    <div class="rounded-lg dark:border-gray-700 mt-4">
-      <router-outlet />
-    </div>
-  </main>
+  <ng-container *ngIf="!isLoginRoute">
+    <app-navbar></app-navbar>
+    <app-sidebar></app-sidebar>
+    <main class="p-4 pt-20 transition-all duration-300 lg:ml-64 flex-grow min-h-screen"
+          [ngClass]="{'ml-64': isSidebarOpen, 'ml-0': !isSidebarOpen}">
+      <div class="rounded-lg dark:border-gray-700 mt-4">
+        <router-outlet />
+      </div>
+    </main>
+  </ng-container>
+
+  <ng-container *ngIf="isLoginRoute">
+    <router-outlet />
+  </ng-container>
 </div>

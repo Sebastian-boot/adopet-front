@@ -10,12 +10,24 @@ import { Step1Component } from './animal-report/components/step1/step1.component
 import { Step2Component } from './animal-report/components/step2/step2.component';
 import { Step3Component } from './animal-report/components/step3/step3.component';
 import { FoundationsAdopetComponent } from './users/dashboard/foundations-adopet/foundations-adopet.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { authGuard } from './core/guards/auth.guard';
+import { publicGuard } from './core/guards/public.guard';
 
 
 export const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'animal-report', component: AnimalReportComponent },
-  { path: 'form-signup', component: FormInscriptionComponent },
+  {
+    path: 'login',
+    component: LoginComponent,
+    title: 'Adopet - Iniciar sesión',
+    canActivate: [publicGuard]
+  },
+  {
+    path: 'form-signup',
+    component: FormInscriptionComponent,
+    title: 'Adopet - Crear cuenta',
+    canActivate: [publicGuard]
+  },
   {
     path: 'form-signup-foundation1',
     component: FoundationInscriptionComponent,
@@ -51,9 +63,16 @@ export const routes: Routes = [
     component: FoundationsAdopetComponent,
   },
   {
+    path: 'dashboard',
+    component: DashboardComponent,
+    title: 'Adopet - Dashboard',
+    canActivate: [authGuard]
+  },
+  {
     path: 'animals-reports',
     component: AnimalReportsComponent,
     title: 'Admin Adopet - Reportes de animales',
+    canActivate: [authGuard]
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login', pathMatch: 'full' },

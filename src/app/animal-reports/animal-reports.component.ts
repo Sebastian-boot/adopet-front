@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { AnimalReport } from '../types/animal-report';
-import { AnimalReportsService } from '../services/animal-reports/animal-reports.service';
+import { AnimalReport } from '../core/models/anima-report/animal-report';
+import { AnimalReportsService } from '../core/services/animal-reports/animal-reports.service';
+import { AuthService } from '../core/services/auth/auth.service';
 
 @Component({
   selector: 'app-animal-reports',
@@ -16,8 +17,10 @@ export class AnimalReportsComponent {
   @ViewChild('scrollContainer') scrollContainer!: ElementRef;
 
   selectedReport: any = null;
+  currentUser$: any;
   canScrollLeft = false;
   canScrollRight = true;
+  foundationId: string = '';
 
   ngAfterViewInit() {
     this.checkScrollButtons();
@@ -55,9 +58,14 @@ export class AnimalReportsComponent {
   }
 
   reports: AnimalReport[] = [];
-  foundationId = 'afb84788-1956-4f76-94f0-e9e367cacc87';
 
-  constructor(private reportsService: AnimalReportsService) {}
+  constructor(private reportsService: AnimalReportsService, private authService: AuthService) {
+    this.currentUser$ = this.authService.currentUser$;
+    this.currentUser$.subscribe((user: any) => {
+      this.foundationId = user.foundationId;
+    });
+  }
+
 
   ngOnInit() {
     setTimeout(() => {

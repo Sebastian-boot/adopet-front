@@ -1,87 +1,75 @@
-<main class="">
-  <div
-    class="containerL display-flex align-items-center justify-content-center"
-  >
-    <div class="Login">
-      <div class="title">
-        <h3>Iniciar Sesión</h3>
+<div class="min-h-screen  flex items-center justify-center">
+  <div class="w-full max-w-6xl bg-white rounded-2xl shadow-lg flex flex-col md:flex-row overflow-hidden">
+    <div class="w-full md:w-1/2 p-8">
+      <div class="text-center mb-8">
+        <h3 class="text-2xl font-bold text-gray-800">Iniciar Sesión</h3>
       </div>
-      <form
-        [formGroup]="loginForm"
-        (ngSubmit)="onSubmit()"
-        id="login-form"
-        class="login-form"
-      >
-        <div
-          *ngIf="loginError"
-          id="error-message"
-          class="error-message text-danger text-center"
-          style="font-size: 2rem"
-        >
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
+        <div *ngIf="loginError"
+             class="text-red-600 text-center text-sm bg-red-50 plogin-illustration.svg-2 rounded">
           {{ loginError }}
         </div>
-        <div class="inputs pr-8">
-          <input
-            class="inputslogin"
-            type="text"
-            formControlName="username"
-            placeholder="Nombre de Usuario o Email"
-          />
-          <div
-            *ngIf="
-              loginForm.get('username')?.invalid &&
-              loginForm.get('username')?.touched
-            "
-            class="text-danger text-center"
-          >
-            ¡Por favor ingresa tu nombre de usuario o email!
+
+        <div class="space-y-4">
+          <div>
+            <input type="text"
+                   formControlName="username"
+                   placeholder="Nombre de Usuario o Email"
+                   class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+            <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"
+                 class="text-red-500 text-sm mt-1">
+              ¡Por favor ingresa tu nombre de usuario o email!
+            </div>
           </div>
-          <input
-            class="inputslogin"
-            type="password"
-            formControlName="password"
-            placeholder="Contraseña"
-          />
-          <div
-            *ngIf="
-              loginForm.get('password')?.invalid &&
-              loginForm.get('password')?.touched
-            "
-            class="text-danger text-center"
-          >
-            ¡Por favor ingresa tu contraseña!
+
+          <div>
+            <input type="password"
+                   formControlName="password"
+                   placeholder="Contraseña"
+                   class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+            <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                 class="text-red-500 text-sm mt-1">
+              ¡Por favor ingresa tu contraseña!
+            </div>
           </div>
-          <div class="checkbox">
-            <input class="p-10" type="checkbox" formControlName="rememberMe" />
-            <h5>Recordar Inicio de sesión</h5>
+
+          <div class="flex items-center">
+            <input type="checkbox"
+                   formControlName="rememberMe"
+                   class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary" />
+            <label class="ml-2 text-sm text-gray-600">Recordar Inicio de sesión</label>
           </div>
         </div>
-        <div class="button">
-          <button class="iniciar" type="submit">Iniciar Sesión</button>
-          <button
-            class="crear border-indigo-700 border-2"
-            type="button"
-            routerLink="/form-signup"
-          >
+
+
+        <div class="space-y-4">
+          <button type="submit"
+                  class="w-full py-3 px-4 bg-primary hover:bg-primary/90 text-white rounded-lg transition">
+            Iniciar Sesión
+          </button>
+          <button type="button"
+                  routerLink="/form-signup"
+                  class="w-full py-3 px-4 border-2 border-primary text-primary hover:bg-gray-50 rounded-lg transition">
             Crear Cuenta
           </button>
         </div>
       </form>
     </div>
-    <div class="Textright">
-      <h4 class="parrafo">Qué gusto verte de nuevo</h4>
-      <h2 class="titletext">Bienvenido de nuevo</h2>
 
-      <div class="container mx-52 pb-11 pt-2">
-        <div class="h-4 w-2/4 bg-white rounded-lg"></div>
-      </div>
+    <div class="w-full md:w-1/2 bg-primary p-8 text-white flex-col justify-center items-center md:flex hidden">
+      <h4 class="text-xl mb-2">Qué gusto verte de nuevo</h4>
+      <h2 class="text-4xl font-bold mb-8">Bienvenido de nuevo</h2>
 
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
-        natus libero earum corporis, quam odio, suscipit consequuntur optio a
-        deserunt expedita illo accusamus atque sit quidem distinctio quae vel!
-        Totam.
-      </p>
+      <div class="w-1/2 h-1 bg-white rounded-lg mb-8"></div>
+
+    <p class="text-center text-white/80 mb-8">
+      Ingresa a tu cuenta para gestionar tus rescates, seguir el progreso de adopciones y mucho más.
+    </p>
+
+      <img src="assets/images/login-illustration.svg"
+           alt="Ilustración de login"
+           class="w-3/4 h-auto max-w-md" />
     </div>
   </div>
-</main>
+</div>
