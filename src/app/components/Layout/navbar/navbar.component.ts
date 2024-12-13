@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { DarkModeService } from '../../../core/services/dark-mode/dark-mode.service';
 import { AuthService } from '../../../core/services/auth/auth.service';
@@ -31,6 +31,18 @@ export class NavbarComponent {
   }
   onLogout(): void {
     this.authService.logout();
+  }
+  isUserMenuOpen = false;
+
+  toggleUserMenu() {
+    this.isUserMenuOpen = !this.isUserMenuOpen;
+  }
+
+  @HostListener('document:click', ['$event'])
+  closeMenuOnClickOutside(event: Event) {
+    if (!(event.target as HTMLElement).closest('#user-menu-button')) {
+      this.isUserMenuOpen = false;
+    }
   }
 }
 
