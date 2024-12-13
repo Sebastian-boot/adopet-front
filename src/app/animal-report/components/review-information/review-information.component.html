@@ -1,0 +1,43 @@
+<div>
+  <app-card-title [title]="'Revisar Información'" [description]="'Revisa los datos del reporte'"></app-card-title>
+
+  <div class="space-y-4 bg-gray-50 p-4 rounded">
+    <div><strong>Título:</strong> {{ formData.title }}</div>
+    <div><strong>Descripción:</strong> {{ formData.description }}</div>
+    <div>
+      <strong>Reportante:</strong> {{ formData.reporter.name }} {{ formData.reporter.lastName }}
+    </div>
+    <div>
+      <strong>Contacto:</strong> {{ formData.reporter.email }} / {{ formData.reporter.phoneNumber }}
+    </div>
+    <div>
+      <strong>Ubicación:</strong> {{ formData.location.address }}, {{ formData.location.postalCode }}
+    </div>
+    <div>
+      <strong>Fecha y hora del abandono:</strong> {{ getFormattedDate(formData.abandonmentDateTime) }}
+    </div>
+    <div>
+      <strong>Estado del abandono:</strong> {{ formData.abandonmentStatus }}
+    </div>
+    <div>
+      <strong>Imágenes:</strong>
+      <app-preview-images [images]="formData.images" [isRemovable]="false"></app-preview-images>
+    </div>
+    <div>
+      <strong>Animales Reportados:</strong>
+      <div *ngFor="let animal of formData.animals; let i = index" class="ml-4 mt-2 p-2 bg-white rounded">
+        <div>Nombre: {{ animal.name || 'Sin nombre' }}</div>
+        <div>Especie: {{ animal.specie }}</div>
+        <div>Género: {{ animal.gender }}</div>
+        <div>Edad: {{ animal.age }}</div>
+        <div>Peso: {{ animal.weight }}</div>
+        <div>Raza: {{ animal.breed }}</div>
+        <div>Color de pelaje: {{ animal.coatColor }}</div>
+        <div>Descripción: {{ animal.description }}</div>
+        <div *ngIf="animal.image">
+          <app-preview-images [images]="[animal.image]" [isRemovable]="false"></app-preview-images>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

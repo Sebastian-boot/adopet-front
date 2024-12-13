@@ -1,0 +1,68 @@
+<div>
+  <app-card-title [title]="'Detalles de los Animales'"
+    [description]="'Ingresa los datos de los animales y ubicación'"></app-card-title>
+
+  <div *ngFor="let animal of formData.animals; let index = index" class="border p-4 mb-4 rounded relative">
+    <button type="button"
+      class="absolute top-2 right-2 bg-white rounded-md p-1 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
+      (click)="handleRemoveAnimal.emit(index)">
+      <span class="sr-only">Close menu</span>
+      <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+        aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <div class="grid grid-cols-2 gap-4 pt-8">
+      <input type="text" name="name" [value]="animal.name || ''" (change)="onAnimalChange(index, $event)"
+        placeholder="Nombre del animal (opcional)" class="w-full p-2 border rounded col-span-2" />
+
+      <select name="specie" [value]="animal.specie" (change)="onAnimalChange(index, $event)"
+        class="w-full p-2 border rounded" required>
+        <option value="">Selecciona especie</option>
+        <option *ngFor="let specie of species" [value]="specie.value">
+          {{ specie.value }}
+        </option>
+      </select>
+
+      <select name="breed" [value]="animal.breed || ''" (change)="onAnimalChange(index, $event)"
+        class="w-full p-2 border rounded" [disabled]="!animal.specie">
+        <option value="">Selecciona raza</option>
+        <option *ngFor="let breed of getBreedsBySpecieId(animal.specie)" [value]="breed.value">
+          {{ breed.value }}
+        </option>
+      </select>
+
+      <select name="gender" [value]="animal.gender" (change)="onAnimalChange(index, $event)"
+        class="w-full p-2 border rounded" required>
+        <option value="">Selecciona género</option>
+        <option *ngFor="let option of genderOptions" [value]="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+
+      <input type="number" name="age" [value]="animal.age" (change)="onAnimalChange(index, $event)"
+        placeholder="Edad (opcional)" class="w-full p-2 border rounded" required />
+
+      <input type="number" name="weight" [value]="animal.weight" (change)="onAnimalChange(index, $event)"
+        placeholder="Peso (opcional)" class="w-full p-2 border rounded" required />
+
+      <input type="text" name="coatColor" [value]="animal.coatColor" (change)="onAnimalChange(index, $event)"
+        placeholder="Color de pelaje" class="w-full p-2 border rounded" required />
+
+      <textarea name="description" [value]="animal.description" (change)="onAnimalChange(index, $event)"
+        placeholder="Descripción del animal" class="w-full p-2 border rounded col-span-2" rows="3" required></textarea>
+
+      <div class="col-span-2">
+        <app-image-uploader [multiple]="false" [label]="'animal-' + index"
+          [initialImages]="animal.image ? [animal.image] : []"
+          (imagesUpload)="onImageUpload(index, $event)"></app-image-uploader>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" (click)="handleAddAnimal.emit()"
+    class="w-full bg-green-400 mb-4 text-sm text-white rounded hover:bg-green-500">
+    Añadir Animal
+  </button>
+</div>

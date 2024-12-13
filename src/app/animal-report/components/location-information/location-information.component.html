@@ -1,0 +1,12 @@
+<div>
+  <h2>Ubicación del Abandono</h2>
+  <p>Selecciona la ubicación del abandono</p>
+  <div class="grid grid-cols-2 gap-4 pt-4 mb-4">
+    <input type="text" [value]="formData.location?.address || ''" disabled
+      class="w-full p-2 border rounded col-span-2" />
+    <input type="text" [value]="formData.location?.city || ''" disabled class="w-full p-2 border rounded" />
+    <input type="text" [value]="formData.location?.postalCode || ''" disabled class="w-full p-2 border rounded" />
+  </div>
+  <app-location-picker (locationSelect)="onLocationSelect($event)"></app-location-picker>
+</div>
+

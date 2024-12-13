@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AnimalReport } from '../../models/anima-report/animal-report';
 import { Observable } from 'rxjs';
+import { Report } from '../../models/form-report/report';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +21,8 @@ export class AnimalReportsService {
         },
       }
     );
+  }
+  createReport(formData: Report): Observable<AnimalReport> {
+    return this.http.post<AnimalReport>(`${this.apiUrl}/reports-abandonment`, formData);
   }
 }

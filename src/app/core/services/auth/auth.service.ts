@@ -48,6 +48,7 @@ export class AuthService {
       lastName: response.lastName,
       username: response.username,
       email: response.email,
+      phoneNumber: response.phoneNumber,
       foundationId: response.foundationId
     }));
     this.currentUserSubject.next(JSON.parse(localStorage.getItem('userData') || '{}'));
