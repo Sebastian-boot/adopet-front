@@ -72,6 +72,13 @@ export class SaveFriendComponent implements OnInit {
     }
   }
 
+  handleReportImagesUpload(urls: string[]): void {
+    this.formData = {
+      ...this.formData,
+      images: urls
+    }
+  }
+
   nextStep(): void {
     if (this.validateCurrentStep()) {
       this.currentStep++;

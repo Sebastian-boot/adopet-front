@@ -13,7 +13,8 @@
 
       <ng-container [ngSwitch]="currentStep">
         <app-report-information *ngSwitchCase="1" [formData]="formData"
-          (formChange)="handleChange($event)"></app-report-information>
+          (formChange)="handleChange($event)"
+          (reportImagesUpload)="handleReportImagesUpload($event)"></app-report-information>
         <app-animal-information *ngSwitchCase="2" [formData]="formData"
           (handleAddAnimal)="handleAddAnimal()"
           (handleRemoveAnimal)="handleRemoveAnimal($event)"
