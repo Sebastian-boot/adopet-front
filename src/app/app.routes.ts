@@ -10,6 +10,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { authGuard } from './core/guards/auth.guard';
 import { publicGuard } from './core/guards/public.guard';
 import { SaveFriendComponent } from './animal-report/save-friend.component';
+import { userGuard } from './core/guards/user.guard';
+import { foundationUserGuard } from './core/guards/foundation-user.guard copy';
 
 
 export const routes: Routes = [
@@ -28,24 +30,30 @@ export const routes: Routes = [
   {
     path: 'form-signup-foundation1',
     component: FoundationInscriptionComponent,
+    canActivate: [publicGuard]
+
   },
   {
     path: 'form-signup-foundation2',
     component: FoundationInscription2Component,
+    canActivate: [publicGuard]
+
   },
   {
     path: 'form-signup-foundation3',
     component: FoundationInscription3Component,
+    canActivate: [publicGuard]
   },
   {
     path: 'save-friend',
     component: SaveFriendComponent,
     title: 'Adopet - Salvar un Amigo',
-    canActivate: [authGuard]
+    canActivate: [authGuard, userGuard]
   },
   {
     path: 'users-main',
     component: FoundationsAdopetComponent,
+    canActivate: [authGuard, userGuard]
   },
   {
     path: 'dashboard',
@@ -57,7 +65,7 @@ export const routes: Routes = [
     path: 'animals-reports',
     component: AnimalReportsComponent,
     title: 'Admin Adopet - Reportes de animales',
-    canActivate: [authGuard]
+    canActivate: [authGuard, foundationUserGuard]
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login', pathMatch: 'full' },

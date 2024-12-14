@@ -79,7 +79,6 @@ export class AnimalReportsComponent {
       .subscribe({
         next: (reports) => {
           this.reports = reports;
-          console.log('Fetched reports:', reports);
         },
         error: (error) => {
           console.error('Error fetching reports:', error);

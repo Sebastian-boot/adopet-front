@@ -14,10 +14,10 @@
     </button>
 
     <div class="grid grid-cols-2 gap-4 pt-8">
-      <input type="text" name="name" [value]="animal.name || ''" (change)="onAnimalChange(index, $event)"
+      <input type="text" name="name" [(ngModel)]="animal.name" (change)="onAnimalChange(index, $event)"
         placeholder="Nombre del animal (opcional)" class="w-full p-2 border rounded col-span-2" />
 
-      <select name="specie" [value]="animal.specie" (change)="onAnimalChange(index, $event)"
+      <select name="specie" [(ngModel)]="animal.specie" (change)="onAnimalChange(index, $event)"
         class="w-full p-2 border rounded" required>
         <option value="">Selecciona especie</option>
         <option *ngFor="let specie of species" [value]="specie.value">
@@ -25,7 +25,7 @@
         </option>
       </select>
 
-      <select name="breed" [value]="animal.breed || ''" (change)="onAnimalChange(index, $event)"
+      <select name="breed" [(ngModel)]="animal.breed" (change)="onAnimalChange(index, $event)"
         class="w-full p-2 border rounded" [disabled]="!animal.specie">
         <option value="">Selecciona raza</option>
         <option *ngFor="let breed of getBreedsBySpecieId(animal.specie)" [value]="breed.value">
@@ -33,7 +33,7 @@
         </option>
       </select>
 
-      <select name="gender" [value]="animal.gender" (change)="onAnimalChange(index, $event)"
+      <select name="gender" [(ngModel)]="animal.gender" (change)="onAnimalChange(index, $event)"
         class="w-full p-2 border rounded" required>
         <option value="">Selecciona género</option>
         <option *ngFor="let option of genderOptions" [value]="option.value">
