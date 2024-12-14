@@ -17,7 +17,8 @@
         <app-animal-information *ngSwitchCase="2" [formData]="formData"
           (handleAddAnimal)="handleAddAnimal()"
           (handleRemoveAnimal)="handleRemoveAnimal($event)"
-          (handleAnimalChange)="handleAnimalChange($event)">
+          (handleAnimalChange)="handleAnimalChange($event)"
+          (handleAnimalImageUpload)="handleAnimalImageUpload($event)">
         </app-animal-information>
         <app-location-information *ngSwitchCase="3" [formData]="formData"></app-location-information>
         <app-review-information *ngSwitchCase="4" [formData]="formData"></app-review-information>

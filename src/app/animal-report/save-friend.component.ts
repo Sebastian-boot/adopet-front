@@ -127,4 +127,11 @@ export class SaveFriendComponent implements OnInit {
       [name]: value
     };
   }
+
+  handleAnimalImageUpload({ index, urls }: { index: number, urls: string[] }): void {
+    this.formData.animals[index] = {
+      ...this.formData.animals[index],
+      image: urls[0] // Asumiendo que solo manejamos una imagen
+    };
+  }
 }
