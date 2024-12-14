@@ -6,25 +6,23 @@ import { Router } from '@angular/router';
 import { AuthResponse, User } from '../../models/auth/auth.models';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5116/api/auth';
+  private apiUrl = 'http://localhost:8080/api/auth';
   private tokenExpirationTimer: any;
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   currentUser$ = this.currentUserSubject.asObservable();
 
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) {
+  constructor(private http: HttpClient, private router: Router) {
     this.checkToken();
   }
 
   login(username: string, password: string): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/login`, { username, password })
+    return this.http
+      .post<AuthResponse>(`${this.apiUrl}/login`, { username, password })
       .pipe(
-        tap(response => this.handleAuthentication(response)),
+        tap((response) => this.handleAuthentication(response)),
         catchError(this.handleError)
       );
   }

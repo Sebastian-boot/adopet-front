@@ -1,4 +1,5 @@
 export interface RegistrationFormData {
+  foundationId?: string;
   name: string;
   lastName: string;
   personalId: string;
@@ -35,8 +36,8 @@ export interface FoundationFormData {
   legalRepresentatives: LegalRepresentative;
 }
 export interface Location {
-  latitude: number;
-  longitude: number;
+  latitude: string;
+  longitude: string;
   address: string;
   city: string;
   postalCode: string;

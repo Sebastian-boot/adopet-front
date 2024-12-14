@@ -18,7 +18,7 @@
         <div class="step-circle-on">3</div>
       </div>
     </div>
-    <div class="container">
+    <div class="container pl-7 p-3">
       <h2 class="text-black text-2xl font-sans">Revisa tu información</h2>
       <p>
         En esta sección podrás revisar y confirmar toda la información que has
@@ -26,7 +26,7 @@
         datos sean correctos antes de continuar.
       </p>
     </div>
-    <div class="container my-6">
+    <div class="container mx-auto my-6 px-4 sm:px-6 lg:px-8">
       <!-- Información del Usuario -->
       <div class="bg-gray-100 rounded-lg p-6 mb-6">
         <h3 class="text-xl font-bold text-indigo-700 mb-4">
@@ -52,7 +52,7 @@
         <div class="grid grid-cols-2 gap-4">
           <div>
             <p class="text-gray-600">Nombre de la fundación:</p>
-            <p class="font-semibold">{{ formFoundationData.name }}</p>
+            <p class="font-semibold">{{ formData.name }}</p>
           </div>
           <div>
             <p class="text-gray-600">NIT:</p>
@@ -60,18 +60,18 @@
           </div>
           <div>
             <p class="text-gray-600">Dirección:</p>
-            <p class="font-semibold">{{ formFoundationData.address }}</p>
+            <p class="font-semibold">{{ formLocaltionData.address }}</p>
           </div>
           <div>
             <p class="text-gray-600">Teléfono:</p>
             <p class="font-semibold">{{ formFoundationData.phone }}</p>
           </div>
           <div>
-            <p class="text-gray-600">Mision:</p>
+            <p class="text-gray-600">Misión:</p>
             <p class="font-semibold">{{ formFoundationData.mission }}</p>
           </div>
           <div>
-            <p class="text-gray-600">Vision:</p>
+            <p class="text-gray-600">Visión:</p>
             <p class="font-semibold">{{ formFoundationData.vision }}</p>
           </div>
           <div>
@@ -106,17 +106,18 @@
         </div>
       </div>
     </div>
-    <div class="flex gap-4 float-end mr-10 mt-[-1rem]">
-      <div class="button-container">
+
+    <div class="flex justify-end mr-10 mt-[-1rem] pb-6">
+      <div class="button-container space-x-4">
         <button
-          class="iniciar text-indigo-700 w-36"
+          class="bg-white text-indigo-700 border border-indigo-700 px-4 py-2 rounded-lg hover:bg-indigo-700 hover:text-white transition-colors"
           type="submit"
           (click)="onBack()"
         >
           Volver
         </button>
         <button
-          class="crear w-48 text-white border-2"
+          class="bg-indigo-700 text-white px-4 py-2 rounded-lg hover:bg-indigo-800 transition-colors"
           type="submit"
           (click)="onSubmit($event)"
         >
