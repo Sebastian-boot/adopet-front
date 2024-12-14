@@ -18,7 +18,7 @@
     <div class="flex overflow-x-hidden space-x-4 pb-4" #scrollContainer>
       <div *ngFor="let report of reports"
         (click)="openModal(report)"
-        class="flex-shrink-0 w-80 bg-white shadow-lg rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300 cursor-pointer">
+        class="flex-shrink-0 w-80 bg-white shadow-lg rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300 cursor-pointer dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
         <div class="relative">
           <img [src]="report.images[0]" alt="Animal Report Image"
             class="w-full h-56 object-cover">
@@ -29,23 +29,23 @@
         </div>
 
         <div class="p-4">
-          <h3 class="font-bold text-lg mb-2 truncate">{{ report.title }}</h3>
+          <h3 class="font-bold text-lg mb-2 truncate dark:text-white">{{ report.title }}</h3>
 
-          <p class="text-sm text-gray-500 line-clamp-2 mb-4">
+          <p class="text-sm text-gray-500 line-clamp-2 mb-4 dark:text-gray-400">
             {{ report.description }}
           </p>
 
           <div class="mb-4 space-y-2">
-            <p class="text-sm text-gray-600">
+            <p class="text-sm text-gray-600 dark:text-gray-400">
               <i class="fas fa-map-marker-alt mr-2"></i>
               {{ report.address }}
             </p>
-            <p class="text-sm text-gray-600">
+            <p class="text-sm text-gray-600 dark:text-gray-400">
               <i class="fas fa-clock mr-2"></i>
               Duración: {{ report.abandonmentDuration }}
             </p>
             <p class="text-sm">
-              Estado:
+              <span class="font-semibold text-gray-600 dark:text-gray-400">Estado:</span>
               <span [class]="'font-semibold ' +
                 (report.status === 'Pending' ? 'text-yellow-600' :
                 report.status === 'In Progress' ? 'text-blue-600' :
@@ -86,10 +86,10 @@
 </div>
 
 
-<div *ngIf="selectedReport" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-  <div class="bg-white rounded-lg p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+<div *ngIf="selectedReport" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 ">
+  <div class="bg-white dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
     <div class="flex justify-between items-center mb-4">
-      <h3 class="text-2xl font-bold">{{ selectedReport.title }}</h3>
+      <h3 class="text-2xl font-bold dark:text-white">{{ selectedReport.title }}</h3>
       <button (click)="closeModal()" class="text-gray-500 hover:text-gray-700">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -97,12 +97,12 @@
       </button>
     </div>
 
-    <p class="text-gray-600 mb-4 text-lg">
+    <p class="text-gray-600 mb-4 text-lg dark:text-gray-400">
       {{ selectedReport.description }}
     </p>
 
     <div class="mb-8">
-      <div class="grid gap-4 mb-4">
+      <div class="grid gap-4 mb-4 dark:text-white">
         <div>
           <p ><span class="font-medium">Dirección:</span> {{ selectedReport.address }}</p>
           <p><span class="font-medium">Duración del abandono:</span> {{ selectedReport.abandonmentDuration }}</p>
@@ -125,7 +125,7 @@
     <h4 class="font-semibold text-gray-700 mb-4">Animales Reportados</h4>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div *ngFor="let animal of selectedReport.animals"
-           class="border rounded-lg p-4 bg-gray-50">
+           class="border rounded-lg p-4 bg-gray-50 dark:bg-gray-700">
         <h5 class="font-bold text-lg mb-3">{{ animal.specie }}</h5>
         <div class="space-y-2">
           <p><span class="font-medium">Nombre:</span> {{ animal.name }}</p>
