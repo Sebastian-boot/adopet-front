@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { Report } from '../../../core/models/form-report/report';
+import { Animal, Report } from '../../../core/models/form-report/report';
 import { Species, Breed } from '../../../core/models/config/config';
 import { ConfigService } from '../../../core/services/config/config-service';
 import { firstValueFrom } from 'rxjs';
@@ -19,10 +19,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AnimalInformationComponent implements OnInit {
   @Input() formData!: Report;
-  @Output() handleAddAnimal = new EventEmitter<void>();
-  @Output() handleRemoveAnimal = new EventEmitter<number>();
-  @Output() handleAnimalChange = new EventEmitter<{ index: number, event: Event }>();
-  @Output() handleAnimalImageUpload = new EventEmitter<{ index: number, urls: string[] }>();
+  @Output() formChange = new EventEmitter<Report>();
 
   species: Species[] = [];
   genderOptions = [
@@ -49,11 +46,36 @@ export class AnimalInformationComponent implements OnInit {
     return selectedSpecie?.breeds || [];
   }
 
-  onAnimalChange(index: number, event: Event): void {
-    this.handleAnimalChange.emit({ index, event });
+  addAnimal() {
+    const newAnimal: Animal = {
+      name: "",
+      image: "",
+      description: "",
+      coatColor: "",
+      specie: "",
+      gender: "",
+      age: 0,
+      weight: 0,
+      breed: "",
+    };
+
+    this.formData.animals.push(newAnimal);
+    this.formChange.emit(this.formData);
   }
 
-  onImageUpload(index: number, urls: string[]): void {
-    this.handleAnimalImageUpload.emit({ index, urls });
+  onAnimalChange(index: number, field: keyof Animal, event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.formData.animals[index][field] = target.value;
+    this.formChange.emit(this.formData);
+  }
+
+  removeAnimal(index: number) {
+    this.formData.animals.splice(index, 1);
+    this.formChange.emit(this.formData);
+  }
+
+  onAnimalImageUpload(index: number, urls: string[]) {
+    this.formData.animals[index].image = urls[0];
+    this.formChange.emit(this.formData);
   }
 }

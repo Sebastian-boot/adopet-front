@@ -12,17 +12,25 @@
       </div>
 
       <ng-container [ngSwitch]="currentStep">
-        <app-report-information *ngSwitchCase="1" [formData]="formData"
-          (formChange)="handleChange($event)"
-          (reportImagesUpload)="handleReportImagesUpload($event)"></app-report-information>
-        <app-animal-information *ngSwitchCase="2" [formData]="formData"
-          (handleAddAnimal)="handleAddAnimal()"
-          (handleRemoveAnimal)="handleRemoveAnimal($event)"
-          (handleAnimalChange)="handleAnimalChange($event)"
-          (handleAnimalImageUpload)="handleAnimalImageUpload($event)">
+        <app-report-information
+          *ngSwitchCase="1"
+          [formData]="formData"
+          (formChange)="formData = $event">
+        </app-report-information>
+        <app-animal-information
+          *ngSwitchCase="2"
+          [formData]="formData"
+          (formChange)="formData = $event">
         </app-animal-information>
-        <app-location-information *ngSwitchCase="3" [formData]="formData"></app-location-information>
-        <app-review-information *ngSwitchCase="4" [formData]="formData"></app-review-information>
+        <app-location-information
+          *ngSwitchCase="3"
+          [formData]="formData"
+          (formChange)="formData = $event">
+        </app-location-information>
+        <app-review-information
+          *ngSwitchCase="4"
+          [formData]="formData">
+        </app-review-information>
       </ng-container>
 
       <app-navigation-controls [currentStep]="currentStep" (prevStep)="prevStep()"

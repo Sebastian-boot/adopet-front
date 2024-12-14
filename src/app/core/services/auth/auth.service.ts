@@ -49,7 +49,8 @@ export class AuthService {
       username: response.username,
       email: response.email,
       phoneNumber: response.phoneNumber,
-      foundationId: response.foundationId
+      foundationId: response.foundationId,
+      isFoundationUser: response.foundationId !== null
     }));
     this.currentUserSubject.next(JSON.parse(localStorage.getItem('userData') || '{}'));
     this.autoLogout(expirationDate.getTime() - new Date().getTime());

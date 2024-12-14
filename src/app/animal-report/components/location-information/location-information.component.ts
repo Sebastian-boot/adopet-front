@@ -16,9 +16,10 @@ import { LocationPickerComponent } from '../location-picker/location-picker.comp
 })
 export class LocationInformationComponent {
   @Input() formData!: Report;
-  @Output() locationSelect = new EventEmitter<Location>();
+  @Output() formChange = new EventEmitter<Report>();
 
   onLocationSelect(location: Location): void {
-    this.locationSelect.emit(location);
+    this.formData.location = location;
+    this.formChange.emit(this.formData);
   }
 }

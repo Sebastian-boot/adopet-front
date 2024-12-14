@@ -11,7 +11,7 @@ import { authGuard } from './core/guards/auth.guard';
 import { publicGuard } from './core/guards/public.guard';
 import { SaveFriendComponent } from './animal-report/save-friend.component';
 import { userGuard } from './core/guards/user.guard';
-import { foundationUserGuard } from './core/guards/foundation-user.guard copy';
+import { foundationUserGuard } from './core/guards/foundation-user.guard';
 
 
 export const routes: Routes = [

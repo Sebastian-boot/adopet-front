@@ -1,13 +1,35 @@
 <div>
   <app-card-title title="Información del Reporte" description="Ingresa los datos del reporte"></app-card-title>
-  <form [formGroup]="reportForm" class="space-y-4 grid grid-cols-2 gap-4">
-    <input type="text" formControlName="title" placeholder="Título del Reporte"
-      class="w-full p-2 border rounded col-span-2" required (input)="onFormChange()" />
-    <textarea formControlName="description" placeholder="Descripción detallada"
-      class="w-full p-2 border rounded col-span-2" rows="4" required (input)="onFormChange()"></textarea>
-    <input type="datetime-local" formControlName="abandonmentDateTime" placeholder="Fecha y hora del abandono"
-      class="w-full p-2 border rounded" required (input)="onFormChange()" />
-    <select formControlName="abandonmentStatus"  class="w-full p-2 border rounded" required (change)="onFormChange()">
+  <div class="space-y-4 grid grid-cols-2 gap-4">
+    <input
+      type="text"
+      [(ngModel)]="formData.title"
+      placeholder="Título del Reporte"
+      class="w-full p-2 border rounded col-span-2"
+      required
+      (change)="onFormChange($event, 'title')"
+    />
+    <textarea
+      [(ngModel)]="formData.description"
+      placeholder="Descripción detallada"
+      class="w-full p-2 border rounded col-span-2"
+      rows="4"
+      required
+      (change)="onFormChange($event, 'description')"></textarea>
+    <input
+      type="datetime-local"
+      [(ngModel)]="formData.abandonmentDateTime"
+      placeholder="Fecha y hora del abandono"
+      class="w-full p-2 border rounded"
+      required
+      (change)="onFormChange($event, 'abandonmentDateTime')"
+    />
+    <select
+      [(ngModel)]="formData.abandonmentStatus"
+      class="w-full p-2 border rounded"
+      required
+      (change)="onFormChange($event, 'abandonmentStatus')"
+    >
       <option value="">Selecciona una opción</option>
       <option *ngFor="let option of abandonmentStatusOptions" [value]="option.value">
         {{ option.label }}
@@ -15,7 +37,7 @@
     </select>
     <div class="col-span-2">
         <app-image-uploader [multiple]="true" [maxImages]="5" [initialImages]="formData?.images || []"
-          (imagesUpload)="handleImagesUpload($event)"></app-image-uploader>
+          (imagesUpload)="onReportImageUpload($event)"></app-image-uploader>
     </div>
-  </form>
+  </div>
 </div>

@@ -10,7 +10,7 @@ export const foundationUserGuard: CanActivateFn = (route, state) => {
   return authService.currentUser$.pipe(
     take(1),
     map(user => {
-      if (user?.foundationId != null) {
+      if (user?.isFoundationUser) {
         return true;
       } else {
         console.log('No es una fundación');

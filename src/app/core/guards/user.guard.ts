@@ -10,7 +10,7 @@ export const userGuard: CanActivateFn = (route, state) => {
   return authService.currentUser$.pipe(
     take(1),
     map(user => {
-      if (user?.foundationId === null) {
+      if (!user?.isFoundationUser) {
         return true;
       } else {
         router.navigate(['/dashboard']);

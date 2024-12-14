@@ -5,7 +5,7 @@
   <div *ngFor="let animal of formData.animals; let index = index" class="border p-4 mb-4 rounded relative">
     <button type="button"
       class="absolute top-2 right-2 bg-white rounded-md p-1 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
-      (click)="handleRemoveAnimal.emit(index)">
+      (click)="removeAnimal(index)">
       <span class="sr-only">Close menu</span>
       <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
         aria-hidden="true">
@@ -14,13 +14,13 @@
     </button>
 
     <div class="grid grid-cols-2 gap-4 pt-8">
-      <input type="text" name="name" [value]="animal.name || ''" (change)="onAnimalChange(index, $event)"
+      <input type="text" name="name" [value]="animal.name || ''" (change)="onAnimalChange(index, 'name', $event)"
         placeholder="Nombre del animal (opcional)" class="w-full p-2 border rounded col-span-2" />
 
        <select
         name="specie"
         [(ngModel)]="animal.specie"
-        (change)="onAnimalChange(index, $event)"
+        (change)="onAnimalChange(index, 'specie', $event)"
         class="w-full p-2 border rounded"
         required
       >
@@ -33,7 +33,7 @@
       <select
         name="breed"
         [(ngModel)]="animal.breed"
-        (change)="onAnimalChange(index, $event)"
+        (change)="onAnimalChange(index, 'breed', $event)"
         class="w-full p-2 border rounded"
         [disabled]="!animal.specie"
       >
@@ -46,7 +46,7 @@
       <select
         name="gender"
         [(ngModel)]="animal.gender"
-        (change)="onAnimalChange(index, $event)"
+        (change)="onAnimalChange(index, 'gender', $event)"
         class="w-full p-2 border rounded"
         required
       >
@@ -56,27 +56,27 @@
         </option>
       </select>
 
-      <input type="number" name="age" [value]="animal.age" (change)="onAnimalChange(index, $event)"
+      <input type="number" name="age" [value]="animal.age" (change)="onAnimalChange(index, 'age', $event)"
         placeholder="Edad (opcional)" class="w-full p-2 border rounded" required />
 
-      <input type="number" name="weight" [value]="animal.weight" (change)="onAnimalChange(index, $event)"
+      <input type="number" name="weight" [value]="animal.weight" (change)="onAnimalChange(index, 'weight', $event)"
         placeholder="Peso (opcional)" class="w-full p-2 border rounded" required />
 
-      <input type="text" name="coatColor" [value]="animal.coatColor" (change)="onAnimalChange(index, $event)"
+      <input type="text" name="coatColor" [value]="animal.coatColor" (change)="onAnimalChange(index, 'coatColor', $event)"
         placeholder="Color de pelaje" class="w-full p-2 border rounded" required />
 
-      <textarea name="description" [value]="animal.description" (change)="onAnimalChange(index, $event)"
+      <textarea name="description" [value]="animal.description" (change)="onAnimalChange(index, 'description', $event)"
         placeholder="Descripción del animal" class="w-full p-2 border rounded col-span-2" rows="3" required></textarea>
 
       <div class="col-span-2">
         <app-image-uploader [multiple]="false" [label]="'animal-' + index"
           [initialImages]="animal.image ? [animal.image] : []"
-          (imagesUpload)="onImageUpload(index, $event)"></app-image-uploader>
+          (imagesUpload)="onAnimalImageUpload(index, $event)"></app-image-uploader>
       </div>
     </div>
   </div>
 
-  <button type="button" (click)="handleAddAnimal.emit()"
+  <button type="button" (click)="addAnimal()"
     class="w-full bg-green-400 mb-4 text-sm text-white rounded hover:bg-green-500">
     Añadir Animal
   </button>

@@ -17,5 +17,6 @@ export interface User {
   email: string;
   phoneNumber: string;
   foundationId: string;
+  isFoundationUser: boolean;
 }
 

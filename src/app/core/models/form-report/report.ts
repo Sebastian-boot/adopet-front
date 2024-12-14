@@ -6,16 +6,17 @@ interface Reporter {
   isAnonymous: boolean;
 }
 
-interface Animal {
-  name: string | null;
+export interface Animal {
+  name: string;
   image: string;
   description: string;
-  age?: number;
+  age?: number | string;
   coatColor: string;
   specie: string;
   breed?: string;
-  weight?: number;
+  weight?: number | string;
   gender: string;
+  [key: string]: string | number | undefined;
 }
 
 export interface Location {

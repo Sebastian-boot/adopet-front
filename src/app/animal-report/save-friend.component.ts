@@ -60,25 +60,6 @@ export class SaveFriendComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  handleChange(event: any): void {
-    const { name, value, type } = event.target;
-    const finalValue = type === 'checkbox' ? event.target.checked : value;
-
-    if (name.includes('.')) {
-      const [parent, child] = name.split('.') as [keyof Report, string];
-      (this.formData[parent] as any)[child] = finalValue;
-    } else {
-      (this.formData as any)[name] = finalValue;
-    }
-  }
-
-  handleReportImagesUpload(urls: string[]): void {
-    this.formData = {
-      ...this.formData,
-      images: urls
-    }
-  }
-
   nextStep(): void {
     if (this.validateCurrentStep()) {
       this.currentStep++;
@@ -107,39 +88,5 @@ export class SaveFriendComponent implements OnInit {
       this.submitErrors = [error.message];
       alert('Error al crear el reporte');
     }
-  }
-
-  handleAddAnimal(): void {
-    this.formData.animals.push({
-      name: '',
-      specie: '',
-      breed: '',
-      gender: '',
-      age: undefined,
-      weight: undefined,
-      coatColor: '',
-      description: '',
-      image: ''
-    });
-  }
-
-  handleRemoveAnimal(index: number): void {
-    this.formData.animals.splice(index, 1);
-  }
-
-  handleAnimalChange({ index, event }: { index: number, event: Event }): void {
-    const { name, value } = event.target as HTMLInputElement;
-    this.formData.animals[index] = {
-      ...this.formData.animals[index],
-      [name]: value
-    };
-  }
-
-  handleAnimalImageUpload(event: { index: number; urls: string[] }): void {
-  const { index, urls } = event;
-    this.formData.animals[index] = {
-      ...this.formData.animals[index],
-      image: urls[0],
-    };
   }
 }
