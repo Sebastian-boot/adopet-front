@@ -1,64 +1,167 @@
-<main>
-  <div class="formSpace bg-white rounded-3xl px-4">
-    <div class="foundationsList">
-      <div class="title">
-        <h1>¡Fundaciones en Adopet!</h1>
-      </div>
+<div class="container mx-auto px-4 py-8">
+  <h2 class="text-2xl font-bold mb-6 dark:text-white">
+    fundaciones de Animales en Adopet!
+  </h2>
 
-      <div class="carousel">
-        <div class="container">
-          <div *ngFor="let foundation of foundations" class="card">
-            <div class="image-container">
-              <img
-                [src]="foundation.image"
-                alt="{{ foundation.name }}"
-                class="foundation-image"
-              />
-            </div>
-            <div class="text-preview py-2.5">
-              <h2>{{ foundation.name }}</h2>
-            </div>
-            <div class="button-container">
-              <button
-                class="ver-mas"
-                type="button"
-                (click)="selectFoundation(foundation)"
+  <div *ngIf="foundations.length === 0" class="text-center text-gray-500">
+    No hay fundaciones disponibles.
+  </div>
+
+  <div class="relative">
+    <button
+      (click)="scrollLeft()"
+      class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 border border-gray-200"
+      *ngIf="canScrollLeft"
+    >
+      <svg
+        class="w-6 h-6 text-gray-600"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M15 19l-7-7 7-7"
+        />
+      </svg>
+    </button>
+
+    <div class="flex overflow-x-hidden space-x-4 pb-4" #scrollContainer>
+      <div
+        *ngFor="let foundation of foundations"
+        (click)="openModal(foundation)"
+        class="flex-shrink-0 w-80 bg-white shadow-lg rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300 cursor-pointer dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+      >
+        <div class="relative">
+          <img
+            [src]="foundation.logo"
+            alt="foundation Image"
+            class="w-full h-56 object-cover"
+          />
+        </div>
+
+        <div class="p-4">
+          <h3 class="font-bold text-lg mb-2 truncate dark:text-white">
+            {{ foundation.name }}
+          </h3>
+
+          <p class="text-sm text-gray-500 line-clamp-2 mb-4 dark:text-gray-400">
+            {{ foundation.description }}
+          </p>
+
+          <div class="mb-4 space-y-2">
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              <i class="fas fa-map-marker-alt mr-2"></i>
+              {{ foundation.website }}
+            </p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              <i class="fas fa-clock mr-2"></i>
+              Puntuación: {{ foundation.averageRating }}
+            </p>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <svg
+                class="w-5 h-5 text-gray-500 mr-2"
+                fill="currentColor"
+                viewBox="0 0 20 20"
               >
-                Conocer más...
-              </button>
+                <path
+                  fill-rule="evenodd"
+                  d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <span class="text-xs text-gray-500">
+                {{ foundation.address | date : "shortDate" }}
+              </span>
+            </div>
+            <div class="text-xs text-gray-400">
+              {{ foundation.email }}
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="foundation-detail p-20" *ngIf="selectedFoundation">
-      <div class="textContainer">
-        <div class="mainText">
-          <h2>{{ selectedFoundation.name }}</h2>
-          <p>{{ selectedFoundation.description }}</p>
-          <img
-            [src]="selectedFoundation.image"
-            alt="{{ selectedFoundation.name }}"
-            class="foundation-image"
+    <button
+      (click)="scrollRight()"
+      class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 border border-gray-200"
+      *ngIf="canScrollRight"
+    >
+      <svg
+        class="w-6 h-6 text-gray-600"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M9 5l7 7-7 7"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<div
+  *ngIf="selectedFoundation"
+  class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+>
+  <div
+    class="bg-white dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 rounded-lg p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto"
+  >
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-2xl font-bold dark:text-white">
+        {{ selectedFoundation.name }}
+      </h3>
+      <button (click)="closeModal()" class="text-gray-500 hover:text-gray-700">
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
           />
-        </div>
-      </div>
+        </svg>
+      </button>
     </div>
 
-    <div class="foundation-detail p-20" *ngIf="!selectedFoundation">
-      <div class="textContainer">
-        <div class="mainText">
-          ¡Descubre todas las fundaciones dedicadas al bienestar animal en
-          nuestra plataforma! Dale en ver más para explorar y encontrar la
-          fundación que mejor se adapte a tus intereses y valores.
-        </div>
-        <div class="mainText">
-          Selecciona una fundación para conocer más sobre su misión, su equipo y
-          cómo puedes apoyar su causa. Juntos, podemos hacer una diferencia en
-          la vida de los animales necesitados.
+    <p class="text-gray-600 mb-4 text-lg dark:text-gray-400">
+      {{ selectedFoundation.description }}
+    </p>
+
+    <div class="mb-8">
+      <div class="grid gap-4 mb-4 dark:text-white">
+        <div>
+          <p>
+            <span class="font-medium">Descripción:</span>
+            {{ selectedFoundation.description }}
+          </p>
+          <p>
+            <span class="font-medium">Mision:</span>
+            {{ selectedFoundation.mission }}
+          </p>
+          <p>
+            <span class="font-medium">Vision:</span>
+            {{ selectedFoundation.vission }}
+          </p>
+          <p>
+            <span class="font-medium">Estado de la fundación:</span>
+            {{ selectedFoundation.status }}
+          </p>
         </div>
       </div>
     </div>
   </div>
-</main>
+</div>
