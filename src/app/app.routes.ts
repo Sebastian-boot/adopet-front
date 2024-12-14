@@ -12,6 +12,7 @@ import { publicGuard } from './core/guards/public.guard';
 import { SaveFriendComponent } from './animal-report/save-friend.component';
 import { userGuard } from './core/guards/user.guard';
 import { foundationUserGuard } from './core/guards/foundation-user.guard';
+import { VerifyReportComponent } from './verify-report/verify-report.component';
 
 
 export const routes: Routes = [
@@ -66,6 +67,11 @@ export const routes: Routes = [
     component: AnimalReportsComponent,
     title: 'Admin Adopet - Reportes de animales',
     canActivate: [authGuard, foundationUserGuard]
+  },
+  {
+    path: 'verify-report/:id',
+    component: VerifyReportComponent,
+    title: 'Admin Adopet - Verificar reporte',
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login', pathMatch: 'full' },

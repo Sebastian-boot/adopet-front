@@ -7,7 +7,7 @@ import { RegistrationFormData } from '../../../Interfaces/FormInscriptionData';
   providedIn: 'root',
 })
 export class UsersRegisterService {
-  private apiUrl = 'http://localhost:8080/api/auth/register';
+  private apiUrl = `${environment.apiUrl}/auth/register`;
 
   constructor(private http: HttpClient) {}
 

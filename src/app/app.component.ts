@@ -25,6 +25,12 @@ export class AppComponent {
   isSidebarOpen = false;
   isLoginRoute = false;
 
+  private readonly publicUrls = ['/login', '/form-signup', '/verify-report'];
+
+  isPublicRoute(url: string): boolean {
+    return this.publicUrls.some(publicUrl => url.startsWith(publicUrl));
+  }
+
   constructor(
     private darkModeService: DarkModeService,
     private router: Router
@@ -36,13 +42,13 @@ export class AppComponent {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
-      this.isLoginRoute = this.router.url === '/login' || this.router.url === '/form-signup';
+      this.isLoginRoute = this.isPublicRoute(this.router.url);
     });
   }
 
   ngOnInit(): void {
     this.darkModeService.initializeTheme();
-    this.isLoginRoute = this.router.url === '/login' || this.router.url === '/form-signup';
+    this.isLoginRoute = this.isPublicRoute(this.router.url);
   }
 
   title = 'Admin Adopet';

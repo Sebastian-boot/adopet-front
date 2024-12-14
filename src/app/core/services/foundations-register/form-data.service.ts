@@ -8,6 +8,7 @@ import {
   RegistrationFormData,
   Location,
 } from '../../../Interfaces/FormInscriptionData';
+import { environment } from '../../../../environments/environment';
 
 interface FoundationResponse {
   id: string;
@@ -45,7 +46,7 @@ export class FormDataService {
   private locationData: Location = {} as Location;
   private foundationId: string | null = null;
 
-  private apiUrl = 'http://localhost:8080/api/foundations';
+  private apiUrl = `${environment.apiUrl}/foundations`;
 
   constructor(private http: HttpClient) {}
 
