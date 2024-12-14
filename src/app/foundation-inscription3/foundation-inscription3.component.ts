@@ -21,6 +21,7 @@ export class FoundationInscription3Component implements OnInit {
   formData!: RegistrationFormData;
   formFoundationData!: FoundationFormData;
   formLegalData!: LegalRepresentative;
+  formLocaltionData!: Location;
   registrationError: string | null = null;
 
   showModal: boolean = false;
@@ -39,6 +40,9 @@ export class FoundationInscription3Component implements OnInit {
       ({} as FoundationFormData);
     this.formLegalData =
       this.formDataService.getLegalFormData() ?? ({} as LegalRepresentative);
+    this.formLocaltionData =
+      this.formDataService.getLocationData() ?? ({} as Location);
+    console.log('Hola! Foundation Data:', this.formFoundationData);
   }
 
   onSubmit(event: Event): void {

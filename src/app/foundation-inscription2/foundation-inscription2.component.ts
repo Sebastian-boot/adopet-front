@@ -13,6 +13,8 @@ import {
 } from '../Interfaces/FormInscriptionData';
 import { FormDataService } from '../core/services/foundations-register/form-data.service';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { Loader } from '@googlemaps/js-api-loader';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-foundation-inscription2',
@@ -25,9 +27,9 @@ export class FoundationInscription2Component implements OnInit {
   form!: FormGroup;
   formData!: LegalRepresentative;
   formLocationData!: Location;
-  center = { lat: 4.8096863519342135, lng: -74.35400356403468 };
-  zoom = 4;
-  selectedLocation: google.maps.LatLngLiteral | null = null;
+
+  private map!: google.maps.Map;
+  private marker!: google.maps.Marker;
 
   constructor(
     private fb: FormBuilder,
@@ -57,6 +59,9 @@ export class FoundationInscription2Component implements OnInit {
       address: [this.formLocationData?.address || '', [Validators.required]],
       postalCode: [this.formLocationData?.postalCode, [Validators.required]],
     });
+    this.form.get('city')?.disable();
+    this.form.get('address')?.disable();
+    this.form.get('postalCode')?.disable();
   }
 
   onSubmit(event: Event): void {
@@ -66,14 +71,8 @@ export class FoundationInscription2Component implements OnInit {
         ...this.form.value,
         personalId: String(this.form.get('personalId')?.value),
         phoneNumber: String(this.form.get('phoneNumber')?.value),
+        address: this.formLocationData.address,
       } as LegalRepresentative;
-      this.formLocationData = {
-        latitude: String(this.selectedLocation?.lat || 0),
-        longitude: String(this.selectedLocation?.lng || 0),
-        address: this.form.get('address')?.value || '',
-        city: this.form.get('city')?.value || '',
-        postalCode: this.form.get('postalCode')?.value || '',
-      };
       this.formDataService.setLegalFormData(this.formData);
       this.formDataService.setLocationData(this.formLocationData);
       this.router.navigate(['/form-signup-foundation3']);
@@ -107,8 +106,102 @@ export class FoundationInscription2Component implements OnInit {
     return '';
   }
 
-  onMapClick(event: google.maps.MapMouseEvent) {
-    this.selectedLocation = event.latLng?.toJSON() || null;
-    console.log('Selected Location', this.selectedLocation);
+  async ngAfterViewInit(): Promise<void> {
+    const loader = new Loader({
+      apiKey: environment.googleMapsApiKey,
+      libraries: ['places'],
+      version: 'weekly',
+      region: 'ES',
+      language: 'es',
+    });
+
+    try {
+      await loader.load();
+      this.initializeMap();
+    } catch (error) {
+      console.error('Error loading Google Maps:', error);
+    }
+  }
+
+  private initializeMap(): void {
+    const defaultPosition = { lat: 0, lng: 0 };
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        defaultPosition.lat = position.coords.latitude;
+        defaultPosition.lng = position.coords.longitude;
+        this.updateMap(defaultPosition);
+      },
+      () => this.updateMap(defaultPosition)
+    );
+  }
+
+  private updateMap(position: google.maps.LatLngLiteral): void {
+    const latLng = new google.maps.LatLng(position.lat, position.lng);
+    this.map = new google.maps.Map(
+      document.getElementById('map') as HTMLElement,
+      {
+        center: position,
+        zoom: 13,
+      }
+    );
+
+    this.marker = new google.maps.Marker({
+      position: latLng,
+      map: this.map,
+      draggable: true,
+    });
+
+    this.map.addListener('click', (event: google.maps.MapMouseEvent) => {
+      if (event.latLng) {
+        this.updateMarker(event.latLng);
+      }
+    });
+
+    this.marker.addListener('dragend', () => {
+      const position = this.marker.getPosition();
+      if (position) {
+        this.emitLocation(position);
+      }
+    });
+
+    this.emitLocation(latLng);
+  }
+
+  private updateMarker(position: google.maps.LatLng): void {
+    this.marker.setPosition(position);
+    this.emitLocation(position);
+  }
+
+  private async emitLocation(position: google.maps.LatLng): Promise<void> {
+    const geocoder = new google.maps.Geocoder();
+
+    try {
+      const response = await geocoder.geocode({
+        location: { lat: position.lat(), lng: position.lng() },
+      });
+
+      if (response.results?.[0]) {
+        const result = response.results[0];
+        const address = result.formatted_address;
+        const cityComponent = result.address_components.find((component) =>
+          component.types.includes('locality')
+        );
+        const postalCodeComponent = result.address_components.find(
+          (component) => component.types.includes('postal_code')
+        );
+
+        this.formLocationData = {
+          latitude: position.lat().toString(),
+          longitude: position.lng().toString(),
+          address,
+          city: cityComponent?.long_name || '',
+          postalCode: postalCodeComponent?.long_name || '',
+        };
+        this.formDataService.setLocationData(this.formLocationData);
+        console.log('Location:', this.formLocationData);
+      }
+    } catch (error) {
+      console.error('Error en geocoding:', error);
+    }
   }
 }
