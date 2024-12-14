@@ -4,15 +4,17 @@ import { Species, Breed } from '../../../core/models/config/config';
 import { ConfigService } from '../../../core/services/config/config-service';
 import { firstValueFrom } from 'rxjs';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CardTitleComponent } from '../card-title/card-title.component';
 import { CommonModule } from '@angular/common';
 import { ImageUploaderComponent } from '../image-uploader/image-uploader.component';
+import { FormsModule } from '@angular/forms';
+
 @Component({
   selector: 'app-animal-information',
   templateUrl: './animal-information.component.html',
   standalone: true,
-  imports: [CommonModule, CardTitleComponent, ReactiveFormsModule, ImageUploaderComponent, FormsModule],
+  imports: [CommonModule, CardTitleComponent, ReactiveFormsModule, FormsModule, ImageUploaderComponent],
   styleUrls: ['./animal-information.component.scss']
 })
 export class AnimalInformationComponent implements OnInit {
@@ -48,18 +50,7 @@ export class AnimalInformationComponent implements OnInit {
   }
 
   onAnimalChange(index: number, event: Event): void {
-    const { name, value } = event.target as HTMLInputElement | HTMLSelectElement;
-    console.log(name, value);
-    const target = event.target as HTMLInputElement | HTMLSelectElement;
-    this.handleAnimalChange.emit({
-      index,
-      event: {
-        target: {
-          name: target.name,
-          value: target.value
-        }
-      } as any
-    });
+    this.handleAnimalChange.emit({ index, event });
   }
 
   onImageUpload(index: number, urls: string[]): void {
