@@ -74,10 +74,4 @@ export class ImageUploaderComponent {
     this.previews = this.previews.filter((_, index) => index !== indexToRemove);
     this.imagesUpload.emit(this.previews);
   }
-
-  private async mockUploadToServer(file: File): Promise<string> {
-    return new Promise((resolve) =>
-      setTimeout(() => resolve(URL.createObjectURL(file)), 1000)
-    );
-  }
 }

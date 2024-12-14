@@ -72,6 +72,13 @@ export class SaveFriendComponent implements OnInit {
     }
   }
 
+  handleReportImagesUpload(urls: string[]): void {
+    this.formData = {
+      ...this.formData,
+      images: urls
+    }
+  }
+
   nextStep(): void {
     if (this.validateCurrentStep()) {
       this.currentStep++;
@@ -128,10 +135,11 @@ export class SaveFriendComponent implements OnInit {
     };
   }
 
-  handleAnimalImageUpload({ index, urls }: { index: number, urls: string[] }): void {
+  handleAnimalImageUpload(event: { index: number; urls: string[] }): void {
+  const { index, urls } = event;
     this.formData.animals[index] = {
       ...this.formData.animals[index],
-      image: urls[0] // Asumiendo que solo manejamos una imagen
+      image: urls[0],
     };
   }
 }

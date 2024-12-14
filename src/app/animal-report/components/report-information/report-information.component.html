@@ -7,7 +7,7 @@
       class="w-full p-2 border rounded col-span-2" rows="4" required (input)="onFormChange()"></textarea>
     <input type="datetime-local" formControlName="abandonmentDateTime" placeholder="Fecha y hora del abandono"
       class="w-full p-2 border rounded" required (input)="onFormChange()" />
-    <select formControlName="abandonmentStatus" class="w-full p-2 border rounded" required (change)="onFormChange()">
+    <select formControlName="abandonmentStatus"  class="w-full p-2 border rounded" required (change)="onFormChange()">
       <option value="">Selecciona una opción</option>
       <option *ngFor="let option of abandonmentStatusOptions" [value]="option.value">
         {{ option.label }}
