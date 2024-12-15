@@ -2,13 +2,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UserRegistrationFormData } from '../../../../Interfaces/FormInscriptionData';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { CardTitleComponent } from "../../../../animal-report/components/card-title/card-title.component";
 import { RouterModule } from '@angular/router';
-
 @Component({
   selector: 'app-user-information',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, CardTitleComponent, RouterModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule],
   templateUrl: './user-information.component.html',
   styleUrl: './user-information.component.css'
 })

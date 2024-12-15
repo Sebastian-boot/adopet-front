@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { Location, Report } from '../../../core/models/form-report/report';
 import { LocationPickerComponent } from '../location-picker/location-picker.component';
-import { CardTitleComponent } from '../card-title/card-title.component';
+import { CardTitleComponent } from '../../../shared/components/card-title/card-title.component';
 
 @Component({
   selector: 'app-location-information',

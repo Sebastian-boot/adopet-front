@@ -4,12 +4,12 @@ import { LoginComponent } from './auth/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { authGuard } from './core/guards/auth.guard';
 import { publicGuard } from './core/guards/public.guard';
-import { SaveFriendComponent } from './animal-report/save-friend.component';
 import { userGuard } from './core/guards/user.guard';
 import { foundationUserGuard } from './core/guards/foundation-user.guard';
 import { VerifyReportComponent } from './verify-report/verify-report.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { FoundationsComponent } from './foundations/foundations.component';
+import { SaveFriendComponent } from './save-friend/save-friend.component';
 
 
 export const routes: Routes = [

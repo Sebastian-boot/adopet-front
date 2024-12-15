@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { UserRegistrationFormData } from '../../../../Interfaces/FormInscriptionData';
 import { CommonModule } from '@angular/common';
-import { CardTitleComponent } from '../../../../animal-report/components/card-title/card-title.component';
+import { CardTitleComponent } from '../../../../shared/components/card-title/card-title.component';
 
 @Component({
   selector: 'app-review-information',

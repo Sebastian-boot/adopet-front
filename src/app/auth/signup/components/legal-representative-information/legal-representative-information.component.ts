@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UserRegistrationFormData } from '../../../../Interfaces/FormInscriptionData';
-import { LocationPickerComponent } from '../../../../animal-report/components/location-picker/location-picker.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Location } from '../../../../core/models/form-report/report';
 import { CommonModule } from '@angular/common';
-import { CardTitleComponent } from '../../../../animal-report/components/card-title/card-title.component';
+import { CardTitleComponent } from '../../../../shared/components/card-title/card-title.component';
+import { LocationPickerComponent } from '../../../../save-friend/components/location-picker/location-picker.component';
 
 @Component({
   selector: 'app-legal-representative-information',

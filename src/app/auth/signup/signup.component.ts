@@ -11,13 +11,13 @@ import { UserInformationComponent } from './components/user-information/user-inf
 import { FoundationInformationComponent } from './components/foundation-information/foundation-information.component';
 import { ReviewInformationComponent } from './components/review-information/review-information.component';
 import { LegalRepresentativeInformationComponent } from './components/legal-representative-information/legal-representative-information.component';
-import { NavigationControlsComponent } from '../../animal-report/components/navigation-controls/navigation-controls.component';
 import { firstValueFrom } from 'rxjs';
 
 import { MatDialog } from '@angular/material/dialog';
 import { SuccessModalComponent } from '../../shared/components/success-modal/success-modal.component';
 import { ErrorMessagesComponent } from '../../shared/components/error-messages/error-messages.component';
 import { ErrorHandlingService } from '../../core/services/shared/error-handling.service';
+import { NavigationControlsComponent } from '../../shared/components/navigation-controls/navigation-controls.component';
 
 
 @Component({

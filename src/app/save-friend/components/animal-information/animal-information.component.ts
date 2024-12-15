@@ -5,7 +5,7 @@ import { ConfigService } from '../../../core/services/config/config-service';
 import { firstValueFrom } from 'rxjs';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { CardTitleComponent } from '../card-title/card-title.component';
+import { CardTitleComponent } from '../../../shared/components/card-title/card-title.component';
 import { CommonModule } from '@angular/common';
 import { ImageUploaderComponent } from '../image-uploader/image-uploader.component';
 import { FormsModule } from '@angular/forms';

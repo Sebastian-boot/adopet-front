@@ -36,7 +36,7 @@
       </option>
     </select>
     <div class="col-span-2">
-        <app-image-uploader [multiple]="true" [maxImages]="5" [initialImages]="formData?.images || []"
+        <app-image-uploader [multiple]="true" [maxImages]="5" [initialImages]="formData.images || []"
           (imagesUpload)="onReportImageUpload($event)"></app-image-uploader>
     </div>
   </div>

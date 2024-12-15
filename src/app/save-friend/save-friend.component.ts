@@ -8,7 +8,7 @@ import { ReviewInformationComponent } from './components/review-information/revi
 import { LocationInformationComponent } from './components/location-information/location-information.component';
 import { StepIndicatorComponent } from './components/step-indicator/step-indicator.component';
 import { ReportInformationComponent } from './components/report-information/report-information.component';
-import { NavigationControlsComponent } from './components/navigation-controls/navigation-controls.component';
+import { NavigationControlsComponent } from '../shared/components/navigation-controls/navigation-controls.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../core/services/auth/auth.service';

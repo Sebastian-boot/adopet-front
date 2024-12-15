@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserRegistrationFormData } from '../../../../Interfaces/FormInscriptionData';
-import { ImageUploaderComponent } from '../../../../animal-report/components/image-uploader/image-uploader.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CardTitleComponent } from '../../../../animal-report/components/card-title/card-title.component';
+import { ImageUploaderComponent } from '../../../../save-friend/components/image-uploader/image-uploader.component';
+import { CardTitleComponent } from '../../../../shared/components/card-title/card-title.component';
 
 @Component({
   selector: 'app-foundation-information',
