@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsMod
 
 import { routes } from './app.routes';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +15,13 @@ export const appConfig: ApplicationConfig = {
       withInterceptors([AuthInterceptor])
     ),
     provideAnimations(),
+    provideToastr({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      progressBar: true,
+      progressAnimation: 'decreasing',
+    }),
     ReactiveFormsModule, // Add ReactiveFormsModule to providers
   ],
 };

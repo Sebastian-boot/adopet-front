@@ -9,7 +9,6 @@ import { environment } from '../../../../environments/environment';
   providedIn: 'root',
 })
 export class AnimalReportsService {
-
   constructor(private http: HttpClient) {}
 
   getReportsByFoundation(foundationId: string): Observable<AnimalReport[]> {
@@ -23,6 +22,9 @@ export class AnimalReportsService {
     );
   }
   createReport(formData: Report): Observable<AnimalReport> {
-    return this.http.post<AnimalReport>(`${this.apiUrl}/reports-abandonment`, formData);
+    return this.http.post<AnimalReport>(
+      `${environment.apiUrl}/reports-abandonment`,
+      formData
+    );
   }
 }

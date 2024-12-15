@@ -20,7 +20,10 @@ export class AuthService {
 
   login(username: string, password: string): Observable<AuthResponse> {
     return this.http
-      .post<AuthResponse>(`${environment.apiUrl}/login`, { username, password })
+      .post<AuthResponse>(`${environment.apiUrl}/auth/login`, {
+        username,
+        password,
+      })
       .pipe(
         tap((response) => this.handleAuthentication(response)),
         catchError(this.handleError)
@@ -40,17 +43,22 @@ export class AuthService {
   private handleAuthentication(response: AuthResponse): void {
     const expirationDate = this.getTokenExpirationDate(response.token);
     localStorage.setItem('token', response.token);
-    localStorage.setItem('userData', JSON.stringify({
-      id: response.id,
-      name: response.name,
-      lastName: response.lastName,
-      username: response.username,
-      email: response.email,
-      phoneNumber: response.phoneNumber,
-      foundationId: response.foundationId,
-      isFoundationUser: response.foundationId !== null
-    }));
-    this.currentUserSubject.next(JSON.parse(localStorage.getItem('userData') || '{}'));
+    localStorage.setItem(
+      'userData',
+      JSON.stringify({
+        id: response.id,
+        name: response.name,
+        lastName: response.lastName,
+        username: response.username,
+        email: response.email,
+        phoneNumber: response.phoneNumber,
+        foundationId: response.foundationId,
+        isFoundationUser: response.foundationId !== null,
+      })
+    );
+    this.currentUserSubject.next(
+      JSON.parse(localStorage.getItem('userData') || '{}')
+    );
     this.autoLogout(expirationDate.getTime() - new Date().getTime());
   }
 

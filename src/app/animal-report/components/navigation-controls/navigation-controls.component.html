@@ -1,20 +1,20 @@
-<div class="flex justify-between mt-6">
+<div class="flex justify-between mt-3" [ngClass]="containerClass">
   <!-- Botón "Anterior" -->
   <button *ngIf="currentStep > 1" type="button" class="flex items-center text-gray-600 hover:text-primary"
     (click)="goToPreviousStep()">
-    Anterior
+    {{ previousButtonText }}
   </button>
 
   <!-- Botón "Siguiente" -->
   <button *ngIf="currentStep < 4" type="button"
     class="inline-flex items-center justify-center rounded-md bg-primary px-7 py-3 text-center text-base font-medium text-white duration-300 hover:bg-primary/90"
-    (click)="goToNextStep()">
-    Siguiente
+    (click)="goToNextStep()"
+    [ngClass]="submitButtonClass">
+    {{ nextButtonText }}
   </button>
 
-  <!-- Botón "Enviar Reporte" -->
-  <button *ngIf="currentStep === 4" type="submit"
-    class="ml-auto flex items-center bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-    Enviar Reporte
+  <!-- Botón Enviar -->
+  <button *ngIf="currentStep === 4" type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+    {{ submitButtonText }}
   </button>
 </div>

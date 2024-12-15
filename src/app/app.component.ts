@@ -25,7 +25,7 @@ export class AppComponent {
   isSidebarOpen = false;
   isLoginRoute = false;
 
-  private readonly publicUrls = ['/login', '/form-signup', '/verify-report'];
+  private readonly publicUrls = ['/login', '/signup', '/verify-report'];
 
   isPublicRoute(url: string): boolean {
     return this.publicUrls.some(publicUrl => url.startsWith(publicUrl));

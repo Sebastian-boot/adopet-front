@@ -1,9 +1,5 @@
 import { Routes } from '@angular/router';
 import { AnimalReportsComponent } from './animal-reports/animal-reports.component';
-import { FormInscriptionComponent } from './form-inscription/form-inscription.component';
-import { FoundationInscriptionComponent } from './foundation-inscription/foundation-inscription.component';
-import { FoundationInscription2Component } from './foundation-inscription2/foundation-inscription2.component';
-import { FoundationInscription3Component } from './foundation-inscription3/foundation-inscription3.component';
 import { LoginComponent } from './auth/login/login.component';
 import { FoundationsAdopetComponent } from './users/dashboard/foundations-adopet/foundations-adopet.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -13,6 +9,7 @@ import { SaveFriendComponent } from './animal-report/save-friend.component';
 import { userGuard } from './core/guards/user.guard';
 import { foundationUserGuard } from './core/guards/foundation-user.guard';
 import { VerifyReportComponent } from './verify-report/verify-report.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 
 export const routes: Routes = [
@@ -23,26 +20,9 @@ export const routes: Routes = [
     canActivate: [publicGuard]
   },
   {
-    path: 'form-signup',
-    component: FormInscriptionComponent,
+    path: 'signup',
+    component: SignupComponent,
     title: 'Adopet - Crear cuenta',
-    canActivate: [publicGuard]
-  },
-  {
-    path: 'form-signup-foundation1',
-    component: FoundationInscriptionComponent,
-    canActivate: [publicGuard]
-
-  },
-  {
-    path: 'form-signup-foundation2',
-    component: FoundationInscription2Component,
-    canActivate: [publicGuard]
-
-  },
-  {
-    path: 'form-signup-foundation3',
-    component: FoundationInscription3Component,
     canActivate: [publicGuard]
   },
   {

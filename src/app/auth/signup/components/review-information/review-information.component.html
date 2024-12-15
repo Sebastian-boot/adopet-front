@@ -1,0 +1,86 @@
+<app-card-title title="Revisa tu información" description="En esta sección podrás revisar y confirmar toda la información que has proporcionado en los pasos anteriores. Por favor, verifica que todos los datos sean correctos antes de continuar."></app-card-title>
+
+<div class="mx-auto my-6 px-4 sm:px-6 lg:px-8">
+  <!-- Información del Usuario -->
+  <div class="bg-gray-100 rounded-lg p-6 mb-6">
+    <h3 class="text-xl font-bold text-primary mb-4">
+      Información del Usuario
+    </h3>
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <p class="font-semibold">Nombre de usuario:</p>
+        <p class="text-gray-600">{{ formData.username }}</p>
+      </div>
+      <div>
+        <p class="font-semibold">Correo electrónico:</p>
+        <p class="text-gray-600">{{ formData.email }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Información de la Fundación -->
+  <div class="bg-gray-100 rounded-lg p-6 mb-6">
+    <h3 class="text-xl font-bold text-primary mb-4">
+      Información de la Fundación
+    </h3>
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <p class="font-semibold">Nombre de la fundación:</p>
+        <p class="text-gray-600">{{ formData.name }}</p>
+      </div>
+      <div>
+        <p class="font-semibold">NIT:</p>
+        <p class="text-gray-600">{{ formData.foundation.nit }}</p>
+      </div>
+      <div>
+        <p class="font-semibold">Dirección:</p>
+        <p class="text-gray-600">{{ formData.foundation.location.address }}</p>
+      </div>
+      <div>
+        <p class="font-semibold">Teléfono:</p>
+        <p class="text-gray-600">{{ formData.foundation.phone }}</p>
+      </div>
+      <div>
+        <p class="font-semibold">Misión:</p>
+        <p class="text-gray-600">{{ formData.foundation.mission }}</p>
+      </div>
+      <div>
+        <p class="font-semibold">Visión:</p>
+        <p class="text-gray-600">{{ formData.foundation.vision }}</p>
+      </div>
+      <div>
+        <p class="font-semibold">Descripción:</p>
+        <p class="text-gray-600">{{ formData.foundation.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Representante Legal -->
+  <div class="bg-gray-100 rounded-lg p-6 mb-6">
+    <h3 class="text-xl font-bold text-primary mb-4">
+      Representantes Legales
+    </h3>
+    <div *ngFor="let legalRepresentative of formData.foundation.legalRepresentatives; let index = index">
+      <div class="bg-gray-100 rounded-lg p-6 mb-4 border border-gray-200">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <p class="font-semibold ">Nombre completo:</p>
+            <p class="text-gray-600">{{ legalRepresentative.name }}</p>
+          </div>
+          <div>
+            <p class="font-semibold">Documento de identidad:</p>
+            <p class="text-gray-600">{{ legalRepresentative.personalId }}</p>
+          </div>
+          <div>
+            <p class="font-semibold">Teléfono:</p>
+            <p class="text-gray-600">{{ legalRepresentative.phoneNumber }}</p>
+          </div>
+          <div>
+            <p class="font-semibold">Correo electrónico:</p>
+            <p class="text-gray-600">{{ legalRepresentative.email }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

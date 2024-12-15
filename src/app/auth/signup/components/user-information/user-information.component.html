@@ -1,0 +1,81 @@
+
+
+
+
+  <div class="mb-8">
+    <h2 class="text-3xl font-bold">
+      Crea tu cuenta en <strong class="text-primary">Adopet</strong>
+    </h2>
+    <p class="text-gray-600 text-sm">
+      Únete a nuestra comunidad y contribuye al rescate y cuidado de
+      animales abandonados. ¡Empieza hoy mismo!
+    </p>
+  </div>
+  <div class="grid grid-cols-2 gap-4">
+    <input type="text" [(ngModel)]="formData.name" placeholder="Nombre" required (change)="onFormChange($event, 'name')"
+      class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+
+    <input type="text" [(ngModel)]="formData.lastName" placeholder="Apellido" required
+      (change)="onFormChange($event, 'lastName')"
+      class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+
+    <input type="number" [(ngModel)]="formData.personalId" placeholder="N° de Documento" required
+      (change)="onFormChange($event, 'personalId')"
+      class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+
+    <input type="date" [(ngModel)]="formData.birthDate" placeholder="Fecha de Nacimiento" required
+      (change)="onFormChange($event, 'birthDate')"
+      class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+
+    <div class="flex gap-2 col-span-2">
+      <select [(ngModel)]="formData.prefix"
+        class="w-20 px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition">
+        <option value="57">+57</option>
+        <option value="87">+87</option>
+      </select>
+
+      <input type="number" [(ngModel)]="formData.phoneNumber" placeholder="N° de Teléfono" required
+        (change)="onFormChange($event, 'phoneNumber')"
+        class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+    </div>
+
+    <input type="text" [(ngModel)]="formData.address" placeholder="Dirección" required
+      (change)="onFormChange($event, 'address')"
+      class="col-span-2 px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+
+    <input type="text" [(ngModel)]="formData.username" placeholder="Nombre de Usuario" required
+      (change)="onFormChange($event, 'username')"
+      class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+
+    <input type="email" [(ngModel)]="formData.email" placeholder="Correo Electrónico" required
+      (change)="onFormChange($event, 'email')"
+      class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+
+    <input type="password" [(ngModel)]="formData.password" placeholder="Contraseña" required
+      (change)="onFormChange($event, 'password')"
+      class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+
+    <input type="password" [(ngModel)]="formData.confirmPassword" placeholder="Confirmar Contraseña" required
+      (change)="onFormChange($event, 'confirmPassword')"
+      class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" />
+
+    <div class="flex items-center space-x-2 justify-between col-span-2">
+      <div class="flex items-center gap-2">
+        <input [(ngModel)]="formData.terms_conditions" type="checkbox"
+          class="w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary" />
+        <label class="text-sm text-gray-600">
+          Acepto
+          <span class="underline italic text-primary hover:text-primary/80 cursor-pointer">términos y
+            condiciones</span>
+        </label>
+      </div>
+      <a routerLink="/login" class="text-sm text-primary hover:text-primary/80 underline">
+        ¿Ya tienes cuenta con nosotros?
+      </a>
+    </div>
+    <button type="submit"
+      class="w-full py-3 px-4 border-2 border-primary text-primary hover:bg-gray-50 rounded-lg transition col-span-2">
+      Registrarme
+    </button>
+  </div>
+

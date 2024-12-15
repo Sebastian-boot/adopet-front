@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FoundationInscriptionComponent } from './foundation-inscription.component';
+import { FoundationInscriptionComponent } from './foundation-information.component';
 
 describe('FoundationInscriptionComponent', () => {
   let component: FoundationInscriptionComponent;

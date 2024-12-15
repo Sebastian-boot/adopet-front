@@ -1,3 +1,4 @@
+@import "ngx-toastr/toastr";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,4 +11,32 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+/* Personaliza los colores de los toasts */
+.toast-success {
+  background-color: #4caf50 !important;
+}
+
+.toast-error {
+  background-color: #f44336 !important;
+}
+
+.toast-info {
+  background-color: #2196f3 !important;
+}
+
+.toast-warning {
+  background-color: #ffc107 !important;
+}
+
+/* Personaliza la barra de progreso */
+.toast-progress {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Opcional: Personaliza otros aspectos */
+.toast-container .ngx-toastr {
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 8px !important;
 }
