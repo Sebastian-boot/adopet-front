@@ -90,20 +90,6 @@ export class SignupComponent {
     }
   }
 
-  private showSuccessDialog(): void {
-    const dialogRef = this.dialog.open(SuccessModalComponent, {
-      width: '400px',
-      data: {
-        message: 'Se ha enviado un correo de verificación a tu dirección de email.'
-      },
-      disableClose: true
-    });
-
-    dialogRef.afterClosed().subscribe(() => {
-      this.router.navigate(['/login']);
-    });
-  }
-
   async handleFoundationSubmit(event: Event): Promise<void> {
     event.preventDefault();
     this.submitErrors = [];
@@ -125,4 +111,17 @@ export class SignupComponent {
     }
   }
 
+  private showSuccessDialog(): void {
+    const dialogRef = this.dialog.open(SuccessModalComponent, {
+      width: '400px',
+      data: {
+        message: 'Se ha enviado un correo de verificación a tu dirección de email.'
+      },
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.router.navigate(['/login']);
+    });
+  }
 }

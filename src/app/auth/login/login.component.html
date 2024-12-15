@@ -6,10 +6,7 @@
       </div>
 
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
-        <div *ngIf="loginError"
-             class="text-red-600 text-center text-sm bg-red-50 plogin-illustration.svg-2 rounded">
-          {{ loginError }}
-        </div>
+        <app-error-messages [errors]="loginErrors"></app-error-messages>
 
         <div class="space-y-4">
           <div>

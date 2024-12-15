@@ -3,13 +3,7 @@
     <app-step-indicator [currentStep]="currentStep"></app-step-indicator>
 
     <form (ngSubmit)="handleSubmit($event)">
-      <div *ngIf="errors.length || submitErrors.length" class="mb-4 p-4 bg-red-50 border border-red-200 rounded">
-        <p class="text-red-600 font-medium mb-2">Por favor corrige los siguientes errores:</p>
-        <ul class="list-disc list-inside">
-          <li *ngFor="let error of errors" class="text-red-500">{{ error }}</li>
-          <li *ngFor="let error of submitErrors" class="text-red-500">{{ error }}</li>
-        </ul>
-      </div>
+      <app-error-messages [errors]="submitErrors"></app-error-messages>
 
       <ng-container [ngSwitch]="currentStep">
         <app-report-information

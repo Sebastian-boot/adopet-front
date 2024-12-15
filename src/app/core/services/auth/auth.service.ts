@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthResponse, User } from '../../models/auth/auth.models';
 import { environment } from '../../../../environments/environment';
@@ -25,8 +25,7 @@ export class AuthService {
         password,
       })
       .pipe(
-        tap((response) => this.handleAuthentication(response)),
-        catchError(this.handleError)
+        tap((response) => this.handleAuthentication(response))
       );
   }
 
@@ -89,17 +88,6 @@ export class AuthService {
   private getTokenExpirationDate(token: string): Date {
     const decodedToken = JSON.parse(atob(token.split('.')[1]));
     return new Date(decodedToken.exp * 1000);
-  }
-
-  private handleError(error: HttpErrorResponse) {
-    let errorMessage = 'Ha ocurrido un error desconocido';
-    if (error.error instanceof ErrorEvent) {
-      errorMessage = error.error.message;
-    } else if (error.status === 401) {
-      this.logout();
-      errorMessage = 'Sesión expirada o credenciales inválidas';
-    }
-    return throwError(() => errorMessage);
   }
 
   getToken(): string | null {

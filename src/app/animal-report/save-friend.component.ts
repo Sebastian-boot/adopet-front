@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../core/services/auth/auth.service';
 import { Observable } from 'rxjs';
+import { ErrorHandlingService } from '../core/services/shared/error-handling.service';
+import { ErrorMessagesComponent } from '../shared/components/error-messages/error-messages.component';
 
 @Component({
   selector: 'app-save-friend',
@@ -26,6 +28,7 @@ import { Observable } from 'rxjs';
     StepIndicatorComponent,
     NavigationControlsComponent,
     FormsModule,
+    ErrorMessagesComponent
   ],
   templateUrl: './save-friend.component.html',
   styleUrl: './save-friend.component.css',
@@ -40,7 +43,8 @@ export class SaveFriendComponent implements OnInit {
   constructor(
     private reportService: AnimalReportsService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private errorHandlingService: ErrorHandlingService
   ) {
     this.currentUser$ = this.authService.currentUser$;
 
@@ -82,11 +86,11 @@ export class SaveFriendComponent implements OnInit {
     this.submitErrors = [];
     try {
       await this.reportService.createReport(this.formData).toPromise();
-      alert('¡Reporte creado exitosamente!');
       this.router.navigate(['/dashboard']);
+
     } catch (error: any) {
-      this.submitErrors = [error.message];
-      alert('Error al crear el reporte');
+      this.submitErrors = this.errorHandlingService.handleApiError(error);
+      this.errorHandlingService.showErrorToast('Error al crear el reporte');
     }
   }
 }

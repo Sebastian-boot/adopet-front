@@ -3,6 +3,7 @@ import { PreviewImagesComponent } from '../preview-images/preview-images.compone
 import { CommonModule } from '@angular/common';
 import { UploadImagesService } from '../../../core/services/config/upload-images-service';
 import { firstValueFrom } from 'rxjs';
+import { ErrorHandlingService } from '../../../core/services/shared/error-handling.service';
 
 @Component({
   selector: 'app-image-uploader',
@@ -26,7 +27,7 @@ export class ImageUploaderComponent {
     this.previews = [...this.initialImages];
   }
 
-  constructor(private uploadImagesService: UploadImagesService) {}
+  constructor(private uploadImagesService: UploadImagesService, private errorHandlingService: ErrorHandlingService) {}
 
   async handleImageChange(event: Event): Promise<void> {
     const input = event.target as HTMLInputElement;
@@ -34,7 +35,7 @@ export class ImageUploaderComponent {
       const fileArray = Array.from(input.files);
 
       if (this.multiple && this.previews.length + fileArray.length > this.maxImages) {
-        alert(`Solo puedes subir hasta ${this.maxImages} imágenes`);
+        this.errorHandlingService.showErrorToast(`Solo puedes subir hasta ${this.maxImages} imágenes`);
         return;
       }
 
@@ -52,7 +53,7 @@ export class ImageUploaderComponent {
         if (!this.previews.includes(url)) {
           uploadedUrls.push(url);
         } else {
-          alert('Una o más imágenes ya han sido agregadas');
+          this.errorHandlingService.showErrorToast('Una o más imágenes ya han sido agregadas');
         }
       }
 
@@ -64,7 +65,7 @@ export class ImageUploaderComponent {
       this.imagesUpload.emit(newPreviews);
     } catch (error) {
       console.error('Error de subida:', error);
-      alert('No se pudieron subir todas las imágenes');
+      this.errorHandlingService.showErrorToast('No se pudieron subir todas las imágenes');
     } finally {
       this.uploading = false;
     }
