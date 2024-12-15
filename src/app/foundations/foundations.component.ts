@@ -1,18 +1,17 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FoundationsDataService } from '../../../core/services/foundations-data.service';
 import { CommonModule } from '@angular/common';
-import { FoundationData } from '../../../Interfaces/FoundationsData';
-import { FoundationDataService } from '../../../core/services/foundations-register/foundation-data.service';
-import { AuthService } from '../../../core/services/auth/auth.service';
+import { FoundationData } from '../Interfaces/FoundationsData';
+import { FoundationDataService } from '../core/services/foundations-register/foundation-data.service';
+import { AuthService } from '../core/services/auth/auth.service';
 
 @Component({
-  selector: 'app-foundations-adopet',
+  selector: 'app-foundations',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './foundations-adopet.component.html',
-  styleUrl: './foundations-adopet.component.css',
+  templateUrl: './foundations.component.html',
+  styleUrl: './foundations.component.css',
 })
-export class FoundationsAdopetComponent implements OnInit {
+export class FoundationsComponent implements OnInit {
   @ViewChild('scrollContainer') scrollContainer!: ElementRef;
 
   selectedFoundation: FoundationData | null = null;

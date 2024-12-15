@@ -1,32 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AuthService } from '../../../core/services/auth/auth.service';
+import { MenuItem } from '../../../core/models/menu-item/menu-item';
+import { MenuService } from '../../../core/services/shared/menu.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, CommonModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
 })
-export class SidebarComponent {
-  constructor(private authService: AuthService) {}
+export class SidebarComponent implements OnInit {
+  isSidebarCollapsed = true;
+  menuItems$;
 
-  get isFoundationUser(): boolean {
-    let isFoundation = false;
-    this.authService.currentUser$.subscribe((user) => {
-      if (user) {
-        isFoundation = user.isFoundationUser;
-      }
-    });
-    return isFoundation;
+  constructor(private menuService: MenuService) {
+    this.menuItems$ = this.menuService.getMenuItems();
   }
 
-  get reportsLink(): string {
-    return this.isFoundationUser ? '/animals-reports' : '/users-main';
-  }
-
-  get reportsText(): string {
-    return this.isFoundationUser ? 'Reportes' : 'Fundaciones';
-  }
+  ngOnInit(): void {}
 }

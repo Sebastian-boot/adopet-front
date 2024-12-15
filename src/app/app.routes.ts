@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { AnimalReportsComponent } from './animal-reports/animal-reports.component';
 import { LoginComponent } from './auth/login/login.component';
-import { FoundationsAdopetComponent } from './users/dashboard/foundations-adopet/foundations-adopet.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { authGuard } from './core/guards/auth.guard';
 import { publicGuard } from './core/guards/public.guard';
@@ -10,6 +9,7 @@ import { userGuard } from './core/guards/user.guard';
 import { foundationUserGuard } from './core/guards/foundation-user.guard';
 import { VerifyReportComponent } from './verify-report/verify-report.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { FoundationsComponent } from './foundations/foundations.component';
 
 
 export const routes: Routes = [
@@ -32,8 +32,8 @@ export const routes: Routes = [
     canActivate: [authGuard, userGuard]
   },
   {
-    path: 'users-main',
-    component: FoundationsAdopetComponent,
+    path: 'foundations',
+    component: FoundationsComponent,
     canActivate: [authGuard, userGuard]
   },
   {

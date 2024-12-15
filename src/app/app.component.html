@@ -2,8 +2,8 @@
   <ng-container *ngIf="!isLoginRoute">
     <app-navbar></app-navbar>
     <app-sidebar></app-sidebar>
-    <main class="p-4 pt-20 transition-all duration-300 lg:ml-64 flex-grow min-h-screen"
-          [ngClass]="{'ml-64': isSidebarOpen, 'ml-0': !isSidebarOpen}">
+    <main class="p-4 pt-20 transition-all duration-300 min-h-screen
+                 lg:ml-64 md:ml-64 ml-16">
       <div class="rounded-lg dark:border-gray-700 mt-4">
         <router-outlet />
       </div>

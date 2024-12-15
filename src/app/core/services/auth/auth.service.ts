@@ -93,4 +93,13 @@ export class AuthService {
   getToken(): string | null {
     return localStorage.getItem('token');
   }
+
+  getCurrentUserRole(): string {
+    const userData = localStorage.getItem('userData');
+    if (userData) {
+      const user = JSON.parse(userData);
+      return user.isFoundationUser ? 'FOUNDATION' : 'USER';
+    }
+    return 'USER';
+  }
 }
