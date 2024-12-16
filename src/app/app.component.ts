@@ -15,7 +15,6 @@ import { filter } from 'rxjs/operators';
     GoogleMapsModule,
     NavbarComponent,
     SidebarComponent,
-    NgClass,
     NgIf
   ],
   templateUrl: './app.component.html',
@@ -25,7 +24,14 @@ export class AppComponent {
   isSidebarOpen = false;
   isLoginRoute = false;
 
-  private readonly publicUrls = ['/login', '/signup', '/verify-report'];
+  private readonly publicUrls = [
+    '/login',
+    '/signup',
+    '/verify-report',
+    '/verify-email',
+    '/forgot-password',
+    '/reset-password'
+  ];
 
   isPublicRoute(url: string): boolean {
     return this.publicUrls.some(publicUrl => url.startsWith(publicUrl));

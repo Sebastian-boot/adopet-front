@@ -102,4 +102,16 @@ export class AuthService {
     }
     return 'USER';
   }
+
+  verifyEmail(token: string, userId: string) {
+    return this.http.post(`${environment.apiUrl}/auth/verify-email`, { token, userId });
+  }
+
+  requestPasswordReset(username: string) {
+    return this.http.post(`${environment.apiUrl}/password-recovery/request-reset`, { username });
+  }
+
+  resetPassword(resetData: { token: string, newPassword: string }) {
+    return this.http.post(`${environment.apiUrl}/password-recovery/reset`, resetData);
+  }
 }

@@ -10,6 +10,9 @@ import { VerifyReportComponent } from './verify-report/verify-report.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { FoundationsComponent } from './foundations/foundations.component';
 import { SaveFriendComponent } from './save-friend/save-friend.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 export const routes: Routes = [
@@ -52,6 +55,24 @@ export const routes: Routes = [
     path: 'verify-report/:id',
     component: VerifyReportComponent,
     title: 'Admin Adopet - Verificar reporte',
+  },
+  {
+    path: 'verify-email',
+    component: VerifyEmailComponent,
+    title: 'Adopet - Verificar email',
+    canActivate: [publicGuard]
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
+    title: 'Adopet - Recuperar contraseña',
+    canActivate: [publicGuard]
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
+    title: 'Adopet - Restablecer contraseña',
+    canActivate: [publicGuard]
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login', pathMatch: 'full' },

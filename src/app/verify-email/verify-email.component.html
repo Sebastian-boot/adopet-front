@@ -1,0 +1,92 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+  <div class="w-full max-w-lg">
+
+    <div class="text-center mb-8">
+      <img src="assets/images/logo/logo.svg" alt="Logo" class="h-16 mx-auto mb-4">
+    </div>
+
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+      <div *ngIf="loading" class="p-8">
+        <div class="flex flex-col items-center justify-center space-y-4">
+          <div class="animate-spin h-12 w-12 border-4 border-blue-500 border-t-transparent rounded-full"></div>
+          <p class="text-gray-700 text-lg font-medium">Verificando tu correo electrónico...</p>
+          <p class="text-gray-500 text-sm text-center">
+            Esto puede tomar unos segundos, por favor espera...
+          </p>
+        </div>
+      </div>
+
+      <div *ngIf="!loading">
+        <div *ngIf="verificationSuccessful" class="p-8">
+          <div class="text-center">
+            <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-4">
+              <svg class="h-8 w-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-green-700 mb-2">¡Verificación Exitosa!</h2>
+            <p class="text-green-600 mb-6">Tu correo electrónico ha sido verificado correctamente.</p>
+            <div class="space-y-4">
+              <a routerLink="/login"
+                 class="block w-full px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-200 font-medium">
+                Ir al inicio de sesión
+              </a>
+              <a href="{{environment.homeUrl}}"
+                 class="block w-full px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200 font-medium">
+                Volver al inicio
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="emailAlreadyVerified" class="p-8">
+          <div class="text-center">
+            <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-yellow-100 mb-4">
+              <svg class="h-8 w-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-yellow-700 mb-2">Correo Ya Verificado</h2>
+            <p class="text-yellow-600 mb-6">{{ messageError }}</p>
+            <div class="space-y-4">
+              <a routerLink="/login"
+                 class="block w-full px-6 py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors duration-200 font-medium">
+                Ir al inicio de sesión
+              </a>
+              <a href="{{environment.homeUrl}}"
+                 class="block w-full px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200 font-medium">
+                Volver al inicio
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="!verificationSuccessful && !emailAlreadyVerified" class="p-8">
+          <div class="text-center">
+            <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-red-100 mb-4">
+              <svg class="h-8 w-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-red-700 mb-2">Error en la Verificación</h2>
+            <p class="text-red-600 mb-6">{{ messageError }}</p>
+            <div class="space-y-4">
+              <a href="{{ environment.homeUrl }}"
+                 class="block w-full px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors duration-200 font-medium">
+                Volver al inicio
+              </a>
+              <button (click)="ngOnInit()"
+                      class="block w-full px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors duration-200 font-medium">
+                Intentar nuevamente
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center text-gray-500 text-sm">
+      <p>¿Necesitas ayuda? <a href="#" class="text-blue-600 hover:text-blue-800">Contacta con soporte</a></p>
+    </div>
+  </div>
+</div>
